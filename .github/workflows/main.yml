@@ -25,9 +25,6 @@ jobs:
             - name: Build Project
               run: npm run build
 
-            - name: Check files in repo root
-              run: ls -la
-
             - name: Check if public exists
               run: ls -la public || echo "No public folder found"
 
