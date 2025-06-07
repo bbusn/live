@@ -59,3 +59,4 @@ jobs:
                 key: ${{ secrets.SERVER_SSH_KEY }}
                 source: 'dist/*'
                 target: ${{ secrets.SERVER_PATH }}
+                passphrase: ${{ secrets.SERVER_PASSPHRASE }}
