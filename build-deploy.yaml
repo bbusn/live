@@ -1,0 +1,61 @@
+name: 'Build and Deployement'
+description: 'Pipeline to deploy the portfolio on o2switch'
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout Code
+          uses: actions/checkout@v3
+
+        - name: Install Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version: 18
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Build Project
+          run: npm run build
+
+        - name: Get runner's public IP
+          id: ip
+          uses: haythem/public-ip@v1.3
+
+        - name: Whitelist IP on hosting & delete github old ones (o2switch)
+          shell: bash
+          run: |
+              ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
+
+              echo "Get actual whitelisted IPs..."
+              RESPONSE=$(curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=list")
+              echo "Response: $RESPONSE"
+              UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+
+              for address in $UNIQUE_IPS; do
+                echo "Delete this github IP: $address (in & out)"
+                curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=in&port=22" | jq
+                sleep 3
+                curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=out&port=22" | jq
+                sleep 3
+              done
+              echo "All non-whitelisted IPs deleted!"
+
+              echo "Attempt to whitelist IP..."
+              curl -sX POST -d 'whitelist[address]=${{ steps.ip.outputs.ipv4 }}' -d 'whitelist[port]=22' "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=add" | jq
+
+        - name: Deploy via SCP
+          uses: appleboy/scp-action@v0.1.4
+          with:
+              host: ${{ secrets.SERVER_HOST }}
+              username: ${{ secrets.SERVER_USER }}
+              key: ${{ secrets.SERVER_SSH_KEY }}
+              source: 'dist/*'
+              target: ${{ secrets.SERVER_PATH }}
