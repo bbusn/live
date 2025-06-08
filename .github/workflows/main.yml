@@ -25,11 +25,11 @@ jobs:
             - name: Build Project
               run: npm run build
 
-            - name: Check if public exists
-              run: ls -la public || echo "No public folder found"
-
             - name: Copy public folder to dist
               run: cp -r public/* dist/
+
+            - name: Copy .htaccess to dist
+              run: cp .r .htaccess dist/
 
             - name: Get runner's public IP
               id: ip
