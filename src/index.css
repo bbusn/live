@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100;
+    src: url('./assets/fonts/inter-v19-latin-100.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-100.woff') format('woff');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    src: url('./assets/fonts/inter-v19-latin-200.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-200.woff') format('woff');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/inter-v19-latin-regular.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-regular.woff') format('woff');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/inter-v19-latin-600.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-600.woff') format('woff');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    src: url('./assets/fonts/inter-v19-latin-800.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-800.woff') format('woff');
+}
+
+@theme {
+    --color-primary-900: #18181b;
+    --color-primary-500: #26262d;
+    --color-primary-400: #3f3f46;
+    --color-primary-300: #393941;
+    --color-secondary-500: #9147ff;
+    --drop-shadow-classic: 4px 8px 20px rgba(0, 0, 0, 0.45);
+    --font-primary: 'Inter';
+    --font-secondary: RumRaisin;
+}
+
+@layer base {
+    *::selection {
+        @apply bg-gray-200 text-black;
+    }
+    img {
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+}

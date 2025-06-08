@@ -1,1 +1,11 @@
-{}
+{
+    "banner": {
+        "1": "Benoit",
+        "2": "Busnardo"
+    },
+    "not_found": {
+        "title": "Page non trouvée",
+        "message": "La page que vous recherchez n'existe pas.",
+        "back_to_home": "Retour à l'accueil"
+    }
+}

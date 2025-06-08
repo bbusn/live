@@ -4,7 +4,7 @@
         "module": "commonjs",
         "removeComments": true,
         "allowJs": false,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "moduleResolution": "node",
         "outDir": "./dist",
         "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */,
@@ -17,7 +17,8 @@
         "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
         "noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
         "noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
-        "skipLibCheck": true /* Skip type checking all .d.ts files. */
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+        "resolveJsonModule": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "dist"]
