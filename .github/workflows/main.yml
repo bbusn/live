@@ -35,29 +35,38 @@ jobs:
               id: ip
               uses: haythem/public-ip@v1.3
 
-            - name: Whitelist IP on hosting & delete github old ones (o2switch)
+            - name: Whitelist IP on hosting & delete GitHub old ones (o2switch)
               shell: bash
               run: |
-                  timeout 60s bash -c '
-                    ENDPOINT="frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
+                  timeout 60s bash -euo pipefail -x <<'EOF'
+                  ENDPOINT="frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
+                  BASE_URL="https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT"
 
-                    echo "Get actual whitelisted IPs..."
-                    RESPONSE=$(curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=list")
-                    echo "Response: $RESPONSE"
-                    UNIQUE_IPS=$(echo "$RESPONSE" | jq -r ".data.list[] | .address" | sort -u)
+                  echo "Fetching currently whitelisted IPs..."
+                  RESPONSE=$(curl -fsSL "$BASE_URL?r=list")
+                  echo "Raw response: $RESPONSE"
 
-                    for address in $UNIQUE_IPS; do
-                      echo "Delete this github IP: $address (in & out)"
-                      curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=in&port=22" | jq
-                      sleep 3
-                      curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=out&port=22" | jq
-                      sleep 3
-                    done
-                    echo "All non-whitelisted IPs deleted!"
+                  UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[]?.address' | sort -u)
+                  echo "Found IPs: $UNIQUE_IPS"
 
-                    echo "Attempt to whitelist IP..."
-                    curl -sX POST -d "whitelist[address]=${{ steps.ip.outputs.ipv4 }}" -d "whitelist[port]=22" "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=add" | jq
-                  '
+                  for address in $UNIQUE_IPS; do
+                    echo ":: Deleting GitHub IP $address (in)..."
+                    curl -fsSL "$BASE_URL?r=remove&address=$address&direction=in&port=22" | jq || echo "Inbound removal failed for $address"
+                    sleep 3
+
+                    echo ":: Deleting GitHub IP $address (out)..."
+                    curl -fsSL "$BASE_URL?r=remove&address=$address&direction=out&port=22" | jq || echo "Outbound removal failed for $address"
+                    sleep 3
+                  done
+
+                  echo "All old GitHub IPs deleted."
+
+                  echo "Whitelisting current IP: ${{ steps.ip.outputs.ipv4 }}"
+                  curl -fsSL -X POST \
+                    -d "whitelist[address]=${{ steps.ip.outputs.ipv4 }}" \
+                    -d "whitelist[port]=22" \
+                    "$BASE_URL?r=add" | jq || echo "Whitelisting failed."
+                  EOF
 
             - name: Deploy via SCP
               uses: appleboy/scp-action@v0.1.4
