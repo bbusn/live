@@ -6,4 +6,6 @@ export const AUTH_STATUS = {
 
 export const AuthTokenName = 'auth_token';
 
+export const AUTH_LOADING_TIMEOUT = 4000;
+
 export type AuthStatusType = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];

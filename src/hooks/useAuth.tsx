@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import User from '../objects/User';
-import { AUTH_STATUS, AuthStatusType, AuthTokenName } from "../constants/auth";
+import { AUTH_LOADING_TIMEOUT, AUTH_STATUS, AuthStatusType, AuthTokenName } from "../constants/auth";
 import Loading from "../components/Loading";
 
 
@@ -16,7 +16,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: any) => {
   const [status, setStatus] = useState<AuthStatusType>(AUTH_STATUS.LOADING);
 
-  const [loading, ] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const connect = async () => {
     const user = localStorage.getItem(AuthTokenName) || sessionStorage.getItem(AuthTokenName) || null;
@@ -30,7 +30,8 @@ export const AuthProvider = ({ children }: any) => {
       // navigate
     }
 
-    // setLoading(false);
+    await new Promise((resolve) => setTimeout(resolve, AUTH_LOADING_TIMEOUT));
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }: any) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => (prev >= 100 ? 0 : prev + 1));
-    }, 100);
+    }, AUTH_LOADING_TIMEOUT / 100);
 
     return () => clearInterval(timer);
   }, []);
