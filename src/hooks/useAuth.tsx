@@ -16,7 +16,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: any) => {
   const [status, setStatus] = useState<AuthStatusType>(AUTH_STATUS.LOADING);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, ] = useState(true);
 
   const connect = async () => {
     const user = localStorage.getItem(AuthTokenName) || sessionStorage.getItem(AuthTokenName) || null;
