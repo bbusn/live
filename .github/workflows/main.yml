@@ -28,9 +28,6 @@ jobs:
             - name: Copy public folder to dist
               run: cp -r public/* dist/
 
-            - name: Copy .htaccess to dist
-              run: cp .r .htaccess dist/
-
             - name: Get runner's public IP
               id: ip
               uses: haythem/public-ip@v1.3
