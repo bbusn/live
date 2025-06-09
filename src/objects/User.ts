@@ -41,10 +41,13 @@ export class User {
         return this._donations;
     }
 
+    private _initialized = false;
+
     public initialize({ username, datetime }: UserType) {
-        if (this._username || this._datetime) return;
+        if (this._initialized) return;
         this._username = username;
         this._datetime = datetime;
+        this._initialized = true;
     }
 
     public updateViewers(count: number) {

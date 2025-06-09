@@ -59,8 +59,13 @@ const WelcomePage = () => {
         }
 
         User.getInstance().initialize({ username, datetime: DateTime.now() });
-
-        const encrypted = await encrypt(User.getInstance());
+        
+        const encrypted = await encrypt({
+            username: User.getInstance().username,
+            datetime: User.getInstance().datetime,
+            viewers: User.getInstance().viewers,
+            donations: User.getInstance().donations,
+        })
 
         localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
 
@@ -69,7 +74,7 @@ const WelcomePage = () => {
         const timeout = setTimeout(() => {
             toast({
                 status: STATUS.SUCCESS,
-                message: `${t('welcome.success.1')} *%${username}*${t('welcome.success.2')}`,
+                message: `${t('welcome.success.1')} **%${username}**${t('welcome.success.2')}`,
             });
             clearTimeout(timeout);
         }, 3000);

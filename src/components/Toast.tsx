@@ -95,7 +95,7 @@ export function Toast({ isLast, message, status, onDone }: ToastProps) {
                         return (
                             <span
                                 key={index}
-                                className={`inline break-words px-1 ${hasPercent ? "bg-secondary-900 text-secondary-400" : "bg-white text-black"
+                                className={`inline break-words py-1 px-[1px] ${hasPercent ? "bg-secondary-900 text-secondary-400" : "bg-white text-black"
                                     }`}
                             >
                                 {cleaned}

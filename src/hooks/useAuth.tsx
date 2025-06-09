@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }: any) => {
     }
 
     try {
-
       const user = await decrypt(token) as UserType;
 
       if (!user || !user.username || !user.datetime) {
@@ -56,7 +55,6 @@ export const AuthProvider = ({ children }: any) => {
       }
 
       User.getInstance().initialize({ username: user.username, datetime: user.datetime });
-
       await new Promise((r) => setTimeout(r, AUTH_LOADING_TIMEOUT));
       setStatus(AUTH_STATUS.AUTH);
     } catch (error) {
