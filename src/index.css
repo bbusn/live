@@ -3,6 +3,13 @@
 @font-face {
     font-display: swap;
     font-family: 'Inter';
+    font-style: italic;
+    font-weight: 200;
+    src: url('./assets/fonts/inter-v19-latin-200italic.woff2') format('woff2'), url('../assets/fonts/inter-v19-latin-200italic.woff') format('woff');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 100;
     src: url('./assets/fonts/inter-v19-latin-100.woff2') format('woff2'), url('./assets/fonts/inter-v19-latin-100.woff') format('woff');
@@ -42,13 +49,47 @@
     --color-primary-500: #26262d;
     --color-primary-400: #3f3f46;
     --color-primary-300: #393941;
+    --color-secondary-900: #4b3c67;
     --color-secondary-500: #9147ff;
+    --color-secondary-400: #c39bff;
     --drop-shadow-classic: 4px 8px 20px rgba(0, 0, 0, 0.45);
     --font-primary: 'Inter';
     --font-secondary: RumRaisin;
+    --breakpoint-3xs: 320px;
+    --breakpoint-2xs: 380px;
+    --breakpoint-xs: 480px;
 }
 
 @layer base {
+    *::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+    *::-webkit-scrollbar-track {
+        border-radius: 0px;
+        background-color: #18181b;
+    }
+
+    *::-webkit-scrollbar-track:hover {
+        background-color: #18181b;
+    }
+
+    *::-webkit-scrollbar-track:active {
+        background-color: #18181b;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #696977;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: #8d8da0;
+    }
+
+    *::-webkit-scrollbar-thumb:active {
+        background-color: #8d8da0;
+    }
     *::selection {
         @apply bg-gray-200 text-black;
     }
@@ -59,5 +100,71 @@
         -ms-user-select: none;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
+    }
+    .mt-mixed {
+        @apply -mt-12 sm:mt-10;
+    }
+}
+
+@layer components {
+    .transitions {
+        @apply transition-all duration-200 hover:transition-all hover:duration-200 active:transition-all active:duration-200;
+    }
+    .button-primary {
+        @apply bg-secondary-500 text-white font-normal text-lg px-4 py-3 cursor-pointer rounded-sm shadow-md hover:brightness-125 active:scale-90;
+    }
+
+    .animation-fade-in {
+        opacity: 0;
+        pointer-events: none;
+        animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            pointer-events: none;
+        }
+        to {
+            pointer-events: auto;
+            opacity: 1;
+        }
+    }
+
+    .animation-delay-0-25 {
+        animation-delay: 0.25s;
+    }
+    .animation-delay-0-5 {
+        animation-delay: 0.5s;
+    }
+    .animation-delay-0-75 {
+        animation-delay: 0.75s;
+    }
+    .animation-delay-1 {
+        animation-delay: 1s;
+    }
+    .animation-delay-1-25 {
+        animation-delay: 1.25s;
+    }
+    .animation-delay-1-5 {
+        animation-delay: 1.5s;
+    }
+    .animation-delay-1-75 {
+        animation-delay: 1.75s;
+    }
+    .animation-delay-2 {
+        animation-delay: 2s;
+    }
+    .animation-delay-2-25 {
+        animation-delay: 2.25s;
+    }
+    .animation-delay-2-5 {
+        animation-delay: 2.5s;
+    }
+    .animation-delay-2-75 {
+        animation-delay: 2.75s;
+    }
+    .animation-delay-3 {
+        animation-delay: 3s;
     }
 }

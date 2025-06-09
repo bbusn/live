@@ -3,9 +3,63 @@
         "1": "Benoit",
         "2": "Busnardo"
     },
+    "loading": "Pour une meilleure expérience, veillez à activer le son.",
     "not_found": {
-        "title": "Page non trouvée",
-        "message": "La page que vous recherchez n'existe pas.",
-        "back_to_home": "Retour à l'accueil"
+        "title": "Page non trouvée"
+    },
+    "preload": {
+        "error": {
+            "message": "Une erreur est survenue lors du chargement des ressources.",
+            "description": "Impossible de télécharger les ressources nécessaires. Si le problème persiste, n'hésitez pas à me contacter.",
+            "retry": "Réessayer"
+        }
+    },
+    "welcome": {
+        "intro": {
+            "1": "Oubliez le portfolio,",
+            "2": "Découvrez-moi à travers un live !",
+            "3": "Mais c'est vous qui l'animez !"
+        },
+        "username": {
+            "label": "Choisissez un pseudonyme !",
+            "placeholder": {
+                "1": "Monsieur Myst\u00e8re",
+                "2": "Myst\u00e9rio",
+                "3": "Monsieur X",
+                "4": "Monsieur Y",
+                "5": "Pseudonimo",
+                "6": "Fantomas",
+                "7": "Monsieur C\u00e9pamoi",
+                "8": "Mademoiselle X",
+                "9": "Zorro",
+                "10": "Chauve-souris masqu\u00e9e",
+                "11": "Daft Punk N\u00b03",
+                "12": "Monsieur Personne",
+                "13": "Banksy",
+                "14": "Anonymous",
+                "15": "L\u0027Homme Invisible",
+                "16": "L\u0027agent secret",
+                "17": "Dr. Anonyme",
+                "18": "John Doe Deluxe",
+                "19": "Mister Incognito",
+                "20": "McMyst\u00e8re",
+                "21": "007 et demi",
+                "22": "Agent Tr\u00e8s Secret",
+                "23": "Anonyman",
+                "24": "Soldat Inconnu",
+                "25": "Top Secretus",
+                "26": "Madame Patate",
+                "27": "Mr. Cache-Cache"
+            }
+        },
+        "error": {
+            "length": "Le pseudonyme doit comporter entre 3 et 20 caractères.",
+            "invalid": "Le pseudonyme ne peut contenir que les charactères spéciaux suivants . ° é è É È - "
+        },
+        "success": {
+            "1": "Enchanté",
+            "2": ", votre live a démarré. N'oubliez pas de checker votre liste de tâches à faire !"
+        },
+        "start": "Commencer le live"
     }
 }

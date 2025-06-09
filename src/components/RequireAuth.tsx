@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { AUTH_STATUS } from "../constants/auth";
+import { AUTH_STATUS } from "../utils/auth";
 import ROUTES from "../constants/routes";
 
 const RequireAuth = () => {

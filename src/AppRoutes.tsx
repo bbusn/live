@@ -3,25 +3,34 @@ import NotFoundPage from './pages/NotFoundPage';
 import ROUTES from './constants/routes';
 import RequireAuth from './components/RequireAuth';
 import WelcomePage from './pages/WelcomePage';
-// <h1 className="font-secondary uppercase text-8xl">LIVE</h1>
+import DashboardPage from './pages/DashboardPage';
 
 export const AppRoutes = () => {
-    // const { status } = useAuth();
-
     return (
         <BrowserRouter>
             <Routes>
-                {/* <Route element={<Layout />}> */}
-                <Route
-                    path={ROUTES.WELCOME}
-                    Component={WelcomePage}
-                />
+                {/* =========== NEEDS TO BE AUTH =========== */}
                 <Route element={<RequireAuth />}>
+                    {/* =========== DASHBOARD =========== */}
+                    <Route
+                        path={ROUTES.DASHBOARD}
+                        Component={DashboardPage}
+                    />
+                    <Route
+                        path={ROUTES.DEFAULT}
+                        element={<Navigate to={ROUTES.DASHBOARD} replace={true} />}
+                    />
+                    {/* =========== NOT FOUND =========== */}
                     <Route
                         path={ROUTES.NOT_FOUND}
                         Component={NotFoundPage}
                     />
                 </Route>
+                {/* =========== WELCOME =========== */}
+                <Route
+                    path={ROUTES.WELCOME}
+                    Component={WelcomePage}
+                />
                 <Route
                     path={ROUTES.NOT_FOUND}
                     element={<Navigate to={ROUTES.WELCOME} replace={true} />}
