@@ -56,21 +56,21 @@ export function Toast({ isLast, message, status, onDone }: ToastProps) {
         startTimer();
     };
 
-    let statusClass = "";
+    // let statusClass: string = "";
 
-    switch (status) {
-        case STATUS.SUCCESS:
-            statusClass = "bg-green-500";
-            break;
-        case STATUS.ERROR:
-            statusClass = "bg-red-500";
-            break;
-        case STATUS.INFO:
-            statusClass = "bg-blue-500";
-            break;
-        default:
-            statusClass = "bg-gray-500";
-    }
+    // switch (status) {
+    //     case STATUS.SUCCESS:
+    //         statusClass = "bg-green-500";
+    //         break;
+    //     case STATUS.ERROR:
+    //         statusClass = "bg-red-500";
+    //         break;
+    //     case STATUS.INFO:
+    //         statusClass = "bg-blue-500";
+    //         break;
+    //     default:
+    //         statusClass = "bg-gray-500";
+    // }
 
     return (
         <div

@@ -1,13 +1,8 @@
-import { useTranslation } from "react-i18next";
-import { useToasts } from "../hooks/useToasts";
+// import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks/useAuth";
-import { STATUS } from "../constants/status";
-import { User } from "../objects/User";
-import { use, useEffect } from "react";
 
 const DashboardPage = () => {
-    const { t } = useTranslation();
-    const { toast } = useToasts();
+    // const { t } = useTranslation();
     const { assets } = useAuth();
 
     return (
