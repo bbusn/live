@@ -66,5 +66,45 @@
             "2": ", votre live a démarré. N'oubliez pas de checker votre liste de tâches à faire !"
         },
         "start": "Commencer le live"
-    }
+    },
+    "projects": [
+        {
+            "id": "levelplus",
+            "name": "Hub Level Plus",
+            "type": "Web App & Backoffice",
+            "description": "This is the first project."
+        },
+        {
+            "id": "mmi",
+            "name": "MMI Chambéry",
+            "type": "Site vitrine",
+            "description": "This is the first project."
+        },
+        {
+            "id": "cli",
+            "name": "CLI Makeprops",
+            "type": "Utilitaire CLI",
+            "description": "This is the first project."
+        },
+        {
+            "id": "logis",
+            "name": "Logis de la Foulerie",
+            "type": "Site vitrine",
+            "description": "Site vitrine"
+        },
+
+        {
+            "id": "tv",
+            "name": "Tv busn",
+            "type": "Infrastructure & Web App",
+            "description": "This is the first project."
+        },
+
+        {
+            "id": "kingbzz",
+            "name": "King Bzz",
+            "type": "Dispositif Intéractif & Web App",
+            "description": "This is the first project."
+        }
+    ]
 }

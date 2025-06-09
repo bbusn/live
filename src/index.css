@@ -49,9 +49,11 @@
     --color-primary-500: #26262d;
     --color-primary-400: #3f3f46;
     --color-primary-300: #393941;
+    --color-primary-200: #696977;
     --color-secondary-900: #4b3c67;
-    --color-secondary-500: #9147ff;
+    --color-secondary-500: #c39bff;
     --color-secondary-400: #c39bff;
+    --color-secondary-300: #d6c2ff;
     --font-primary: 'Inter';
     --font-secondary: RumRaisin;
     --breakpoint-3xs: 320px;
@@ -112,10 +114,10 @@
 
 @layer components {
     .transitions {
-        @apply transition-all duration-200 hover:transition-all hover:duration-200 active:transition-all active:duration-200;
+        @apply transition-all duration-300 hover:transition-all hover:duration-300 active:transition-all active:duration-300;
     }
     .button-primary {
-        @apply bg-secondary-500 text-white font-normal text-lg px-4 py-3 cursor-pointer rounded-sm shadow-md hover:brightness-125 active:scale-90;
+        @apply bg-secondary-400 text-black font-semibold text-lg px-4 py-3 cursor-pointer rounded-sm shadow-md hover:brightness-125 active:scale-90;
     }
 
     .animation-fade-in {

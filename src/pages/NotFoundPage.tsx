@@ -1,13 +1,10 @@
 import { useTranslation } from "react-i18next";
-import ICONS from "../constants/icons";
-import { Icon } from "@iconify/react";
 
 const NotFoundPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="flex flex-col items-center justify-center h-full w-full gap-2">
-            <Icon icon={ICONS.SIMPLE} className="w-28 h-14" />
+        <div className="max-w-[95%] sm:w-2xl sm:max-w-full  flex flex-col items-center justify-center h-full w-full gap-2">
             <h1>{t('not_found.title')}</h1>
             <p className="text-center">{t('not_found.description')}</p>
         </div>
