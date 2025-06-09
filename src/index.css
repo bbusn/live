@@ -52,13 +52,14 @@
     --color-secondary-900: #4b3c67;
     --color-secondary-500: #9147ff;
     --color-secondary-400: #c39bff;
-    --drop-shadow-classic: 4px 8px 20px rgba(0, 0, 0, 0.45);
     --font-primary: 'Inter';
     --font-secondary: RumRaisin;
     --breakpoint-3xs: 320px;
     --breakpoint-2xs: 380px;
     --breakpoint-xs: 480px;
 }
+
+@config "../tailwind.config.js";
 
 @layer base {
     *::-webkit-scrollbar {
@@ -102,7 +103,10 @@
         -webkit-tap-highlight-color: transparent;
     }
     .mt-mixed {
-        @apply -mt-12 sm:mt-10;
+        @apply mt-[40px];
+    }
+    .custom-width {
+        @apply w-[250px] sm:w-[325px];
     }
 }
 

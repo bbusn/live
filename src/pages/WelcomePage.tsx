@@ -59,7 +59,7 @@ const WelcomePage = () => {
         }
 
         User.getInstance().initialize({ username, datetime: DateTime.now() });
-        
+
         const encrypted = await encrypt({
             username: User.getInstance().username,
             datetime: User.getInstance().datetime,
@@ -77,7 +77,7 @@ const WelcomePage = () => {
                 message: `${t('welcome.success.1')} **%${username}**${t('welcome.success.2')}`,
             });
             clearTimeout(timeout);
-        }, 3000);
+        }, 2000);
 
         navigate(ROUTES.DASHBOARD);
 
@@ -121,7 +121,7 @@ const WelcomePage = () => {
                     <span className="animation-fade-in animation-delay-3">{t("welcome.intro.3")}</span>
                 </h2>
             ) : (
-                <div className="transition-all duration-200 animation-fade-in w-[250px] sm:w-[375px] flex flex-col justify-center items-center gap-4">
+                <div className="transition-all duration-200 animation-fade-in custom-width flex flex-col justify-center items-center gap-4">
                     <p className="font-light font-primary text-base sm:text-xl w-full text-left">
                         {t('welcome.username.label')}
                     </p>

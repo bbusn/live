@@ -4,6 +4,7 @@ import ROUTES from './constants/routes';
 import RequireAuth from './components/RequireAuth';
 import WelcomePage from './pages/WelcomePage';
 import DashboardPage from './pages/DashboardPage';
+import Layout from './components/Layout';
 
 export const AppRoutes = () => {
     return (
@@ -11,20 +12,23 @@ export const AppRoutes = () => {
             <Routes>
                 {/* =========== NEEDS TO BE AUTH =========== */}
                 <Route element={<RequireAuth />}>
-                    {/* =========== DASHBOARD =========== */}
-                    <Route
-                        path={ROUTES.DASHBOARD}
-                        Component={DashboardPage}
-                    />
-                    <Route
-                        path={ROUTES.DEFAULT}
-                        element={<Navigate to={ROUTES.DASHBOARD} replace={true} />}
-                    />
-                    {/* =========== NOT FOUND =========== */}
-                    <Route
-                        path={ROUTES.NOT_FOUND}
-                        Component={NotFoundPage}
-                    />
+                    <Route element={<Layout />}>
+                        {/* =========== DASHBOARD =========== */}
+                        <Route
+                            path={ROUTES.DASHBOARD}
+                            Component={DashboardPage}
+                        />
+                        <Route
+                            path={ROUTES.DEFAULT}
+                            element={<Navigate to={ROUTES.DASHBOARD} replace={true} />}
+                        />
+                        {/* =========== NOT FOUND =========== */}
+                        <Route
+                            path={ROUTES.NOT_FOUND}
+                            Component={NotFoundPage}
+                        />
+                    </Route>
+
                 </Route>
                 {/* =========== WELCOME =========== */}
                 <Route

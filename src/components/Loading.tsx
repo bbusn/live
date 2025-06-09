@@ -1,6 +1,7 @@
 import { t } from "i18next";
 import Banner from "./Banner";
 import { Icon } from "@iconify/react";
+import ICONS from "../constants/icons";
 
 interface LoadingProps {
     progress: number;
@@ -18,7 +19,7 @@ const Loading: React.FC<LoadingProps> = ({
             <Banner />
             {!error ? (
                 <div className="flex flex-col items-center gap-8">
-                    <div className="w-[250px] sm:w-[375px] bg-primary-400 rounded overflow-hidden h-2">
+                    <div className="custom-width bg-primary-400 rounded overflow-hidden h-2">
                         <div
                             className={`bg-secondary-500 transition-all duration-100 h-2`}
                             style={{ width: `${clampedProgress}%`, }}
@@ -26,7 +27,7 @@ const Loading: React.FC<LoadingProps> = ({
                     </div>
                     <div className="flex flex-col items-center gap-2">
                         <Icon
-                            icon="hugeicons:volume-high"
+                            icon={ICONS.VOLUME_UP}
                             className="text-2xl font-bold text-gray-200 cursor-pointer active:scale-90 hover:text-white transitions" />
                         <p className="select-none text-gray-200 font-primary text-lg max-w-[90%] 2xs:max-w-[300px] sm:max-w-[375px] text-center font-extralight italic">
                             {t("loading")}
@@ -34,7 +35,7 @@ const Loading: React.FC<LoadingProps> = ({
                     </div>
                 </div>
             ) : (
-                <div className="w-[250px] sm:w-[375px] flex flex-col items-center gap-12 sm:gap-8">
+                <div className="custom-width flex flex-col items-center gap-12 sm:gap-8">
                     <p className="text-gray-300 text-center font-primary text-base">
                         {t("preload.error.description")}
                     </p>
