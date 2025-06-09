@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { STATUS, StatusType } from "../constants/status";
+import { StatusType } from "../constants/status";
 import toast from '../assets/images/toast.png'
 import { useAuth } from "../hooks/useAuth";
 
@@ -11,7 +11,7 @@ export type ToastProps = {
     onDone?: () => void;
 };
 
-export function Toast({ isLast, message, status, onDone }: ToastProps) {
+export function Toast({ isLast, message, onDone }: ToastProps) {
     const [visible, setVisible] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const remaining = useRef(6000);
