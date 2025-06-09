@@ -1,0 +1,32 @@
+[
+    {
+        "id": "levelplus",
+        "name": "Hub Level Plus",
+        "description": "This is the first project."
+    },
+    {
+        "id": "mmi",
+        "name": "MMI Chambéry",
+        "description": "This is the first project."
+    },
+    {
+        "id": "logis",
+        "name": "Logis de la Foulerie",
+        "description": "This is the first project."
+    },
+    {
+        "id": "kingbzz",
+        "name": "King Bzz",
+        "description": "This is the first project."
+    },
+    {
+        "id": "tv",
+        "name": "Tvbusn",
+        "description": "This is the first project."
+    },
+    {
+        "id": "cli",
+        "name": "CLI Makeprops",
+        "description": "This is the first project."
+    }
+]

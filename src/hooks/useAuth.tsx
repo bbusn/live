@@ -11,7 +11,15 @@ import { decrypt } from "../utils/encrypt";
 type Assets = {
   images: Record<string, HTMLImageElement>;
   sounds: Record<string, HTMLAudioElement>;
+  jsons: Record<string, any>;
 };
+
+export type ProjectType = {
+  id: string;
+  name: string;
+  description: string;
+  images?: string[];
+}
 
 const AuthContext = createContext<{
   status: AuthStatusType;
@@ -100,6 +108,9 @@ export const AuthProvider = ({ children }: any) => {
         begin: "/sounds/begin.mp3",
         toast: "/sounds/toast.mp3",
       };
+      const jsonSources = {
+        projects: "/projects.json",
+      }
 
       const imagePromises = Object.entries(imageSources).map(([name, src]) =>
         preloadImage(name, src)
@@ -107,16 +118,21 @@ export const AuthProvider = ({ children }: any) => {
       const audioPromises = Object.entries(soundSources).map(([name, src]) =>
         preloadAudio(name, src)
       );
+      const jsonPromises = Object.entries(jsonSources).map(([name, src]) =>
+        fetch(src).then((response) => response.json()).then((data) => [name, data])
+      );
 
-      const [imagesEntries, soundsEntries] = await Promise.all([
+      const [imagesEntries, soundsEntries, jsonEntries] = await Promise.all([
         Promise.all(imagePromises),
         Promise.all(audioPromises),
+        Promise.all(jsonPromises)
       ]);
 
       const images = Object.fromEntries(imagesEntries);
       const sounds = Object.fromEntries(soundsEntries);
+      const jsons = Object.fromEntries(jsonEntries);
 
-      setAssets({ images, sounds });
+      setAssets({ images, sounds, jsons });
 
       const elapsed = Date.now() - startTime;
       const minDuration = 2000;

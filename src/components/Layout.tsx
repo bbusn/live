@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import useWindowDimensions from '../utils/useWindowsDimensions';
+import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 // import { useAuth } from '../hooks/useAuth';
 import NavigationBar from './NavigationBar';
@@ -10,10 +9,8 @@ import ROUTES from '../constants/routes';
 // import { useResetKey } from '../hooks/useResetKey';
 
 const Layout = () => {
-    const { width } = useWindowDimensions();
     const { status } = useAuth();
     const navigate = useNavigate();
-    const [collapsed, setCollapsed] = useState(false);
     // const { resetKey } = useResetKey();
 
     useEffect(() => {
@@ -22,23 +19,10 @@ const Layout = () => {
         }
     }, [status]);
 
-    useEffect(() => {
-        if (width < 1280) {
-            document.querySelector('body')?.classList.add('collapsed');
-            setCollapsed(true);
-        } else {
-            document.querySelector('body')?.classList.remove('collapsed');
-            setCollapsed(false);
-        }
-    }, [width]);
-
-
 
     return (
-        <div className='w-full h-full min-h-screen flex flex-col sm:flex-row sm:justify-start sm:items-start items-center justify-start'>
-            <NavigationBar
-                collapsed={collapsed}
-            />
+        <div className='w-full h-full min-h-[50vh] flex flex-col sm:flex-row sm:justify-around sm:items-start items-center justify-start 2xl:max-w-[1800px]'>
+            <NavigationBar />
             <Outlet />
         </div>
     );
