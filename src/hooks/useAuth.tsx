@@ -19,12 +19,14 @@ const AuthContext = createContext<{
   connect: () => Promise<void>;
   error: boolean;
   assets: Assets | null;
+  click: () => void;
 }>({
   status: AUTH_STATUS.LOADING,
   setStatus: () => { },
   connect: async () => { },
   error: false,
   assets: null,
+  click: () => { },
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -37,6 +39,10 @@ export const AuthProvider = ({ children }: any) => {
   const [progress, setProgress] = useState(0);
   const { toast } = useToasts();
   const { t } = useTranslation();
+
+  const click = () => {
+    if (assets?.sounds.click) assets.sounds.click.play();
+  };
 
   const connect = async () => {
     const token = localStorage.getItem(AUTH_TOKEN_ITEM_NAME) || null;
@@ -99,6 +105,8 @@ export const AuthProvider = ({ children }: any) => {
       const soundSources = {
         begin: "/sounds/begin.mp3",
         toast: "/sounds/toast.mp3",
+        modal: "/sounds/modal.mp3",
+        click: "/sounds/click.mp3",
       };
 
       const imagePromises = Object.entries(imageSources).map(([name, src]) =>
@@ -146,7 +154,7 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ status, setStatus, connect, assets, error }}>
+    <AuthContext.Provider value={{ status, setStatus, connect, assets, error, click }}>
       {loading ? <Loading error={error} progress={progress} /> : children}
     </AuthContext.Provider>
   );

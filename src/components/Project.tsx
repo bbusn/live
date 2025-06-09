@@ -10,18 +10,20 @@ export type ProjectType = {
 
 
 const Project = (project: ProjectType) => {
-    const { assets } = useAuth();
+    const { assets, click } = useAuth();
     const modalContainerRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
 
     const openModal = () => {
+        click();
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("hidden");
             modalContainerRef.current.classList.toggle("flex");
             setTimeout(() => {
                 modalContainerRef.current?.classList.toggle("opacity-100");
                 modalRef.current?.classList.toggle("scale-0");
-            }, 100);
+                if (assets?.sounds.modal) assets.sounds.modal.play();
+            }, 250);
         }
         window.addEventListener("keydown", escapeModal);
     }
@@ -33,6 +35,7 @@ const Project = (project: ProjectType) => {
     }
 
     const closeModal = () => {
+        click();
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("opacity-100");
             modalRef.current?.classList.toggle("scale-0");

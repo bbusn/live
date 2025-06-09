@@ -17,10 +17,11 @@ const WelcomePage = () => {
     const [introduced, setIntroduced] = useState<boolean>(false);
     const [defaultUsername, setDefaultUsername] = useState<string>('');
     const ref = useRef<HTMLInputElement | null>(null);
-    const { status, setStatus, assets } = useAuth();
+    const { status, setStatus, assets, click } = useAuth();
     const navigate = useNavigate();
 
     const start = async () => {
+        click();
         if (!ref.current) return;
 
         let username = ref.current.value.trim();
@@ -81,9 +82,7 @@ const WelcomePage = () => {
 
         navigate(ROUTES.DASHBOARD);
 
-        if (assets?.sounds?.begin) {
-            assets.sounds.begin.play();
-        }
+        if (assets?.sounds?.begin) assets.sounds.begin.play();
 
         return;
     }
@@ -126,6 +125,7 @@ const WelcomePage = () => {
                         {t('welcome.username.label')}
                     </p>
                     <input
+                        onClick={click}
                         ref={ref}
                         type="text"
                         className="w-full max-w-[300px] sm:max-w-[375px] px-3 py-4 bg-primary-300 text-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500 transition-all duration-300"
