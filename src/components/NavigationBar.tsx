@@ -10,7 +10,7 @@ import { useAuth } from "../hooks/useAuth";
 const NavigationBar = () => {
     const { t } = useTranslation();
     const [active, setActive] = useState<string>(location.pathname);
-    const { assets, click } = useAuth();
+    const { click } = useAuth();
 
     useEffect(() => {
         setActive(location.pathname);
