@@ -2,7 +2,8 @@
     "navigation": {
         "dashboard": "Tableau de bord",
         "resources": "Ressources",
-        "settings": "Réglages"
+        "settings": "Réglages",
+        "live": "En direct"
     },
     "banner": {
         "1": "Benoit",
