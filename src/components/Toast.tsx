@@ -11,6 +11,7 @@ export type ToastProps = {
     status: StatusType;
     message: string;
     achievement?: string;
+    donationsAmount?: number;
     onDone?: () => void;
 };
 
@@ -83,12 +84,12 @@ const Confetti = () => {
     );
 };
 
-export function Toast({ isLast, message, onDone, status }: ToastProps) {
+export function Toast({ isLast, message, onDone, status, donationsAmount }: ToastProps) {
     const [visible, setVisible] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const { t } = useTranslation();
-    const remaining = useRef(6000);
+    const remaining = useRef(status == STATUS.ACHIEVEMENT ? 7000 : 5000);
     const startTime = useRef(0);
     const paused = useRef(false);
     const { assets } = useAuth();
@@ -144,24 +145,29 @@ export function Toast({ isLast, message, onDone, status }: ToastProps) {
             {showConfetti && <Confetti />}
 
             {(isLast) && (
-                <div className="transition-all duration-200 absolute top-[60%] right-[-5%] z-30">
+                <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[60%]'} right-[-5%] z-30`}>
                     <img src={toast} alt="Toast Icon" className="w-14" />
                 </div>
             )}
             {status == STATUS.ACHIEVEMENT && (
-                <span className="text-sm font-primary text-yellow-400 whitespace-pre-wrap break-words">
-                    [ {t(`achievements.${message}.title`)} ]
-                </span>
+                <>
+                    <span className="text-2xl my-2 bg-primary-400/80 font-primary py-0 px-3 text-yellow-400">
+                        + {donationsAmount}€
+                    </span>
+                    <span className="text-sm font-primary text-white whitespace-pre-wrap break-words">
+                        [ {t(`achievements.${message}.title`)} ]
+                    </span>
+                </>
             )}
 
             {status == STATUS.ACHIEVEMENT ? (
                 <p className="text-center">
-                    <span className="ml-2 text-sm text-center font-primary whitespace-pre-wrap break-words">
+                    <span className="ml-2 text-sm text-gray-200 text-center font-primary whitespace-pre-wrap break-words">
                         {t(`achievements.${message}.description`)}
                     </span>
                 </p>
             ) : (
-                <p className="text-sm font-primary whitespace-pre-wrap break-words">
+                <p className="text-sm font-primary text-gray-200 whitespace-pre-wrap break-words">
                     {message.split("**").map((part, index) => {
                         const isHighlighted = index % 2 === 1;
                         const hasPercent = part.includes("%");

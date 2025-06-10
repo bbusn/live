@@ -1,6 +1,341 @@
 {
+    "navigation": {
+        "dashboard": "Dashboard",
+        "resources": "Resources",
+        "settings": "Settings"
+    },
+    "banner": {
+        "1": "Benoit",
+        "2": "Busnardo"
+    },
+    "loading": "For a better experience, please enable sound.",
     "not_found": {
-        "title": "Page non trouvée",
-        "return": "Retour à l'accueil"
-    }
+        "title": "Page not found"
+    },
+    "preload": {
+        "error": {
+            "message": "An error occurred while loading resources.",
+            "description": "Unable to download the necessary resources. If the problem persists, don't hesitate to contact me.",
+            "retry": "Retry"
+        }
+    },
+    "welcome": {
+        "intro": {
+            "1": "Forget the portfolio,",
+            "2": "Discover me through a live experience!",
+            "3": "But you're the one driving it!"
+        },
+        "username": {
+            "label": "Choose a nickname!",
+            "placeholder": {
+                "1": "Mister Mystery",
+                "2": "Mysterio",
+                "3": "Mister X",
+                "4": "Mister Y",
+                "5": "Pseudonimo",
+                "6": "Fantomas",
+                "7": "Mr. NotMe",
+                "8": "Miss X",
+                "9": "Zorro",
+                "10": "Daft Punk No.3",
+                "11": "Mr. Nobody",
+                "12": "Banksy",
+                "13": "Anonymous",
+                "14": "Invisible Man",
+                "15": "Secret Agent",
+                "16": "Dr. Anonymous",
+                "17": "John Doe Deluxe",
+                "18": "Mister Incognito",
+                "19": "McMystery",
+                "20": "Half 007",
+                "21": "Super Secret Agent",
+                "22": "Anonyman",
+                "23": "Unknown Soldier",
+                "24": "Top Secretus",
+                "25": "Mrs. Potato",
+                "26": "Mr. Hide-and-Seek"
+            }
+        },
+        "error": {
+            "length": "The nickname must be between 3 and 20 characters.",
+            "invalid": "The nickname can only contain the following special characters: . ° é è É È -"
+        },
+        "success": {
+            "1": "Nice to meet you",
+            "2": ", your live session has started. Don’t forget to check your to-do list!"
+        },
+        "start": "Start the live"
+    },
+    "project": {
+        "see": "View project"
+    },
+    "settings": {
+        "title": "Settings",
+        "show_skills": "Show skills related to my degree"
+    },
+    "statistics": {
+        "time": "Live duration",
+        "viewers": "Viewers",
+        "donations": "Donations"
+    },
+    "achievements": {
+        "settings_show_skills_first_click": {
+            "title": "Enable the lame option",
+            "description": "Great, among all the cool options, you picked that one! Go back to a project to see the difference."
+        },
+        "settings_switch_to_english": {
+            "title": "Mister Worldwide",
+            "description": "Yes of course, I can speak English! But why would you want to do that? French is so much better!"
+        }
+    },
+    "projects": [
+        {
+            "id": "1",
+            "name": "Hub Level Plus",
+            "type": "Web App & Back Office",
+            "tools": ["React", "Typescript", "Node-js", "Neo4j"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Comply with web standards and accessibility norms."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produce functional, clean, and reusable code."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Use tools that support iterative and collaborative development."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Ensure system and data security."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "Rely on technological watch and innovation models."
+                },
+                "6": {
+                    "title": "CE.5.0.2",
+                    "description": "Promote collaboration among project stakeholders."
+                },
+                "7": {
+                    "title": "AC.34.01",
+                    "description": "Develop using a client-side development framework."
+                },
+                "8": {
+                    "title": "AC.34.02",
+                    "description": "Develop using a server-side development framework."
+                },
+                "9": {
+                    "title": "AC.35.01",
+                    "description": "Manage a product, service, or team."
+                },
+                "11": {
+                    "title": "AC.35.02",
+                    "description": "Ensure quality in web or multimedia projects."
+                },
+                "10": {
+                    "title": "AC.35.03",
+                    "description": "Design an innovative business project by defining the name, identity, legal form, and brand tone."
+                },
+                "12": {
+                    "title": "AC.35.04",
+                    "description": "Present a project convincingly."
+                }
+            },
+            "description": "Web platform for the company **Level Plus** (connecting companies and seniors seeking employment in Geneva), designed during my work-study program at Makeprops ❤. \n\nThe app allows talents to complete a profile, participate in events, and receive job search follow-ups. It also includes a back office for administrators, managers, and speakers with a **&permission management** system, templates, and **&automatic email sending**.",
+            "url": "https://new.hublevelplus.ch"
+        },
+        {
+            "id": "2",
+            "name": "MMI Chambéry",
+            "type": "Showcase Website",
+            "tools": ["WordPress", "PHP"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Comply with web standards and accessibility norms."
+                },
+                "2": {
+                    "title": "CE.4.0.2",
+                    "description": "Apply theoretical concepts from computer science and information science."
+                },
+                "3": {
+                    "title": "CE.4.0.5",
+                    "description": "Ensure system and data security."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "Rely on technological watch and innovation models."
+                },
+                "6": {
+                    "title": "CE.5.0.3",
+                    "description": "Respect rights and privacy."
+                }
+            },
+            "description": "Showcase website for my school, the **MMI department of IUT Chambéry**. The site presents the training programs, some student projects, and was built in 2 weeks. It is built with WordPress using a **&custom theme** and the **&ACF** plugin for content management. \n\nDesigned like a computer interface, the site includes draggable windows and icons. Each window is an ACF block, making the entire site fully administrable.",
+            "url": "https://mmi.univ-smb.fr"
+        },
+        {
+            "id": "3",
+            "name": "CLI Makeprops",
+            "type": "CLI Utility",
+            "tools": ["Node-js", "Typescript"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Apply theoretical concepts from computer science and information science."
+                },
+                "3": {
+                    "title": "CE.4.0.3",
+                    "description": "Produce functional, clean, and reusable code."
+                },
+                "4": {
+                    "title": "CE.4.0.4",
+                    "description": "Use tools that support iterative and collaborative development."
+                },
+                "5": {
+                    "title": "CE.5.0.2",
+                    "description": "Promote collaboration among project stakeholders."
+                },
+                "6": {
+                    "title": "CE.5.0.4",
+                    "description": "Encourage digital sobriety."
+                },
+                "7": {
+                    "title": "AC.34.04",
+                    "description": "Design and develop software components, plugins, or extensions."
+                },
+                "9": {
+                    "title": "AC.35.01",
+                    "description": "Manage a product, service, or team."
+                },
+                "8": {
+                    "title": "AC.35.03",
+                    "description": "Design an innovative business project by defining the name, identity, legal form, and brand tone."
+                }
+            },
+            "description": "Command-line tool developed for **Makeprops** during my work-study. It allows the generation of project templates to ease the creation of new projects (**makeprops templates create**). \n\nThis internal project is published as a **&private npm package**. It is developed using **&Object-Oriented Programming** and designed to be modular and extensible. It also comes with documentation."
+        },
+        {
+            "id": "4",
+            "name": "Logis de la Foulerie",
+            "type": "Showcase Website",
+            "tools": ["Javascript", "Css3"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Comply with web standards and accessibility norms."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produce functional, clean, and reusable code."
+                },
+                "6": {
+                    "title": "CE.5.0.4",
+                    "description": "Encourage digital sobriety."
+                },
+                "3": {
+                    "title": "AC.34.05",
+                    "description": "Master hosting and deploying applications."
+                },
+                "8": {
+                    "title": "AC.35.02",
+                    "description": "Ensure quality in web or multimedia projects."
+                }
+            },
+            "description": "Showcase website created for Logis de la Foulerie, a guest house located in Bize-Minervois, 18 km from Narbonne. It's a static website and my first real web development project.",
+            "url": "https://logisdelafoulerie.fr"
+        },
+        {
+            "id": "5",
+            "name": "Tv busn",
+            "type": "Infrastructure & Web App",
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Apply theoretical concepts from computer science and information science."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produce functional, clean, and reusable code."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Use tools that support iterative and collaborative development."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Ensure system and data security."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "Rely on technological watch and innovation models."
+                },
+                "6": {
+                    "title": "CE.5.0.5",
+                    "description": "Leverage French and international conceptual frameworks."
+                },
+                "7": {
+                    "title": "AC.34.05",
+                    "description": "Master hosting and deploying applications."
+                }
+            },
+            "description": "**&Private streaming server** for my grandfather, allowing him to access his personal movie collection accumulated over the years. \n\nThe infrastructure is secured with **&strict network rules** (whitelist, additional authentication layer, WireGuard tunnel) and custom configuration. The app was customized for ease of use, and files are automatically compressed with **&scripts** for performance optimization."
+        },
+        {
+            "id": "6",
+            "name": "King Bzz",
+            "type": "Interactive Device & Web App",
+            "tools": ["Arduino", "Vue-js", "Node-js"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Apply theoretical concepts from computer science and information science."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produce functional, clean, and reusable code."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Use tools that support iterative and collaborative development."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Ensure system and data security."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "Rely on technological watch and innovation models."
+                },
+                "6": {
+                    "title": "CE.5.0.2",
+                    "description": "Promote collaboration among project stakeholders."
+                },
+                "7": {
+                    "title": "AC.34.01",
+                    "description": "Develop using a client-side development framework."
+                },
+                "8": {
+                    "title": "AC.34.02",
+                    "description": "Develop using a server-side development framework."
+                },
+                "9": {
+                    "title": "AC.34.03",
+                    "description": "Develop sophisticated interactive systems."
+                },
+                "10": {
+                    "title": "AC.34.05",
+                    "description": "Master hosting and deploying applications."
+                },
+                "12": {
+                    "title": "AC.35.04",
+                    "description": "Present a project convincingly."
+                }
+            },
+            "description": "Connected mosquito trap, developed as part of a student project. It captures and counts mosquitoes via a web app. \n\nThe project includes a physical device with a **&microcontroller** and multiple sensors (optical fork, temperature, CO2...) as well as a web app for viewing data and capture statistics. It is designed to be accessible and easy to use. Communication is done via **&MQTT over the LoraWAN network**."
+        }
+    ]
 }

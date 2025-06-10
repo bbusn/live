@@ -60,7 +60,7 @@ const WelcomePage = () => {
             }
         }
 
-        User.getInstance().initialize({ username, datetime: DateTime.now(), achievements: [], viewers: 0, donations: 0 });
+        User.getInstance().initialize({ username, datetime: DateTime.now().toISO(), achievements: [], viewers: 0, donations: 0 });
 
         const encrypted = await encrypt(User.getInstance());
         localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);

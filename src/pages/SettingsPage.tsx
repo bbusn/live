@@ -6,8 +6,7 @@ import { User } from "../objects/User";
 import { useToasts } from "../hooks/useToasts";
 import { STATUS } from "../constants/status";
 import { playSound } from "../utils/sound";
-import { encrypt } from "../utils/encrypt";
-import { AUTH_TOKEN_ITEM_NAME } from "../utils/auth";
+import LanguageSelector from "../components/LangageSelector";
 
 const SettingsPage = () => {
     const { settings, setSettings } = useSettings();
@@ -18,23 +17,25 @@ const SettingsPage = () => {
     const toggleShowSkills = async () => {
         playSound(assets?.sounds.click)
         if (!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_SHOW_SKILLS_FIRST_CLICK)) {
+            const donationsAmount = Math.floor(Math.random() * 3) + 1;
             toast({
                 status: STATUS.ACHIEVEMENT,
                 message: ACHIEVEMENTS.SETTINGS_SHOW_SKILLS_FIRST_CLICK,
+                donationsAmount: donationsAmount,
             });
+            User.getInstance().addDonation(donationsAmount);
             User.getInstance().addAchievement(ACHIEVEMENTS.SETTINGS_SHOW_SKILLS_FIRST_CLICK);
-            const encrypted = await encrypt(User.getInstance());
-            localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
         }
         setSettings({ ...settings, showSkills: !settings.showSkills });
 
     };
 
     return (
-        <div className={`transition-all duration-300 min-h-[300px] px-4 h-full w-full flex flex-col gap-8 justify-center items-center max-w-[95%] sm:w-2xl sm:max-w-full`}>
+        <div className={`mt-16 mb-20 transition-all duration-300 min-h-[300px] px-4 h-full w-full flex flex-col gap-8 justify-center items-center max-w-[95%] sm:w-2xl sm:max-w-full`}>
             <h2 className="text-4xl">{t('settings.title')}</h2>
-            <label className="hover:opacity-100 transitions opacity-60 flex flex-col items-center gap-4 select-none cursor-pointer">
-                <span>{t('settings.showSkills')}</span>
+            <LanguageSelector />
+            <label className="mt-8 hover:opacity-100 transitions opacity-60 flex flex-col items-center gap-4 select-none cursor-pointer">
+                <span className="text-center">{t('settings.show_skills')}</span>
                 <div
                     onClick={toggleShowSkills}
                     className={`

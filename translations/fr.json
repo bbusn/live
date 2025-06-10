@@ -71,12 +71,21 @@
     },
     "settings": {
         "title": "Réglages",
-        "showSkills": "Afficher les compétences relatives à mon diplôme"
+        "show_skills": "Afficher les compétences relatives à mon diplôme"
+    },
+    "statistics": {
+        "time": "Durée du live",
+        "viewers": "Spectateurs",
+        "donations": "Donations"
     },
     "achievements": {
         "settings_show_skills_first_click": {
             "title": "Activer l'option pourrie",
             "description": "Super, parmi toutes les options cool, tu as choisi celle-là ! Retourne sur un projet pour voir le changement."
+        },
+        "settings_switch_to_english": {
+            "title": "Mister Worldwide",
+            "description": "Yes of course, I can speak English! But why would you want to do that? French is so much better!"
         }
     },
     "projects": [
@@ -239,7 +248,6 @@
             "description": "Site vitrine réalisé pour le Logis de la Foulerie, un gîte situé à Bize-Minervois, à 18 km de Narbonne. Il s'agit d'un site web statique et de mon premier projet concret en développement web.",
             "url": "https://logisdelafoulerie.fr"
         },
-
         {
             "id": "5",
             "name": "Tv busn",
