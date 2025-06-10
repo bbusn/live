@@ -111,7 +111,7 @@ const Project = (project: ProjectType) => {
             >
                 <div ref={modalRef} className="-mt-10 scale-0 relative h-max w-max transitions flex flex-col flex-wrap items-center justify-start">
                     <div
-                        className="overflow-y-visible overflow-x-hidden bg-primary-500 h-[85vh] w-[85vw] sm:h-[75vh] sm:w-[70vw] max-w-[1000px] max-h-[600px] rounded-lg flex flex-col flex-wrap items-center justify-start px-6 py-4"
+                        className="overflow-y-visible overflow-x-hidden bg-primary-500 h-[75vh] w-[85vw] sm:h-[75vh] sm:w-[70vw] max-w-[1000px] max-h-[600px] rounded-lg flex flex-col flex-wrap items-center justify-start px-6 py-4"
                     >
                         <div className="relative w-full h-max flex flex-col items-center justify-start gap-2 py-12 sm:py-8">
                             <img

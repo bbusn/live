@@ -1,6 +1,6 @@
 {
   "name": "Portfolio - Benoit Busnardo",
-  "short_name": "Portfolio",
+  "short_name": "Benoit Busnardo",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#4a4a4a",
-  "background_color": "#343434",
+  "theme_color": "#282729",
+  "background_color": "#282729",
   "display": "standalone"
 }
