@@ -37,24 +37,23 @@
                 "7": "Monsieur C\u00e9pamoi",
                 "8": "Mademoiselle X",
                 "9": "Zorro",
-                "10": "Chauve-souris masqu\u00e9e",
-                "11": "Daft Punk N\u00b03",
-                "12": "Monsieur Personne",
-                "13": "Banksy",
-                "14": "Anonymous",
-                "15": "Lomme Invisible",
-                "16": "Lagent secret",
-                "17": "Dr. Anonyme",
-                "18": "John Doe Deluxe",
-                "19": "Mister Incognito",
-                "20": "McMyst\u00e8re",
-                "21": "007 et demi",
-                "22": "Agent Tr\u00e8s Secret",
-                "23": "Anonyman",
-                "24": "Soldat Inconnu",
-                "25": "Top Secretus",
-                "26": "Madame Patate",
-                "27": "Mr. Cache-Cache"
+                "10": "Daft Punk N\u00b03",
+                "11": "Monsieur Personne",
+                "12": "Banksy",
+                "13": "Anonymous",
+                "14": "Lomme Invisible",
+                "15": "Lagent secret",
+                "16": "Dr. Anonyme",
+                "17": "John Doe Deluxe",
+                "18": "Mister Incognito",
+                "19": "McMyst\u00e8re",
+                "20": "007 et demi",
+                "21": "Agent Tr\u00e8s Secret",
+                "22": "Anonyman",
+                "23": "Soldat Inconnu",
+                "24": "Top Secretus",
+                "25": "Madame Patate",
+                "26": "Mr. Cache-Cache"
             }
         },
         "error": {
@@ -70,12 +69,72 @@
     "project": {
         "see": "Voir le projet"
     },
+    "settings": {
+        "title": "Réglages",
+        "showSkills": "Afficher les compétences relatives à mon diplôme"
+    },
+    "achievements": {
+        "settings_show_skills_first_click": {
+            "title": "Activer l'option pourrie",
+            "description": "Super, parmi toutes les options cool, tu as choisi celle-là ! Retourne sur un projet pour voir le changement."
+        }
+    },
     "projects": [
         {
             "id": "1",
             "name": "Hub Level Plus",
             "type": "Web App & Backoffice",
             "tools": ["React", "Typescript", "Node-js", "Neo4j"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Se conformer aux standards du Web et aux normes d'accessibilité."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produire un code fonctionnel, sobre et réutilisable."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Utiliser des outils favorisants un développement itératif et collaboratif."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Veiller à la sécurité des systèmes et des données."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "S'appuyer sur une veille technologique et des modèles d'innovation."
+                },
+                "6": {
+                    "title": "CE.5.0.2",
+                    "description": "Favoriser la collaboration entre les parties prenantes du projet."
+                },
+                "7": {
+                    "title": "AC.34.01 ",
+                    "description": "Développer à l'aide d'un framework de développement côté client."
+                },
+                "8": {
+                    "title": "AC.34.02",
+                    "description": "Développer à l'aide d'un framework de développement côté serveur."
+                },
+                "9": {
+                    "title": "AC.35.01",
+                    "description": "Piloter un produit, un service ou une équipe."
+                },
+                "11": {
+                    "title": "AC.35.02",
+                    "description": "Maîtriser la qualité en projet Web ou multimédia."
+                },
+                "10": {
+                    "title": "AC.35.03",
+                    "description": "Concevoir un projet d'entreprise innovante en définissant le nom, l'identité, la forme juridique et le ton de la marque."
+                },
+                "12": {
+                    "title": "AC.35.04",
+                    "description": "Défendre un projet de manière convaincante."
+                }
+            },
             "description": "Plateforme web pour l'entreprise **Level Plus** (mettant en relation les entreprises et les seniors en recherche d'emploi à Génève) conçue durant mon alternance au sein de Makeprops ❤. \n\nL'application permet aux talents de compléter un profil, de participer à des événements et d'obtenir un suivi dans leur recherche d'emploi. Il y a également un backoffice pour l'administration, les managers et les intervenants avec un système de **&gestion de permissions**, de templates et d'**&envoi automatique d'emails.**",
             "url": "https://new.hublevelplus.ch"
         },
@@ -84,6 +143,28 @@
             "name": "MMI Chambéry",
             "type": "Site vitrine",
             "tools": ["Wordpress", "Php"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Se conformer aux standards du Web et aux normes d'accessibilité."
+                },
+                "2": {
+                    "title": "CE.4.0.2",
+                    "description": "Appliquer des concepts théoriques issus de l'informatique et des sciences de l'information."
+                },
+                "3": {
+                    "title": "CE.4.0.5",
+                    "description": "Veiller à la sécurité des systèmes et des données."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "S'appuyer sur une veille technologique et des modèles d'innovation."
+                },
+                "6": {
+                    "title": "CE.5.0.3",
+                    "description": "Respecter les droits et la vie privée."
+                }
+            },
             "description": "Site vitrine pour mon école, le département MMI de l'**IUT de Chambéry**. Le site présente les formations, quelques projets étudiants et a été réalisé en 2 semaines. Il est construit sur Wordpress avec un **&thème personnalisé** et le plugin **&ACF** pour la gestion des contenus. \n\nConçu comme une interface simulant un ordinateur, le site intègre des fenêtres déplaçables et des icônes. Chaque fenêtre étant un bloc ACF, l'ensemble est entièrement administrable.",
             "url": "https://mmi.univ-smb.fr"
         },
@@ -92,6 +173,40 @@
             "name": "CLI Makeprops",
             "type": "Utilitaire CLI",
             "tools": ["Node-js", "Typescript"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Appliquer des concepts théoriques issus de l'informatique et des sciences de l'information."
+                },
+                "3": {
+                    "title": "CE.4.0.3",
+                    "description": "Produire un code fonctionnel, sobre et réutilisable."
+                },
+                "4": {
+                    "title": "CE.4.0.4",
+                    "description": "Utiliser des outils favorisants un développement itératif et collaboratif."
+                },
+                "5": {
+                    "title": "CE.5.0.2",
+                    "description": "Favoriser la collaboration entre les parties prenantes du projet."
+                },
+                "6": {
+                    "title": "CE.5.0.4",
+                    "description": "Favoriser la sobriété numérique."
+                },
+                "7": {
+                    "title": "AC.34.04",
+                    "description": "Concevoir et développer des composants logiciels, plugins ou extensions."
+                },
+                "9": {
+                    "title": "AC.35.01",
+                    "description": "Piloter un produit, un service ou une équipe."
+                },
+                "8": {
+                    "title": "AC.35.03",
+                    "description": "Concevoir un projet d'entreprise innovante en définissant le nom, l'identité, la forme juridique et le ton de la marque."
+                }
+            },
             "description": "Outil en ligne de commande développé pour l'entreprise **Makeprops** durant mon alternance. Il permet de générer des templates de projets afin de faciliter la création de nouveaux projets (**makeprops templates create**). \n\nCe Projet interne est publié en tant que **&packet npm privé**. Il est dévelopé en **&Programmation Orientée Objet** et est pensé pour être modulaire et extensible. Il est également accompagné d'une documentation."
         },
         {
@@ -99,6 +214,28 @@
             "name": "Logis de la Foulerie",
             "type": "Site vitrine",
             "tools": ["Javascript", "Css3"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.1",
+                    "description": "Se conformer aux standards du Web et aux normes d'accessibilité."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produire un code fonctionnel, sobre et réutilisable."
+                },
+                "6": {
+                    "title": "CE.5.0.4",
+                    "description": "Favoriser la sobriété numérique."
+                },
+                "3": {
+                    "title": "AC.34.05",
+                    "description": "Maîtriser l'hébergement et le déploiement d'applications."
+                },
+                "8": {
+                    "title": "AC.35.02",
+                    "description": "Maîtriser la qualité en projet Web ou multimédia."
+                }
+            },
             "description": "Site vitrine réalisé pour le Logis de la Foulerie, un gîte situé à Bize-Minervois, à 18 km de Narbonne. Il s'agit d'un site web statique et de mon premier projet concret en développement web.",
             "url": "https://logisdelafoulerie.fr"
         },
@@ -107,14 +244,89 @@
             "id": "5",
             "name": "Tv busn",
             "type": "Infrastructure & Web App",
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Appliquer des concepts théoriques issus de l'informatique et des sciences de l'information."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produire un code fonctionnel, sobre et réutilisable."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Utiliser des outils favorisants un développement itératif et collaboratif."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Veiller à la sécurité des systèmes et des données."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "S'appuyer sur une veille technologique et des modèles d'innovation."
+                },
+                "6": {
+                    "title": "CE.5.0.5",
+                    "description": "Exploiter des cadres de réflexion français et internationaux."
+                },
+                "7": {
+                    "title": "AC.34.05",
+                    "description": "Maîtriser l'hébergement et le déploiement d'applications."
+                }
+            },
             "description": "**&Serveur** de streaming privé pour mon grand-père, lui permettant d'accéder à sa collection personnelle de films achetés au fil des années. \n\nL'infrastructure est sécurisée via des **&règles réseau strictes** (liste blanche, application supplémentaire d'authentification, tunnel wireguard) et une configuration personnalisée. L'application a été customisée pour simplifier l'usage, et les fichiers sont automatiquement compressés via des **&scripts** pour optimiser les performances."
         },
-
         {
             "id": "6",
             "name": "King Bzz",
             "type": "Dispositif Intéractif & Web App",
             "tools": ["Arduino", "Vue-js", "Node-js"],
+            "skills": {
+                "1": {
+                    "title": "CE.4.0.2",
+                    "description": "Appliquer des concepts théoriques issus de l'informatique et des sciences de l'information."
+                },
+                "2": {
+                    "title": "CE.4.0.3",
+                    "description": "Produire un code fonctionnel, sobre et réutilisable."
+                },
+                "3": {
+                    "title": "CE.4.0.4",
+                    "description": "Utiliser des outils favorisants un développement itératif et collaboratif."
+                },
+                "4": {
+                    "title": "CE.4.0.5",
+                    "description": "Veiller à la sécurité des systèmes et des données."
+                },
+                "5": {
+                    "title": "CE.5.0.1",
+                    "description": "S'appuyer sur une veille technologique et des modèles d'innovation."
+                },
+                "6": {
+                    "title": "CE.5.0.2",
+                    "description": "Favoriser la collaboration entre les parties prenantes du projet."
+                },
+                "7": {
+                    "title": "AC.34.01 ",
+                    "description": "Développer à l'aide d'un framework de développement côté client."
+                },
+                "8": {
+                    "title": "AC.34.02",
+                    "description": "Développer à l'aide d'un framework de développement côté serveur."
+                },
+                "9": {
+                    "title": "AC.34.03",
+                    "description": "Développer des dispositifs interactifs sophistiqués."
+                },
+                "10": {
+                    "title": "AC.34.05",
+                    "description": "Maîtriser l'hébergement et le déploiement d'applications."
+                },
+                "12": {
+                    "title": "AC.35.04",
+                    "description": "Défendre un projet de manière convaincante."
+                }
+            },
             "description": "Piège à moustiques connecté, développé dans le cadre d'un projet étudiant. Il permet de capturer les moustiques et de les compter via une application web. \n\nLe projet comprend un dispositif physique avec un **&microcontrôleur** et de multiples capteurs (fourche optique, température, CO2...) ainsi qu'une application web pour visualiser les données et les statistiques de capture. Le tout est conçu pour être accessible et facile à utiliser. Il communique via **&MQTT sur le réseau LoraWAN**."
         }
     ]

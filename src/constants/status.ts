@@ -1,5 +1,6 @@
 export const STATUS = {
     SUCCESS: 'success',
+    ACHIEVEMENT: 'achievement',
     ERROR: 'error',
     INFO: 'info',
 } as const;

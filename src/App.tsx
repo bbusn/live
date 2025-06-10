@@ -8,6 +8,7 @@ import { AppRoutes } from "./AppRoutes";
 // import { useState } from 'react';
 import { AuthProvider } from './hooks/useAuth';
 import { ToastProvider } from './hooks/useToasts';
+import { SettingsProvider } from './hooks/useSettings';
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
             <main className="bg-primary-900 text-white min-h-screen h-full overflow-x-hidden overflow-y-auto flex flex-col justify-center pt-16 pb-6 items-center">
                 <AuthProvider>
                     <ToastProvider>
-                        <AppRoutes />
+                        <SettingsProvider>
+                            <AppRoutes />
+                        </SettingsProvider>
                     </ToastProvider>
                 </AuthProvider>
             </main>

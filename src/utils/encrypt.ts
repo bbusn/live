@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { AUTH_TOKEN_KEY } from './auth';
 
 function strToUint8(str: string): Uint8Array {
@@ -32,7 +33,15 @@ export async function decrypt(token: string): Promise<object | null> {
         const key = await getKey(AUTH_TOKEN_KEY);
         const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, data);
         const json = uint8ToStr(new Uint8Array(decrypted));
-        return JSON.parse(json);
+        const jsonParsed = JSON.parse(json);
+
+        return {
+            username: jsonParsed._username ?? '',
+            datetime: jsonParsed._datetime ?? DateTime.fromISO(jsonParsed._datetime),
+            viewers: jsonParsed._viewers ?? 0,
+            donations: jsonParsed._donations ?? 0,
+            achievements: jsonParsed._achievements ?? [],
+        };
     } catch (e) {
         return null;
     }

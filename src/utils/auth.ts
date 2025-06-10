@@ -7,7 +7,7 @@ export const AUTH_STATUS = {
 
 export type AuthStatusType = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];
 
-const BASE_ITEM_NAME = 'benoitbusnardo.live@';
+export const BASE_ITEM_NAME = 'benoitbusnardo.live@';
 const KEYS_STORAGE_NAME = BASE_ITEM_NAME + '594F555F435552494F5553';
 
 const getOrCreateJSON = <T>(key: string, generator: () => T): T => {

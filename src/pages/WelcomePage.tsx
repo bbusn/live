@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../constants/routes";
 import { STATUS } from "../constants/status";
 import { encrypt } from "../utils/encrypt";
+import { playSound } from "../utils/sound";
 
 const WelcomePage = () => {
     const { t } = useTranslation();
@@ -17,11 +18,11 @@ const WelcomePage = () => {
     const [introduced, setIntroduced] = useState<boolean>(false);
     const [defaultUsername, setDefaultUsername] = useState<string>('');
     const ref = useRef<HTMLInputElement | null>(null);
-    const { status, setStatus, assets, click } = useAuth();
+    const { status, setStatus, assets } = useAuth();
     const navigate = useNavigate();
 
     const start = async () => {
-        click();
+        playSound(assets?.sounds.click)
         if (!ref.current) return;
 
         let username = ref.current.value.trim();
@@ -59,15 +60,9 @@ const WelcomePage = () => {
             }
         }
 
-        User.getInstance().initialize({ username, datetime: DateTime.now() });
+        User.getInstance().initialize({ username, datetime: DateTime.now(), achievements: [], viewers: 0, donations: 0 });
 
-        const encrypted = await encrypt({
-            username: User.getInstance().username,
-            datetime: User.getInstance().datetime,
-            viewers: User.getInstance().viewers,
-            donations: User.getInstance().donations,
-        })
-
+        const encrypted = await encrypt(User.getInstance());
         localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
 
         setStatus(AUTH_STATUS.AUTH);
@@ -82,7 +77,7 @@ const WelcomePage = () => {
 
         navigate(ROUTES.DASHBOARD);
 
-        if (assets?.sounds?.begin) assets.sounds.begin.play();
+        playSound(assets?.sounds.begin);
 
         return;
     }
@@ -95,7 +90,7 @@ const WelcomePage = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const index = Math.floor(Math.random() * 27) + 1;
+            const index = Math.floor(Math.random() * 26) + 1;
             const randomUsername = t(`welcome.username.placeholder.${index}`);
             setDefaultUsername(randomUsername);
         }, 4000);
@@ -125,7 +120,7 @@ const WelcomePage = () => {
                         {t('welcome.username.label')}
                     </p>
                     <input
-                        onClick={click}
+                        onClick={() => playSound(assets?.sounds.click)}
                         ref={ref}
                         type="text"
                         className="w-full max-w-[300px] sm:max-w-[375px] px-3 py-4 bg-primary-300 text-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500 transition-all duration-300"

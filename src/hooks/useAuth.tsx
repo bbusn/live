@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { User, UserType } from '../objects/User';
+import { User } from '../objects/User';
 import { AUTH_LOADING_TIMEOUT, AUTH_STATUS, AuthStatusType, AUTH_TOKEN_ITEM_NAME } from "../utils/auth";
 import Loading from "../components/Loading";
 import { preloadAudio, preloadImage } from "../utils/preload";
@@ -20,14 +20,12 @@ const AuthContext = createContext<{
   connect: () => Promise<void>;
   error: boolean;
   assets: Assets | null;
-  click: () => void;
 }>({
   status: AUTH_STATUS.LOADING,
   setStatus: () => { },
   connect: async () => { },
   error: false,
   assets: null,
-  click: () => { },
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -41,10 +39,6 @@ export const AuthProvider = ({ children }: any) => {
   const { toast } = useToasts();
   const { t } = useTranslation();
 
-  const click = () => {
-    if (assets?.sounds.click) assets.sounds.click.play();
-  };
-
   const connect = async () => {
     const token = localStorage.getItem(AUTH_TOKEN_ITEM_NAME) || null;
 
@@ -54,14 +48,14 @@ export const AuthProvider = ({ children }: any) => {
     }
 
     try {
-      const user = await decrypt(token) as UserType;
+      let user = (await decrypt(token)) as any;
 
-      if (!user || !user.username || !user.datetime) {
+      if (user === undefined || !user.username || !user.datetime) {
         setStatus(AUTH_STATUS.UNAUTH);
         return;
       }
 
-      User.getInstance().initialize({ username: user.username, datetime: user.datetime });
+      User.getInstance().initialize(user);
       await new Promise((r) => setTimeout(r, AUTH_LOADING_TIMEOUT));
       setStatus(AUTH_STATUS.AUTH);
     } catch (error) {
@@ -134,6 +128,7 @@ export const AuthProvider = ({ children }: any) => {
         toast: "/sounds/toast.mp3",
         modal: "/sounds/modal.mp3",
         click: "/sounds/click.mp3",
+        achievement: "/sounds/achievement.mp3",
       };
 
       const imagePromises = Object.entries(imageSources).map(([name, src]) =>
@@ -181,7 +176,7 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ status, setStatus, connect, assets, error, click }}>
+    <AuthContext.Provider value={{ status, setStatus, connect, assets, error }}>
       {loading ? <Loading error={error} progress={progress} /> : children}
     </AuthContext.Provider>
   );

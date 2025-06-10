@@ -5,18 +5,27 @@ import { Tool } from "./Tool";
 import { useTranslation } from "react-i18next";
 import ICONS from "../constants/icons";
 import { Icon } from "@iconify/react";
+import { useSettings } from "../hooks/useSettings";
+import { playSound } from "../utils/sound";
 
 export type ProjectType = {
     id: string;
     name: string;
     type: string;
     tools: string[];
+    skills: {
+        [key: string]: {
+            title: string;
+            description: string;
+        };
+    };
     description: string;
     url: string | undefined;
 };
 
 const Project = (project: ProjectType) => {
-    const { assets, click } = useAuth();
+    const { settings } = useSettings();
+    const { assets } = useAuth();
     const modalContainerRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
     const { t } = useTranslation();
@@ -27,14 +36,14 @@ const Project = (project: ProjectType) => {
     nameFirstPart = nameFirstPart.join(" ");
 
     const openModal = () => {
-        click();
+        playSound(assets?.sounds.click);
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("hidden");
             modalContainerRef.current.classList.toggle("flex");
             setTimeout(() => {
                 modalContainerRef.current?.classList.toggle("opacity-100");
                 modalRef.current?.classList.toggle("scale-0");
-                if (assets?.sounds.modal) assets.sounds.modal.play();
+                playSound(assets?.sounds.modal);
             }, 250);
         }
         window.addEventListener("keydown", escapeModal);
@@ -50,7 +59,7 @@ const Project = (project: ProjectType) => {
     };
 
     const closeModal = () => {
-        click();
+        playSound(assets?.sounds.click);
         setFullscreenImage(null);
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("opacity-100");
@@ -72,12 +81,12 @@ const Project = (project: ProjectType) => {
     };
 
     const handleImageClick = (src: string) => {
-        click();
+        playSound(assets?.sounds.click);
         setFullscreenImage(src);
     };
 
     const closeFullscreenImage = () => {
-        click();
+        playSound(assets?.sounds.click);
         setFullscreenImage(null);
     };
 
@@ -93,7 +102,7 @@ const Project = (project: ProjectType) => {
                     src={
                         assets?.images[`${project.id}_${ASSET_TYPES.POSTER}`]?.src ?? ""
                     }
-                    className="w-36 xl:w-40"
+                    className="w-32 xl:w-36"
                 />
             </div>
 
@@ -128,7 +137,7 @@ const Project = (project: ProjectType) => {
                                 <h4 className="text-center bg-secondary-900 text-secondary-300 px-2 py-0.5">
                                     {project.type}
                                 </h4>
-                                <div className="mb-4 z-30 flex flex-row items-center justify-center gap-3">
+                                <div className="z-30 mb-8 flex flex-row items-center justify-center gap-8 flex-wrap sm:gap-3">
                                     {project.tools?.map((tool, index) => (
                                         <Tool key={`tool-${index}`} name={tool} />
                                     ))}
@@ -215,14 +224,20 @@ const Project = (project: ProjectType) => {
                                     return <span key={index} className="inline">{part}</span>;
                                 })}
                             </p>
+                            {settings.showSkills && (
+                                <div className="my-6 z-30 flex flex-row items-start justify-center gap-3 flex-wrap sm:gap-2">
+                                    {project.skills && Object.values(project.skills).map((skill, index) => (
+                                        <Tool key={`skill-${index}`} name={skill.title} description={skill.description} />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                     {(project.url && project.url.length > 0) && (
                         <button
                             className="top-[102.5%] flex justify-center items-center gap-4 transitions absolute button-primary w-full"
                             onClick={() => {
-                                click();
-                                if (assets?.sounds.click) assets.sounds.click.play();
+                                playSound(assets?.sounds.click);
                                 window.open(project.url, "_blank");
                             }}
                         >

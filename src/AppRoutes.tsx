@@ -5,6 +5,7 @@ import RequireAuth from './components/RequireAuth';
 import WelcomePage from './pages/WelcomePage';
 import DashboardPage from './pages/DashboardPage';
 import Layout from './components/Layout';
+import SettingsPage from './pages/SettingsPage';
 
 export const AppRoutes = () => {
     return (
@@ -21,6 +22,11 @@ export const AppRoutes = () => {
                         <Route
                             path={ROUTES.DEFAULT}
                             element={<Navigate to={ROUTES.DASHBOARD} replace={true} />}
+                        />
+                        {/* =========== SETTINGS =========== */}
+                        <Route
+                            path={ROUTES.SETTINGS}
+                            Component={SettingsPage}
                         />
                         {/* =========== NOT FOUND =========== */}
                         <Route
