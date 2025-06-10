@@ -67,44 +67,55 @@
         },
         "start": "Commencer le live"
     },
+    "project": {
+        "see": "Voir le projet"
+    },
     "projects": [
         {
-            "id": "levelplus",
+            "id": "1",
             "name": "Hub Level Plus",
             "type": "Web App & Backoffice",
-            "description": "This is the first project."
+            "tools": ["React", "Typescript", "Node-js", "Neo4j"],
+            "description": "Plateforme web pour l'entreprise **Level Plus** (mettant en relation les entreprises et les seniors en recherche d'emploi à Génève) conçue durant mon alternance au sein de Makeprops ❤. \n\nL'application permet aux talents de compléter un profil, de participer à des événements et d'obtenir un suivi dans leur recherche d'emploi. Il y a également un backoffice pour l'administration, les managers et les intervenants avec un système de **&gestion de permissions**, de templates et d'**&envoi automatique d'emails.**",
+            "url": "https://new.hublevelplus.ch"
         },
         {
-            "id": "mmi",
+            "id": "2",
             "name": "MMI Chambéry",
             "type": "Site vitrine",
-            "description": "This is the first project."
+            "tools": ["Wordpress", "Php"],
+            "description": "Site vitrine pour mon école, le département MMI de l'**IUT de Chambéry**. Le site présente les formations, quelques projets étudiants et a été réalisé en 2 semaines. Il est construit sur Wordpress avec un **&thème personnalisé** et le plugin **&ACF** pour la gestion des contenus. \n\nConçu comme une interface simulant un ordinateur, le site intègre des fenêtres déplaçables et des icônes. Chaque fenêtre étant un bloc ACF, l'ensemble est entièrement administrable.",
+            "url": "https://mmi.univ-smb.fr"
         },
         {
-            "id": "cli",
+            "id": "3",
             "name": "CLI Makeprops",
             "type": "Utilitaire CLI",
-            "description": "This is the first project."
+            "tools": ["Node-js", "Typescript"],
+            "description": "Outil en ligne de commande développé pour l'entreprise **Makeprops** durant mon alternance. Il permet de générer des templates de projets afin de faciliter la création de nouveaux projets (**makeprops templates create**). \n\nCe Projet interne est publié en tant que **&packet npm privé**. Il est dévelopé en **&Programmation Orientée Objet** et est pensé pour être modulaire et extensible. Il est également accompagné d'une documentation."
         },
         {
-            "id": "logis",
+            "id": "4",
             "name": "Logis de la Foulerie",
             "type": "Site vitrine",
-            "description": "Site vitrine"
+            "tools": ["Javascript", "Css3"],
+            "description": "Site vitrine réalisé pour le Logis de la Foulerie, un gîte situé à Bize-Minervois, à 18 km de Narbonne. Il s'agit d'un site web statique et de mon premier projet concret en développement web.",
+            "url": "https://logisdelafoulerie.fr"
         },
 
         {
-            "id": "tv",
+            "id": "5",
             "name": "Tv busn",
             "type": "Infrastructure & Web App",
-            "description": "This is the first project."
+            "description": "**&Serveur** de streaming privé pour mon grand-père, lui permettant d'accéder à sa collection personnelle de films achetés au fil des années. \n\nL'infrastructure est sécurisée via des **&règles réseau strictes** (liste blanche, application supplémentaire d'authentification, tunnel wireguard) et une configuration personnalisée. L'application a été customisée pour simplifier l'usage, et les fichiers sont automatiquement compressés via des **&scripts** pour optimiser les performances."
         },
 
         {
-            "id": "kingbzz",
+            "id": "6",
             "name": "King Bzz",
             "type": "Dispositif Intéractif & Web App",
-            "description": "This is the first project."
+            "tools": ["Arduino", "Vue-js", "Node-js"],
+            "description": "Piège à moustiques connecté, développé dans le cadre d'un projet étudiant. Il permet de capturer les moustiques et de les compter via une application web. \n\nLe projet comprend un dispositif physique avec un **&microcontrôleur** et de multiples capteurs (fourche optique, température, CO2...) ainsi qu'une application web pour visualiser les données et les statistiques de capture. Le tout est conçu pour être accessible et facile à utiliser. Il communique via **&MQTT sur le réseau LoraWAN**."
         }
     ]
 }

@@ -59,6 +59,7 @@
     --breakpoint-3xs: 320px;
     --breakpoint-2xs: 380px;
     --breakpoint-xs: 480px;
+    --breakpoint-2sm: 612px;
     --breakpoint-sm: 780px;
     --breakpoint-2xl: 1400px;
 }
@@ -116,6 +117,7 @@
     .transitions {
         @apply transition-all duration-300 hover:transition-all hover:duration-300 active:transition-all active:duration-300;
     }
+
     .button-primary {
         @apply bg-secondary-400 text-black font-semibold text-lg px-4 py-3 cursor-pointer rounded-sm shadow-md hover:brightness-125 active:scale-90;
     }

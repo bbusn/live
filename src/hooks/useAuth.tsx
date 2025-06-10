@@ -7,6 +7,7 @@ import { useToasts } from "./useToasts";
 import { STATUS } from "../constants/status";
 import { useTranslation } from "react-i18next";
 import { decrypt } from "../utils/encrypt";
+import { ASSET_TYPES } from "../constants/assets";
 
 type Assets = {
   images: Record<string, HTMLImageElement>;
@@ -94,13 +95,39 @@ export const AuthProvider = ({ children }: any) => {
 
       await connect();
 
-      const imageSources = {
-        tv: "/images/projects/tv.png",
-        kingbzz: "/images/projects/kingbzz.png",
-        logis: "/images/projects/logis.png",
-        mmi: "/images/projects/mmi.png",
-        levelplus: "/images/projects/levelplus.png",
-        cli: "/images/projects/cli.png",
+      const imageSources: {
+        [key: string]: string;
+      } = {
+        [`1_${ASSET_TYPES.POSTER}`]: "/images/posters/1.png",
+        [`1_${ASSET_TYPES.LOGO}`]: "/images/logos/1.png",
+        [`1_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/1/1.png",
+        [`1_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/1/2.png",
+        [`1_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/1/3.png",
+        [`2_${ASSET_TYPES.POSTER}`]: "/images/posters/2.png",
+        [`2_${ASSET_TYPES.LOGO}`]: "/images/logos/2.png",
+        [`2_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/2/1.png",
+        [`2_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/2/2.png",
+        [`2_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/2/3.png",
+        [`3_${ASSET_TYPES.POSTER}`]: "/images/posters/3.png",
+        [`3_${ASSET_TYPES.LOGO}`]: "/images/logos/3.png",
+        [`3_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/3/1.png",
+        [`3_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/3/2.png",
+        [`3_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/3/3.png",
+        [`4_${ASSET_TYPES.POSTER}`]: "/images/posters/4.png",
+        [`4_${ASSET_TYPES.LOGO}`]: "/images/logos/4.png",
+        [`4_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/4/1.png",
+        [`4_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/4/2.png",
+        [`4_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/4/3.png",
+        [`5_${ASSET_TYPES.POSTER}`]: "/images/posters/5.png",
+        [`5_${ASSET_TYPES.LOGO}`]: "/images/logos/5.png",
+        [`5_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/5/1.png",
+        [`5_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/5/2.png",
+        [`5_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/5/3.png",
+        [`6_${ASSET_TYPES.POSTER}`]: "/images/posters/6.png",
+        [`6_${ASSET_TYPES.LOGO}`]: "/images/logos/6.png",
+        [`6_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/6/1.png",
+        [`6_${ASSET_TYPES.SCREENSHOT}_2`]: "/images/screenshots/6/2.png",
+        [`6_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/6/3.png",
       };
       const soundSources = {
         begin: "/sounds/begin.mp3",
