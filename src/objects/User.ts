@@ -56,7 +56,7 @@ export class User {
 
     public async addAchievement(achievement: string) {
         if (!this._achievements.includes(achievement)) {
-            // this._achievements.push(achievement);
+            this._achievements.push(achievement);
             const encrypted = await encrypt(User.getInstance());
             localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
         }
@@ -83,9 +83,6 @@ export class User {
     }
 
     public addDonation(amount: number) {
-        console.log(`Adding donation: ${this._donations}`);
-        console.log(`Adding donation: ${amount}`);
-        console.log(`Current donations: ${this._donations}`);
         this._donations += amount;
     }
 }

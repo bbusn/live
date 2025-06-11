@@ -1,35 +1,30 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import obfuscator from 'rollup-plugin-obfuscator';
+import { createHtmlPlugin } from 'vite-plugin-html';
+import PurgeIcons from 'vite-plugin-purge-icons';
 
 export default defineConfig({
     plugins: [
         react(),
         tailwindcss(),
-        {
-            ...obfuscator({
-                options: {
-                    compact: true,
-                    controlFlowFlattening: true,
-                    deadCodeInjection: true,
-                    debugProtection: true,
-                    disableConsoleOutput: true,
-                    identifierNamesGenerator: 'hexadecimal',
-                    numbersToExpressions: true,
-                    simplify: true,
-                    splitStrings: true,
-                    stringArray: true,
-                    stringArrayEncoding: ['base64'],
-                    stringArrayThreshold: 0.75,
-                    selfDefending: true,
-                    rotateStringArray: true,
-                },
-            }),
-            apply: 'build',
-        },
+        createHtmlPlugin({
+            minify: true,
+            entry: 'src/main.tsx',
+            template: './index.html',
+        }),
+        PurgeIcons({
+            iconLibraries: ['@iconify/json/hugeicons', '@iconify/json/lucide', '@iconify/json/fa-solid'],
+        }),
     ],
     build: {
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
         sourcemap: false,
     },
 });
