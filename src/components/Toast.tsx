@@ -154,7 +154,7 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
                     <span className="text-2xl my-2 bg-primary-400/80 font-primary py-0 px-3 text-yellow-400">
                         + {donationsAmount}€
                     </span>
-                    <span className="text-sm font-primary text-white whitespace-pre-wrap break-words">
+                    <span className="text-sm font-primary text-yellow-400 opacity-75 whitespace-pre-wrap break-words">
                         [ {t(`achievements.${message}.title`)} ]
                     </span>
                 </>

@@ -3,7 +3,6 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import PurgeIcons from 'vite-plugin-purge-icons';
-import PurgeCSS from 'vite-plugin-purgecss';
 
 export default defineConfig({
     plugins: [
@@ -15,9 +14,6 @@ export default defineConfig({
             template: './index.html',
         }),
         PurgeIcons({
-            content: ['./index.html', './src/**/*.{ts,tsx}'],
-        }),
-        PurgeCSS({
             content: ['./index.html', './src/**/*.{ts,tsx}'],
         }),
     ],
