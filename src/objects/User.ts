@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import { encrypt } from '../utils/encrypt';
 import { AUTH_TOKEN_ITEM_NAME } from '../utils/auth';
 
@@ -14,12 +13,18 @@ export class User {
     private static _instance: User;
 
     private _username: string = '';
-    private _datetime: string = DateTime.now().toISO();
+    private _datetime: Date = new Date();
     private _viewers: number = 0;
     private _donations: number = 0;
     private _achievements: string[] = [];
 
-    private constructor(username = '', datetime = DateTime.now().toISO(), viewers = 0, donations = 0, achievements: string[] = []) {
+    private constructor(
+        username = '',
+        datetime: Date = new Date(),
+        viewers = 0,
+        donations = 0,
+        achievements: string[] = []
+    ) {
         this._username = username;
         this._datetime = datetime;
         this._viewers = viewers;
@@ -39,7 +44,7 @@ export class User {
     }
 
     public get datetime(): string {
-        return this._datetime;
+        return this._datetime.toISOString();
     }
 
     public get viewers(): number {
@@ -71,7 +76,7 @@ export class User {
     public initialize(user: UserType) {
         if (this._initialized) return;
         this._username = user.username;
-        this._datetime = user.datetime || DateTime.now().toISO();
+        this._datetime = user.datetime ? new Date(user.datetime) : new Date();
         this._viewers = user.viewers ?? 0;
         this._donations = user.donations ?? 0;
         this._achievements = user.achievements ?? [];

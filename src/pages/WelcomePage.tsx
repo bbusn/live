@@ -3,7 +3,6 @@ import Banner from "../components/Banner";
 import { useToasts } from "../hooks/useToasts";
 import { useEffect, useRef, useState } from "react";
 import { User } from "../objects/User";
-import { DateTime } from "luxon";
 import { useAuth } from "../hooks/useAuth";
 import { AUTH_STATUS, AUTH_TOKEN_ITEM_NAME } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +59,7 @@ const WelcomePage = () => {
             }
         }
 
-        User.getInstance().initialize({ username, datetime: DateTime.now().toISO(), achievements: [], viewers: 0, donations: 0 });
+        User.getInstance().initialize({ username, datetime: new Date().toISOString(), achievements: [], viewers: 0, donations: 0 });
 
         const encrypted = await encrypt(User.getInstance());
         localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);

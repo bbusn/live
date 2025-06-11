@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import { AUTH_TOKEN_KEY } from './auth';
 
 function strToUint8(str: string): Uint8Array {
@@ -37,7 +36,7 @@ export async function decrypt(token: string): Promise<object | null> {
 
         return {
             username: jsonParsed._username ?? '',
-            datetime: jsonParsed._datetime ?? DateTime.fromISO(jsonParsed._datetime),
+            datetime: jsonParsed._datetime ? new Date(jsonParsed._datetime) : new Date(),
             viewers: jsonParsed._viewers ?? 0,
             donations: jsonParsed._donations ?? 0,
             achievements: jsonParsed._achievements ?? [],

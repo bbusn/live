@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import PurgeIcons from 'vite-plugin-purge-icons';
+import PurgeCSS from 'vite-plugin-purgecss';
 
 export default defineConfig({
     plugins: [
@@ -14,7 +15,10 @@ export default defineConfig({
             template: './index.html',
         }),
         PurgeIcons({
-            iconLibraries: ['@iconify/json/hugeicons', '@iconify/json/lucide', '@iconify/json/fa-solid'],
+            content: ['./index.html', './src/**/*.{ts,tsx}'],
+        }),
+        PurgeCSS({
+            content: ['./index.html', './src/**/*.{ts,tsx}'],
         }),
     ],
     build: {
@@ -26,5 +30,19 @@ export default defineConfig({
             },
         },
         sourcemap: false,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    react: ['react', 'react-dom'],
+                    router: ['react-router-dom'],
+                    i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+                    icons: ['@iconify/react'],
+                },
+            },
+        },
+        chunkSizeWarningLimit: 1000,
+    },
+    optimizeDeps: {
+        include: ['react', 'react-dom', 'react-router-dom', '@iconify/react'],
     },
 });

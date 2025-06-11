@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
-import { DateTime } from "luxon";
 import { useToasts } from "../hooks/useToasts";
 import { User } from "../objects/User";
 import { ACHIEVEMENTS } from "../constants/achievements";
@@ -11,7 +10,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation();
-    const [selected, setSelected] = useState(i18n.language.split('-')[0] || DateTime.local().locale);
+    const [selected, setSelected] = useState(i18n.language.split('-')[0] || navigator.language.split('-')[0]);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const { toast } = useToasts();
     const { assets } = useAuth();
