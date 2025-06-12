@@ -172,7 +172,7 @@ const SettingsPage = () => {
                     </div>
                 </label>
                 <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
-                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.show_skills')} size={30} /></span>
+                    <span className="max-w-64 h-12 text-center">{t('settings.show_skills')}</span>
                     <div
                         onClick={toggleShowSkills}
                         className={`
