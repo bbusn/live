@@ -119,7 +119,7 @@
     },
     "achievements": {
         "settings_show_skills_first_click": {
-            "title": "Activer l'option pourrie",
+            "title": "Activer l'option pas terrible",
             "description": "Super, parmi toutes les options cool, tu as choisi celle-là ! Retourne sur un projet pour voir le changement."
         },
         "settings_switch_to_english": {
@@ -394,13 +394,13 @@
         {
             "id": "2",
             "name": "LinkedIn",
-            "description": "Mon profil **%Linkedin**. Vous pouvez y trouver mon parcours et mes expériences professionnelles. Attention, chemise obligatoire !",
+            "description": "Mon profil **%Linkedin**. Tu peux y trouver mon parcours et mes expériences professionnelles. Attention, chemise obligatoire !",
             "url": "https://www.linkedin.com/in/benoit-busnardo/"
         },
         {
             "id": "3",
             "name": "Discord",
-            "description": "Mon compte **%Discord**. Plutôt pratique si vous souhaitez me contacter rapidement !",
+            "description": "Mon compte **%Discord**. Plutôt pratique si tu souhaites me contacter rapidement !",
             "url": "https://discordapp.com/users/316978000895672332"
         },
         {
@@ -408,6 +408,12 @@
             "name": "Email",
             "description": "Mon adresse email. Valeur sûre pour me contacter :  **%benoit.busnardo@gmail.com **",
             "url": "mailto:benoit.busnardo@gmail.com"
+        },
+        {
+            "id": "5",
+            "name": "Curriculum Vitae",
+            "description": "Mon **%CV**. Contient mes expériences, compétences et formations. À imprimer et à accrocher au mur !",
+            "url": "/public/CV_Benoit_BUSNARDO_FR_2025.pdf"
         }
     ]
 }

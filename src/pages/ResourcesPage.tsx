@@ -24,7 +24,7 @@ const ResourcesPage = () => {
     }, []);
 
     return (
-        <div className={`sm:mt-16 mt-8 mb-64 lg:mb-0 transition-all duration-300 flex flex-row flex-wrap items-center justify-evenly h-max min-h-[300px] px-4 w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl gap-2 2xs:gap-4 xs:gap-8 2xl:!gap-12`}>
+        <div className={`sm:mt-16 mt-8 mb-64 lg:mb-0 transition-all duration-300 flex flex-row flex-wrap items-center justify-evenly h-max min-h-[300px] px-4 w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl gap-2 2xs:gap-4 xs:gap-8 sm:gap-12`}>
             {resources.map((resource: ResourceType, index: number) => (
                 <Resource key={`resource-${index}`} {...resource} />
             ))}

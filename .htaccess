@@ -4,12 +4,13 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Handle React routes
+RewriteCond %{REQUEST_URI} ^/CV_Benoit_BUSNARDO_(FR|EN)_2025\.pdf$ [NC]
+RewriteRule .* - [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]
 
-# Optional: Redirection based on domain (your existing one)
 RewriteCond %{HTTP_HOST} ^busn\.fr$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.busn\.fr$
 RewriteRule ^$ https://benoitbusnardo.live/ [R=301,L]

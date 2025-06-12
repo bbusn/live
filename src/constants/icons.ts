@@ -10,6 +10,7 @@ const ICONS = {
     DISCORD: 'simple-icons:discord',
     EMAIL: 'simple-icons:gmail',
     LINKEDIN: 'simple-icons:linkedin',
+    CURRICULUM_VITAE: 'academicons:cv',
 } as const;
 
 export default ICONS;
