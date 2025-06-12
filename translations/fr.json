@@ -3,7 +3,9 @@
         "dashboard": "Tableau de bord",
         "resources": "Ressources",
         "settings": "Réglages",
-        "live": "En direct"
+        "live": "En direct",
+        "chat": "Chat",
+        "tasks": "À faire pendant le live"
     },
     "banner": {
         "1": "Benoit",

@@ -61,6 +61,7 @@
     --breakpoint-xs: 480px;
     --breakpoint-2sm: 612px;
     --breakpoint-sm: 780px;
+    --breakpoint-big: 1100px;
     --breakpoint-2xl: 1400px;
 }
 
