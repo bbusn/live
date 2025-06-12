@@ -76,10 +76,12 @@ const Statistics = () => {
 
             if (timeDiff > 1000 * 60 * 60) {
                 user.updateViewers(Math.floor(Math.random() * 10) + 1);
-                toast({
-                    status: STATUS.INFO,
-                    message: t('statistics.last_connected_at.message.long'),
-                });
+                setTimeout(() => {
+                    toast({
+                        status: STATUS.INFO,
+                        message: t('statistics.last_connected_at.message.long'),
+                    });
+                }, 3500);
                 setTimeout(() => {
                     localStorage.clear();
                     window.location.reload();
