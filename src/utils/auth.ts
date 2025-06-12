@@ -1,4 +1,3 @@
-// === Constants ===
 export const AUTH_STATUS = {
     AUTH: crypto.randomUUID().slice(0, 10),
     LOADING: crypto.randomUUID().slice(0, 10),

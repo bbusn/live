@@ -1,8 +1,8 @@
-export const STATUS = {
+const STATUS = {
     SUCCESS: 'success',
     ACHIEVEMENT: 'achievement',
     ERROR: 'error',
     INFO: 'info',
 } as const;
 
-export type StatusType = (typeof STATUS)[keyof typeof STATUS];
+export default STATUS;

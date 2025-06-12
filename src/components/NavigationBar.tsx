@@ -5,8 +5,8 @@ import Banner from "./Banner";
 import { Icon } from "@iconify/react";
 import ICONS from "../constants/icons";
 import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
-import { playSound } from "../utils/sound";
+import useAuth from "../hooks/useAuth";
+import playSound from "../utils/playSound";
 
 const NavigationBar = () => {
     const { t } = useTranslation();

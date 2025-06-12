@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import { Icon } from "@iconify/react";
 import ICONS from "../constants/icons";
 
-interface LoadingProps {
+type LoadingProps = {
     progress: number;
     error: boolean;
 }

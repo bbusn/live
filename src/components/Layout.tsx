@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../hooks/useAuth';
 import NavigationBar from './NavigationBar';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 import { AUTH_STATUS } from '../utils/auth';
-import { User } from '../objects/User';
+import User from '../objects/User';
 import ROUTES from '../constants/routes';
 import Statistics from './Statistics';
 import { useTranslation } from 'react-i18next';
 import Chat from './Chat';
 import Tasks from './Tasks';
-// import { useResetKey } from '../hooks/useResetKey';
 
 const Layout = () => {
     const { status } = useAuth();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    // const { resetKey } = useResetKey();
 
     useEffect(() => {
         if (status !== AUTH_STATUS.AUTH || !User.getInstance().username || User.getInstance().username.length < 1) {

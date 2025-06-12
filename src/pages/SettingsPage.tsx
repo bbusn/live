@@ -1,17 +1,17 @@
 import { useTranslation } from "react-i18next";
-import { useSettings } from "../hooks/useSettings";
-import { useAuth } from "../hooks/useAuth";
+import useSettings from "../hooks/useSettings";
+import useAuth from "../hooks/useAuth";
 import { ACHIEVEMENTS } from "../constants/achievements";
-import { User } from "../objects/User";
-import { useToasts } from "../hooks/useToasts";
-import { STATUS } from "../constants/status";
-import { playSound } from "../utils/sound";
+import User from "../objects/User";
+import useToasts from "../hooks/useToasts";
+import STATUS from "../constants/status";
+import playSound from "../utils/playSound";
 import LanguageSelector from "../components/LangageSelector";
 import { useRef, useState } from "react";
 
 const SettingsPage = () => {
     const { settings, setSettings } = useSettings();
-    const [clicks, setClicks] = useState<number>(1);
+    const [clicks, setClicks] = useState<number>(User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 20 : 1);
     const quitRef = useRef<HTMLButtonElement>(null);
     const { t } = useTranslation();
     const { assets } = useAuth();
@@ -71,9 +71,6 @@ const SettingsPage = () => {
             message: t('settings.quit.message.' + clicks),
         });
 
-        if (quitRef.current) {
-            quitRef.current.remove();
-        }
 
         setTimeout(async () => {
             if (!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT)) {
@@ -91,9 +88,11 @@ const SettingsPage = () => {
     return (
         <div className={`sm:mt-20 mt-8 sm:mb-0 mb-20 transition-all duration-300 min-h-[300px] px-4 h-max w-full flex flex-col gap-8 justify-start items-center max-w-[95%] sm:w-2xl sm:max-w-full`}>
             <div className="flex flex-row justify-center items-center gap-8 flex-wrap w-full">
-                <button ref={quitRef} onClick={() => handleQuit()} className="active:scale-95 cursor-pointer max-w-[250px] rounded-md w-full transition-all duration-75 hover:duration-200 hover:transition-all active:duration-75 active:transition-all py-2.5 px-4 bg-[#d84a4c] text-black font-semibold hover:brightness-75">
-                    {t('settings.quit.button')}
-                </button>
+                {clicks <= 19 && (
+                    <button ref={quitRef} onClick={() => handleQuit()} className="active:scale-95 cursor-pointer max-w-[250px] rounded-md w-full transition-all duration-75 hover:duration-200 hover:transition-all active:duration-75 active:transition-all py-2.5 px-4 bg-[#d84a4c] text-black font-semibold hover:brightness-75">
+                        {t('settings.quit.button')}
+                    </button>
+                )}
                 <button onClick={() => {
                     playSound(assets?.sounds.click)
                     localStorage.clear();

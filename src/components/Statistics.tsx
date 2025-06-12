@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { User } from "../objects/User";
+import User from "../objects/User";
 import { useTranslation } from "react-i18next";
-import formatTimeDiff from "../utils/date";
+import formatTimeDiff from "../utils/formatTimeDiff";
 import { ACHIEVEMENTS, ACHIEVEMENTS_TIME } from "../constants/achievements";
-import { STATUS } from "../constants/status";
-import { useToasts } from "../hooks/useToasts";
+import STATUS from "../constants/status";
+import useToasts from "../hooks/useToasts";
 
 const Statistics = () => {
     const user = User.getInstance();
@@ -87,7 +87,7 @@ const Statistics = () => {
             }
 
             user.updateLastConnectedAt(new Date());
-        }, 45000);
+        }, 5000);
 
         const viewersInterval = setInterval(() => {
             const variation = Math.floor(Math.random() * 7) - 3;

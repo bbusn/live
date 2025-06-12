@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
-import { useToasts } from "../hooks/useToasts";
-import { User } from "../objects/User";
+import User from "../objects/User";
 import { ACHIEVEMENTS } from "../constants/achievements";
-import { STATUS } from "../constants/status";
-import { playSound } from "../utils/sound";
-import { useAuth } from "../hooks/useAuth";
+import STATUS from "../constants/status";
+import playSound from "../utils/playSound";
+import useToasts from "../hooks/useToasts";
+import useAuth from "../hooks/useAuth";
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation();

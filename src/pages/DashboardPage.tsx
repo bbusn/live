@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../constants/routes";
-import { useToasts } from "../hooks/useToasts";
-import { STATUS } from "../constants/status";
+import useToasts from "../hooks/useToasts";
+import STATUS from "../constants/status";
 import { useTranslation } from "react-i18next";
-import Project, { ProjectType } from "../components/Project";
+import Project from "../components/Project";
+import ProjectType from "../types/Project";
 
 const DashboardPage = () => {
     const navigate = useNavigate();

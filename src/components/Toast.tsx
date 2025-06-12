@@ -1,88 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { STATUS, StatusType } from "../constants/status";
-import toast from '../assets/images/toast.png'
-import { useAuth } from "../hooks/useAuth";
-import { playSound } from "../utils/sound";
+import STATUS from "../constants/status";
+import useAuth from "../hooks/useAuth";
+import playSound from "../utils/playSound";
 import { useTranslation } from "react-i18next";
+import User from "../objects/User";
+import { ACHIEVEMENTS } from "../constants/achievements";
+import ToastType from "../types/Toast";
+import Confetti from "./Confetti";
 
-export type ToastProps = {
-    id: number;
-    isLast?: boolean;
-    status: StatusType;
-    message: string;
-    achievement?: string;
-    donationsAmount?: number;
-    onDone?: () => void;
-};
 
-const Confetti = () => {
-    const [particles, setParticles] = useState<Array<{
-        id: number;
-        x: number;
-        y: number;
-        vx: number;
-        vy: number;
-        color: string;
-        rotation: number;
-        rotationSpeed: number;
-    }>>([]);
-
-    useEffect(() => {
-        const newParticles = Array.from({ length: 50 }, (_, i) => ({
-            id: i,
-            x: Math.random() * 100,
-            y: -10,
-            vx: (Math.random() - 0.5) * 2,
-            vy: Math.random() * 3 + 2,
-            color: '#d4c0fd',
-            rotation: Math.random() * 360,
-            rotationSpeed: (Math.random() - 0.5) * 10
-        }));
-        setParticles(newParticles);
-
-        const interval = setInterval(() => {
-            setParticles(prev =>
-                prev.map(particle => ({
-                    ...particle,
-                    x: particle.x + particle.vx,
-                    y: particle.y + particle.vy,
-                    rotation: particle.rotation + particle.rotationSpeed,
-                    vy: particle.vy + 0.1
-                })).filter(particle => particle.y < 200)
-            );
-        }, 16);
-
-        const timeout = setTimeout(() => {
-            setParticles([]);
-            clearInterval(interval);
-        }, 6000);
-
-        return () => {
-            clearInterval(interval);
-            clearTimeout(timeout);
-        };
-    }, []);
-
-    return (
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-            {particles.map(particle => (
-                <div
-                    key={particle.id}
-                    className="fixed w-2 h-2 rounded-sm"
-                    style={{
-                        left: `${particle.x}%`,
-                        top: `${particle.y}%`,
-                        backgroundColor: particle.color,
-                        transform: `rotate(${particle.rotation}deg)`,
-                        transition: 'none'
-                    }}
-                />
-            ))}
-        </div>
-    );
-};
-
-export function Toast({ isLast, message, onDone, status, donationsAmount }: ToastProps) {
+const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) => {
     const [visible, setVisible] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -139,7 +66,7 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
         if (isLast) {
             timer = setTimeout(() => {
                 document.querySelector('.important-message')?.classList.add('opacity-0');
-            }, 2500);
+            }, 3000);
         }
 
         return () => {
@@ -153,14 +80,14 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
         <div
             onMouseEnter={pauseTimer}
             onMouseLeave={resumeTimer}
-            className={`cursor-pointer hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? ' bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
+            className={`cursor-pointer ${!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 'pointer-events-none' : 'pointer-events-auto'} hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? ' bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
     ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
         >
             {showConfetti && <Confetti />}
 
             {(isLast) && (
                 <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[60%]'} right-[-5%] z-30`}>
-                    <img src={toast} alt="Toast Icon" className="w-14" />
+                    <img src={assets?.images?.toast.src} alt="Toast Icon" className="w-14" />
                 </div>
             )}
             {status == STATUS.ACHIEVEMENT && (
@@ -182,7 +109,7 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
                 </div>
             ) : (
                 <p className="text-sm font-primary text-gray-200 whitespace-pre-wrap break-words">
-                    {message.split("**").map((part, index) => {
+                    {message.split("**").map((part: string, index: number) => {
                         const isHighlighted = index % 2 === 1;
                         const hasPercent = part.includes("%");
                         const cleaned = part.replace(/%/g, "");
@@ -206,3 +133,5 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
         </div>
     );
 }
+
+export default Toast;

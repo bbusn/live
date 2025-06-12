@@ -1,19 +1,9 @@
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BASE_ITEM_NAME } from "../utils/auth";
+import SettingsType from "../types/Settings";
+import SettingsContext from "../contexts/SettingsContext";
 
-type SettingsType = {
-    showSkills: boolean;
-}
-
-export const SettingsContext = createContext<{
-    settings: SettingsType;
-    setSettings: (settings: SettingsType) => void;
-}>({
-    settings: { showSkills: false },
-    setSettings: () => { },
-});
-
-export const SettingsProvider = ({ children }: any) => {
+const SettingsProvider = ({ children }: any) => {
     const [settings, setSettings] = useState<SettingsType>({ showSkills: false });
 
     useEffect(() => {
@@ -34,8 +24,10 @@ export const SettingsProvider = ({ children }: any) => {
     }, [settings]);
 
     return (
-        <SettingsContext.Provider value={{ settings, setSettings }}>
+        <SettingsContext value={{ settings, setSettings }}>
             {children}
-        </SettingsContext.Provider>
+        </SettingsContext>
     );
 };
+
+export default SettingsProvider;

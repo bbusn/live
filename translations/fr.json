@@ -18,7 +18,7 @@
     "preload": {
         "error": {
             "message": "Une erreur est survenue lors du chargement des ressources.",
-            "description": "Impossible de télécharger les ressources nécessaires. Si le problème persiste, n'hésitez pas à me contacter.",
+            "description": "Impossible de télécharger les ressources nécessaires. Assurez-vous d'avoir accès à internet avec une connexion stable.",
             "retry": "Réessayer"
         }
     },
@@ -89,15 +89,15 @@
             "button": "Quitter",
             "message": {
                 "1": "Je suis triste de te voir partir. Reclique pour confirmer que tu veux vraiment quitter le live.",
-                "2": "Ah ? Tu as dû rater le bouton ! Réessaie en faisant attention.",
+                "2": "Tu as dû rater le bouton ! Réessaie en faisant attention.",
                 "3": "C'est bizarre, le bouton doit être capricieux aujourd'hui !",
                 "4": "Le bouton était juste là, tu peux le faire !",
                 "5": "Es-tu sûr d'avoir compris qu'il fallait cliquer sur le bouton ?",
-                "6": "Ce n'est pourtant pas compliqué… il suffit de cliquer sur le bouton !",
-                "7": "Bon, toutes les bonnes choses ont une fin. J'ai réactivé le comportement normal du bouton rien que pour pour toi !",
+                "6": "Tu n'as pas l'air de vouloir partir, tu as cliqué à côté !",
+                "7": "Ne t'inquiète pas, je vais bloquer le bouton rien que pour pour toi !",
                 "8": "Tu ne fais vraiment pas d'effort, je t'ai vu cliquer à côté !",
                 "9": "Quelle patience ! C'est ton 9ème clic...",
-                "10": "Tu as un strabisme, c'est évident !",
+                "10": "Tu crois vraiment que je vais te laisser partir comme ça ?",
                 "11": "11 clics déjà ? Là, c'est de l'obstination !",
                 "12": "Qu'est-ce qui te pousse à rester ici ? Le bouton est juste là !",
                 "13": "Tu peux quitter le live à tout moment. On est dans un pays libre après tout !",
@@ -105,7 +105,7 @@
                 "15": "Tu as cliqué 15 fois, on dirait que tu t'amuses plus que prévu !",
                 "16": "Ça commence à devenir ridicule... Plus tu cliques, plus tu t'humilies !",
                 "17": "17 fois que tu échoues, tu bats des records de ténacité !",
-                "18": "Je n'ai pas prévu de remettre le boutton en place. Tu peux cliquer autant que tu veux !",
+                "18": "Je n'ai pas prévu de remettre le bouton en place. Tu peux cliquer autant que tu veux !",
                 "19": "Ok, tu as gagné, je l'enlève ! Débrouille-toi pour partir maintenant !"
             }
         }

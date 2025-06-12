@@ -1,27 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { ASSET_TYPES } from "../constants/assets";
 import { Tool } from "./Tool";
 import { useTranslation } from "react-i18next";
 import ICONS from "../constants/icons";
 import { Icon } from "@iconify/react";
-import { useSettings } from "../hooks/useSettings";
-import { playSound } from "../utils/sound";
-
-export type ProjectType = {
-    id: string;
-    name: string;
-    type: string;
-    tools: string[];
-    skills: {
-        [key: string]: {
-            title: string;
-            description: string;
-        };
-    };
-    description: string;
-    url: string | undefined;
-};
+import useSettings from "../hooks/useSettings";
+import playSound from "../utils/playSound";
+import ProjectType from "../types/Project";
 
 const Project = (project: ProjectType) => {
     const { settings } = useSettings();

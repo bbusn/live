@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { AUTH_STATUS } from "../utils/auth";
 import ROUTES from "../constants/routes";
 

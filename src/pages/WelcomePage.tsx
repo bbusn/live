@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 import Banner from "../components/Banner";
-import { useToasts } from "../hooks/useToasts";
+import useToasts from "../hooks/useToasts";
 import { useEffect, useRef, useState } from "react";
-import { User } from "../objects/User";
-import { useAuth } from "../hooks/useAuth";
+import User from "../objects/User";
+import useAuth from "../hooks/useAuth";
 import { AUTH_STATUS } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../constants/routes";
-import { STATUS } from "../constants/status";
-import { playSound } from "../utils/sound";
+import STATUS from "../constants/status";
+import playSound from "../utils/playSound";
 
 const WelcomePage = () => {
     const { t } = useTranslation();
@@ -72,8 +72,6 @@ const WelcomePage = () => {
         }, 2000);
 
         navigate(ROUTES.DASHBOARD);
-
-        playSound(assets?.sounds.begin);
 
         return;
     }

@@ -1,40 +1,23 @@
-import {
-    createContext, useState, useEffect, ReactNode
-} from "react";
-import { User } from '../objects/User';
+import { useState, useEffect, ReactNode } from "react";
+import User from '../objects/User';
 import { AUTH_LOADING_TIMEOUT, AUTH_STATUS, AuthStatusType, AUTH_TOKEN_ITEM_NAME } from "../utils/auth";
 import Loading from "../components/Loading";
 import { preloadAudio, preloadImage } from "../utils/preload";
-import { useToasts } from "../hooks/useToasts";
-import { STATUS } from "../constants/status";
+import useToasts from "../hooks/useToasts";
+import STATUS from "../constants/status";
 import { useTranslation } from "react-i18next";
 import { decrypt } from "../utils/encrypt";
 import { ASSET_TYPES } from "../constants/assets";
+import playSound from "../utils/playSound";
+import AssetsType from "../types/Assets";
+import AuthContext from "../contexts/AuthContext";
 
-type Assets = {
-    images: Record<string, HTMLImageElement>;
-    sounds: Record<string, HTMLAudioElement>;
-};
-
-export const AuthContext = createContext<{
-    status: AuthStatusType;
-    setStatus: (status: AuthStatusType) => void;
-    connect: () => Promise<void>;
-    error: boolean;
-    assets: Assets | null;
-}>({
-    status: AUTH_STATUS.LOADING,
-    setStatus: () => { },
-    connect: async () => { },
-    error: false,
-    assets: null,
-});
-
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [status, setStatus] = useState<AuthStatusType>(AUTH_STATUS.LOADING);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [assets, setAssets] = useState<Assets | null>(null);
+    const [assets, setAssets] = useState<AssetsType | null>(null);
+    const [firstClick, setFirstClick] = useState(false);
     const [progress, setProgress] = useState(0);
     const { toast } = useToasts();
     const { t } = useTranslation();
@@ -61,6 +44,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const playMusic = () => {
+        if (firstClick) return;
+
+        playSound(assets?.sounds.music, true);
+        setFirstClick(true);
+    }
+
     useEffect(() => {
         if (!loading) return;
 
@@ -78,8 +68,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             if (progressCount >= steps) clearInterval(timer);
         }, interval);
 
-        return () => clearInterval(timer);
-    }, [loading]);
+
+        return () => {
+            clearInterval(timer);
+        };
+    }, [loading, firstClick]);
+
+    useEffect(() => {
+        if (firstClick || !assets) return;
+
+        const handleFirstClick = () => {
+            playMusic();
+            window.removeEventListener("click", handleFirstClick);
+        };
+
+        window.addEventListener("click", handleFirstClick);
+
+        return () => {
+            window.removeEventListener("click", handleFirstClick);
+        };
+    }, [firstClick, assets]);
 
     useEffect(() => {
         const loadAll = async () => {
@@ -90,6 +98,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const imageSources: {
                 [key: string]: string;
             } = {
+                toast: "/images/toast.png",
                 [`1_${ASSET_TYPES.POSTER}`]: "/images/posters/1.png",
                 [`1_${ASSET_TYPES.LOGO}`]: "/images/logos/1.png",
                 [`1_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/1/1.png",
@@ -122,11 +131,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 [`6_${ASSET_TYPES.SCREENSHOT}_3`]: "/images/screenshots/6/3.png",
             };
             const soundSources = {
-                begin: "/sounds/begin.mp3",
                 toast: "/sounds/toast.mp3",
                 modal: "/sounds/modal.mp3",
                 click: "/sounds/click.mp3",
                 achievement: "/sounds/achievement.mp3",
+                music: "/sounds/music.mp3",
             };
 
             const imagePromises = Object.entries(imageSources).map(([name, src]) =>
@@ -171,8 +180,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ status, setStatus, connect, assets, error }}>
+        <AuthContext value={{ status, setStatus, connect, assets, error }}>
             {loading ? <Loading error={error} progress={progress} /> : children}
-        </AuthContext.Provider>
+        </AuthContext>
     );
 };
+
+export default AuthProvider;

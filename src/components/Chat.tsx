@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { playSound } from "../utils/sound";
-import { useAuth } from "../hooks/useAuth";
+import playSound from "../utils/playSound";
+import useAuth from "../hooks/useAuth";
 
 const Chat = () => {
     const { t } = useTranslation();
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const [isPressingHeader, setIsPressingHeader] = useState(false);
     const chatContainerRef = useRef<HTMLDivElement>(null);
     const { assets } = useAuth();

@@ -1,17 +1,8 @@
 import { encrypt } from '../utils/encrypt';
 import { AUTH_TOKEN_ITEM_NAME } from '../utils/auth';
+import UserType from '../types/User';
 
-export interface UserType {
-    username: string;
-    started_at: Date;
-    last_connected_at: Date;
-    viewers: number;
-    donations: number;
-    achievements: string[];
-    tasks: string[];
-}
-
-export class User {
+class User {
     private static _instance: User;
 
     private _username: string = '';
@@ -129,3 +120,5 @@ export class User {
         localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
     }
 }
+
+export default User;
