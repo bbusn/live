@@ -14,6 +14,8 @@ import { isMusicPlaying, playMusic, stopMusic } from "../utils/musicManager";
 const SettingsPage = () => {
     const { settings, setSettings } = useSettings();
     const [clicks, setClicks] = useState<number>(User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 20 : 1);
+    const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const [isFullscreen, setIsFullscreen] = useState<boolean>(document.fullscreenElement !== null);
     const quitRef = useRef<HTMLButtonElement>(null);
     const { t } = useTranslation();
     const { assets } = useAuth();
@@ -33,6 +35,34 @@ const SettingsPage = () => {
         }
         setSettings({ ...settings, showSkills: !settings.showSkills });
     };
+
+    const toggleFullscreen = async () => {
+        if (isIos) return;
+
+        playSound(assets?.sounds.click, settings);
+        if (isFullscreen) {
+            if (document.exitFullscreen) {
+                await document.exitFullscreen();
+            } else if ((document as any).webkitExitFullscreen) {
+                await (document as any).webkitExitFullscreen();
+            } else if ((document as any).mozCancelFullScreen) {
+                await (document as any).mozCancelFullScreen();
+            } else if ((document as any).msExitFullscreen) {
+                await (document as any).msExitFullscreen();
+            }
+        } else {
+            if (document.documentElement.requestFullscreen) {
+                await document.documentElement.requestFullscreen();
+            } else if ((document as any).documentElement.webkitRequestFullscreen) {
+                await (document as any).documentElement.webkitRequestFullscreen();
+            } else if ((document as any).documentElement.mozRequestFullScreen) {
+                await (document as any).documentElement.mozRequestFullScreen();
+            } else if ((document as any).documentElement.msRequestFullscreen) {
+                await (document as any).documentElement.msRequestFullscreen();
+            }
+        }
+        setIsFullscreen(!isFullscreen);
+    }
 
 
     const toggleSettings = async (key: keyof typeof settings) => {
@@ -131,6 +161,28 @@ const SettingsPage = () => {
             </div>
             <LanguageSelector />
             <div className="mt-8 flex flex-row flex-wrap items-start justify-center gap-8">
+                {!isIos && (
+                    <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
+                        <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_fullscreen')} size={30} /></span>
+                        <div
+                            onClick={() => toggleFullscreen()}
+                            className={`
+              relative w-20 h-[30px] rounded-lg flex justify-center items-center cursor-pointer transition-all duration-300 active:scale-90 select-none
+              ${isFullscreen
+                                    ? 'bg-secondary-300'
+                                    : 'bg-gray-300'
+                                }
+            `}
+                        >
+                            <div
+                                className={`
+                absolute -translate-x-1/2 top-1/2 -translate-y-1/2 w-[27.5%] h-[70%] bg-black/75 rounded-md shadow-md transition-all duration-300
+                ${isFullscreen ? 'left-[80%]' : 'left-[20%]'}
+              `}
+                            />
+                        </div>
+                    </label>
+                )}
                 <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
                     <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_music')} size={30} /></span>
                     <div

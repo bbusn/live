@@ -75,8 +75,9 @@
     "settings": {
         "title": "Réglages",
         "show_skills": "Afficher les compétences relatives à mon diplôme",
-        "enable_music": "Activer la musique",
-        "enable_sound_effects": "Activer les sons",
+        "enable_music": "Musique",
+        "enable_sound_effects": "Effets sonores",
+        "enable_fullscreen": "Plein écran",
         "restart": {
             "button": "Redémarrer",
             "message": {
