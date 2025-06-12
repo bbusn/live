@@ -24,9 +24,9 @@ const SettingsProvider = ({ children }: any) => {
     }, [settings]);
 
     return (
-        <SettingsContext value={{ settings, setSettings }}>
+        <SettingsContext.Provider value={{ settings, setSettings }}>
             {children}
-        </SettingsContext>
+        </SettingsContext.Provider>
     );
 };
 

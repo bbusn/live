@@ -180,9 +180,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <AuthContext value={{ status, setStatus, connect, assets, error }}>
+        <AuthContext.Provider value={{ status, setStatus, connect, assets, error }}>
             {loading ? <Loading error={error} progress={progress} /> : children}
-        </AuthContext>
+        </AuthContext.Provider>
     );
 };
 
