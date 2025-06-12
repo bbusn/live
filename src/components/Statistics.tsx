@@ -56,7 +56,20 @@ const Statistics = () => {
             const now = new Date();
 
             const timeDiff = Math.abs(now.getTime() - user.last_connected_at.getTime());
-            if (timeDiff > 1000 * 60 * 5) {
+
+            if (timeDiff > 1000 * 60 * 60) {
+                user.updateViewers(Math.floor(Math.random() * 10) + 1);
+                setTimeout(() => {
+                    toast({
+                        status: STATUS.INFO,
+                        message: t('statistics.last_connected_at.message.long'),
+                    });
+                }, 3500);
+                setTimeout(() => {
+                    localStorage.clear();
+                    window.location.reload();
+                }, 3500);
+            } else if (timeDiff > 1000 * 60 * 5) {
                 const viewers = user.viewers;
                 if (viewers > 1) {
                     const newViewers = viewers - Math.floor((Math.random() * viewers) + 1);
@@ -72,20 +85,6 @@ const Statistics = () => {
                         message: t('statistics.last_connected_at.message.unique'),
                     });
                 }
-            }
-
-            if (timeDiff > 1000 * 60 * 60) {
-                user.updateViewers(Math.floor(Math.random() * 10) + 1);
-                setTimeout(() => {
-                    toast({
-                        status: STATUS.INFO,
-                        message: t('statistics.last_connected_at.message.long'),
-                    });
-                }, 3500);
-                setTimeout(() => {
-                    localStorage.clear();
-                    window.location.reload();
-                }, 3500);
             }
 
             user.updateLastConnectedAt(new Date());

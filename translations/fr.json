@@ -75,6 +75,8 @@
     "settings": {
         "title": "Réglages",
         "show_skills": "Afficher les compétences relatives à mon diplôme",
+        "enable_music": "Activer la musique",
+        "enable_sound_effects": "Activer les sons",
         "restart": {
             "button": "Redémarrer",
             "message": {
@@ -413,7 +415,7 @@
             "id": "5",
             "name": "Curriculum Vitae",
             "description": "Mon **%CV**. Contient mes expériences, compétences et formations. À imprimer et à accrocher au mur !",
-            "url": "/public/CV_Benoit_BUSNARDO_FR_2025.pdf"
+            "url": "/CV_Benoit_BUSNARDO_FR_2025.pdf"
         }
     ]
 }
