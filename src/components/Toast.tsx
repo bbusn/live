@@ -7,6 +7,7 @@ import User from "../objects/User";
 import { ACHIEVEMENTS } from "../constants/achievements";
 import ToastType from "../types/Toast";
 import Confetti from "./Confetti";
+import useSettings from "../hooks/useSettings";
 
 
 const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) => {
@@ -18,15 +19,16 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
     const startTime = useRef(0);
     const paused = useRef(false);
     const { assets } = useAuth();
+    const { settings } = useSettings();
 
     useEffect(() => {
         setVisible(true);
 
         if (status == STATUS.ACHIEVEMENT) {
-            playSound(assets?.sounds.achievement);
+            playSound(assets?.sounds.achievement, settings);
             setShowConfetti(true);
         } else {
-            playSound(assets?.sounds.toast);
+            playSound(assets?.sounds.toast, settings);
         }
 
         startTimer();
@@ -66,7 +68,7 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
         if (isLast) {
             timer = setTimeout(() => {
                 document.querySelector('.important-message')?.classList.add('opacity-0');
-            }, 3000);
+            }, 2500);
         }
 
         return () => {

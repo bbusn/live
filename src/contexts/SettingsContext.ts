@@ -5,7 +5,11 @@ const SettingsContext = createContext<{
     settings: SettingsType;
     setSettings: (settings: SettingsType) => void;
 }>({
-    settings: { showSkills: false },
+    settings: {
+        showSkills: true,
+        enableMusic: true,
+        enableSoundEffects: true,
+    },
     setSettings: () => {},
 });
 

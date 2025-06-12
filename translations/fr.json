@@ -1,7 +1,7 @@
 {
     "navigation": {
-        "dashboard": "Tableau de bord",
-        "resources": "Ressources",
+        "dashboard": "Mes réalisations",
+        "resources": "Mes liens",
         "settings": "Réglages",
         "live": "En direct",
         "chat": "Chat",
@@ -90,23 +90,18 @@
             "message": {
                 "1": "Je suis triste de te voir partir. Reclique pour confirmer que tu veux vraiment quitter le live.",
                 "2": "Tu as dû rater le bouton ! Réessaie en faisant attention.",
-                "3": "C'est bizarre, le bouton doit être capricieux aujourd'hui !",
-                "4": "Le bouton était juste là, tu peux le faire !",
-                "5": "Es-tu sûr d'avoir compris qu'il fallait cliquer sur le bouton ?",
-                "6": "Tu n'as pas l'air de vouloir partir, tu as cliqué à côté !",
-                "7": "Ne t'inquiète pas, je vais bloquer le bouton rien que pour pour toi !",
-                "8": "Tu ne fais vraiment pas d'effort, je t'ai vu cliquer à côté !",
-                "9": "Quelle patience ! C'est ton 9ème clic...",
-                "10": "Tu crois vraiment que je vais te laisser partir comme ça ?",
-                "11": "11 clics déjà ? Là, c'est de l'obstination !",
-                "12": "Qu'est-ce qui te pousse à rester ici ? Le bouton est juste là !",
-                "13": "Tu peux quitter le live à tout moment. On est dans un pays libre après tout !",
-                "14": "Finalement, pourquoi partir ? On est bien ici, non ?",
-                "15": "Tu as cliqué 15 fois, on dirait que tu t'amuses plus que prévu !",
-                "16": "Ça commence à devenir ridicule... Plus tu cliques, plus tu t'humilies !",
-                "17": "17 fois que tu échoues, tu bats des records de ténacité !",
-                "18": "Je n'ai pas prévu de remettre le bouton en place. Tu peux cliquer autant que tu veux !",
-                "19": "Ok, tu as gagné, je l'enlève ! Débrouille-toi pour partir maintenant !"
+                "3": "Es-tu sûr d'avoir compris où cliquer ?",
+                "4": "Tu n'as pas l'air de vouloir partir, tu vises à côté !",
+                "5": "Quelle patience ! C'est ton 5ème clic...",
+                "6": "Je ne pensais pas que ça serait aussi dûr pour toi !",
+                "7": "C'est ta 7ème tentative déjà ? Là, c'est de l'acharnement !",
+                "8": "Qu'est-ce qui te pousse à rester ici ? Le bouton est juste là !",
+                "9": "Tu peux quitter le live à tout moment. On est dans un pays libre après tout !",
+                "10": "Finalement, pourquoi partir ? On est bien ici, non ?",
+                "11": "Tu as cliqué 11 fois, on dirait que tu t'amuses plus que prévu !",
+                "12": "Ça commence à devenir ridicule... Plus tu cliques, plus tu t'humilies !",
+                "13": "13 fois que tu échoues, tu bats des records de ténacité !",
+                "14": "Ok, tu as gagné, je l'enlève ! Débrouille-toi pour partir maintenant !"
             }
         }
     },
@@ -384,6 +379,35 @@
                 }
             },
             "description": "Piège à moustiques connecté, développé dans le cadre d'un projet étudiant. Il permet de capturer les moustiques et de les compter via une application web. \n\nLe projet comprend un dispositif physique avec un **&microcontrôleur** et de multiples capteurs (fourche optique, température, CO2...) ainsi qu'une application web pour visualiser les données et les statistiques de capture. Le tout est conçu pour être accessible et facile à utiliser. Il communique via **&MQTT sur le réseau LoraWAN**."
+        }
+    ],
+    "resource": {
+        "see": "Accéder"
+    },
+    "resources": [
+        {
+            "id": "1",
+            "name": "Github",
+            "description": "Mon compte **%GitHub** où je partage quelques projets. Un vrai petit curieux pourrait même y découvir le code de ce portfolio !",
+            "url": "https://github.com/bbusn"
+        },
+        {
+            "id": "2",
+            "name": "LinkedIn",
+            "description": "Mon profil **%Linkedin**. Vous pouvez y trouver mon parcours et mes expériences professionnelles. Attention, chemise obligatoire !",
+            "url": "https://www.linkedin.com/in/benoit-busnardo/"
+        },
+        {
+            "id": "3",
+            "name": "Discord",
+            "description": "Mon compte **%Discord**. Plutôt pratique si vous souhaitez me contacter rapidement !",
+            "url": "https://discordapp.com/users/316978000895672332"
+        },
+        {
+            "id": "4",
+            "name": "Email",
+            "description": "Mon adresse email. Valeur sûre pour me contacter :  **%benoit.busnardo@gmail.com **",
+            "url": "mailto:benoit.busnardo@gmail.com"
         }
     ]
 }

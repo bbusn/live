@@ -24,14 +24,14 @@ const Project = (project: ProjectType) => {
     nameFirstPart = nameFirstPart.join(" ");
 
     const openModal = () => {
-        playSound(assets?.sounds.click);
+        playSound(assets?.sounds.click, settings);
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("hidden");
             modalContainerRef.current.classList.toggle("flex");
             setTimeout(() => {
                 modalContainerRef.current?.classList.toggle("opacity-100");
                 modalRef.current?.classList.toggle("scale-0");
-                playSound(assets?.sounds.modal);
+                playSound(assets?.sounds.modal, settings);
             }, 250);
         }
         window.addEventListener("keydown", escapeModal);
@@ -47,7 +47,7 @@ const Project = (project: ProjectType) => {
     };
 
     const closeModal = () => {
-        playSound(assets?.sounds.click);
+        playSound(assets?.sounds.click, settings);
         setFullscreenImage(null);
         if (modalContainerRef.current) {
             modalContainerRef.current.classList.toggle("opacity-100");
@@ -70,13 +70,13 @@ const Project = (project: ProjectType) => {
 
     const handleImageClick = (index: number) => {
         const src = images[index - 1];
-        playSound(assets?.sounds.click);
+        playSound(assets?.sounds.click, settings);
         setCurrentImageIndex(index - 1);
         setFullscreenImage(src ?? '');
     };
 
     const closeFullscreenImage = () => {
-        playSound(assets?.sounds.click);
+        playSound(assets?.sounds.click, settings);
         setFullscreenImage(null);
         setCurrentImageIndex(null);
     };
@@ -116,7 +116,7 @@ const Project = (project: ProjectType) => {
                     src={
                         assets?.images[`${project.id}_${ASSET_TYPES.POSTER}`]?.src ?? ""
                     }
-                    className="w-32 xl:w-36"
+                    className="w-24 xl:w-28"
                 />
             </div>
 
@@ -130,7 +130,7 @@ const Project = (project: ProjectType) => {
                         toggleModal();
                     }
                 }}
-                className="hidden flex-col justify-center items-center opacity-0 transitions fixed top-1/2 -translate-1/2 left-1/2 w-full h-full bg-black/60 z-40"
+                className="hidden flex-col justify-center items-center opacity-0 transitions fixed top-1/2 -translate-1/2 left-1/2 w-full h-full bg-black/75 z-40"
             >
                 <div ref={modalRef} className="-mt-10 scale-0 relative h-max w-max transitions flex flex-col flex-wrap items-center justify-start">
                     <div
@@ -239,7 +239,7 @@ const Project = (project: ProjectType) => {
                         <button
                             className="top-[102.5%] flex justify-center items-center gap-4 transitions absolute button-primary w-full"
                             onClick={() => {
-                                playSound(assets?.sounds.click);
+                                playSound(assets?.sounds.click, settings);
                                 window.open(project.url, "_blank");
                             }}
                         >
@@ -254,7 +254,7 @@ const Project = (project: ProjectType) => {
             {fullscreenImage && (
                 <div
                     onClick={closeFullscreenImage}
-                    className="transitions fixed z-50 top-0 left-0 w-screen h-screen bg-black/80 flex justify-center items-center cursor-zoom-out"
+                    className="transitions fixed z-50 top-0 left-0 w-screen h-screen bg-black/75 flex justify-center items-center cursor-zoom-out"
                 >
                     <img
                         src={fullscreenImage}

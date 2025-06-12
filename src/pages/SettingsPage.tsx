@@ -8,6 +8,8 @@ import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
 import LanguageSelector from "../components/LangageSelector";
 import { useRef, useState } from "react";
+import MaxSize from "../components/MaxSize";
+import { isMusicPlaying, playMusic, stopMusic } from "../utils/musicManager";
 
 const SettingsPage = () => {
     const { settings, setSettings } = useSettings();
@@ -18,7 +20,7 @@ const SettingsPage = () => {
     const { toast } = useToasts();
 
     const toggleShowSkills = async () => {
-        playSound(assets?.sounds.click)
+        playSound(assets?.sounds.click, settings);
         if (!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_SHOW_SKILLS_FIRST_CLICK)) {
             const donationsAmount = Math.floor(Math.random() * 2) + 1;
             toast({
@@ -30,15 +32,34 @@ const SettingsPage = () => {
             await User.getInstance().addAchievement(ACHIEVEMENTS.SETTINGS_SHOW_SKILLS_FIRST_CLICK);
         }
         setSettings({ ...settings, showSkills: !settings.showSkills });
+    };
 
+
+    const toggleSettings = async (key: keyof typeof settings) => {
+        playSound(assets?.sounds.click, settings);
+
+        if (key === 'enableMusic') {
+            if (!settings.enableMusic) {
+                if (!isMusicPlaying()) {
+                    playMusic(assets?.sounds?.music.src);
+                }
+            } else {
+                stopMusic();
+            }
+        }
+
+        setSettings({
+            ...settings,
+            [key]: !settings[key],
+        });
     };
 
     const handleQuit = () => {
         setClicks(clicks + 1);
-        playSound(assets?.sounds.click)
+        playSound(assets?.sounds.click, settings);
 
 
-        if (clicks <= 18) {
+        if (clicks <= 13) {
             toast({
                 status: STATUS.INFO,
                 message: t('settings.quit.message.' + clicks),
@@ -85,16 +106,17 @@ const SettingsPage = () => {
             }
         }, 1500);
     }
+
     return (
-        <div className={`sm:mt-20 mt-8 sm:mb-0 mb-20 transition-all duration-300 min-h-[300px] px-4 h-max w-full flex flex-col gap-8 justify-start items-center max-w-[95%] sm:w-2xl sm:max-w-full`}>
+        <div className={`sm:mt-20 mt-8 lg:mb-0 mb-64 transition-all duration-300 min-h-[300px] px-4 h-max flex flex-col gap-8 justify-start items-center w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl`}>
             <div className="flex flex-row justify-center items-center gap-8 flex-wrap w-full">
-                {clicks <= 19 && (
+                {clicks <= 14 && (
                     <button ref={quitRef} onClick={() => handleQuit()} className="active:scale-95 cursor-pointer max-w-[250px] rounded-md w-full transition-all duration-75 hover:duration-200 hover:transition-all active:duration-75 active:transition-all py-2.5 px-4 bg-[#d84a4c] text-black font-semibold hover:brightness-75">
                         {t('settings.quit.button')}
                     </button>
                 )}
                 <button onClick={() => {
-                    playSound(assets?.sounds.click)
+                    playSound(assets?.sounds.click, settings);
                     localStorage.clear();
                     toast({
                         status: STATUS.SUCCESS,
@@ -108,27 +130,68 @@ const SettingsPage = () => {
                 </button>
             </div>
             <LanguageSelector />
-
-            <label className="mt-8 hover:opacity-100 transitions opacity-60 flex flex-col items-center gap-4 select-none cursor-pointer">
-                <span className="text-center">{t('settings.show_skills')}</span>
-                <div
-                    onClick={toggleShowSkills}
-                    className={`
+            <div className="mt-8 flex flex-row flex-wrap items-start justify-center gap-8">
+                <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
+                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_music')} size={30} /></span>
+                    <div
+                        onClick={() => toggleSettings('enableMusic')}
+                        className={`
+              relative w-20 h-[30px] rounded-lg flex justify-center items-center cursor-pointer transition-all duration-300 active:scale-90 select-none
+              ${settings.enableMusic
+                                ? 'bg-secondary-300'
+                                : 'bg-gray-300'
+                            }
+            `}
+                    >
+                        <div
+                            className={`
+                absolute -translate-x-1/2 top-1/2 -translate-y-1/2 w-[27.5%] h-[70%] bg-black/75 rounded-md shadow-md transition-all duration-300
+                ${settings.enableMusic ? 'left-[80%]' : 'left-[20%]'}
+              `}
+                        />
+                    </div>
+                </label>
+                <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
+                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_sound_effects')} size={30} /></span>
+                    <div
+                        onClick={() => toggleSettings('enableSoundEffects')}
+                        className={`
+              relative w-20 h-[30px] rounded-lg flex justify-center items-center cursor-pointer transition-all duration-300 active:scale-90 select-none
+              ${settings.enableSoundEffects
+                                ? 'bg-secondary-300'
+                                : 'bg-gray-300'
+                            }
+            `}
+                    >
+                        <div
+                            className={`
+                absolute -translate-x-1/2 top-1/2 -translate-y-1/2 w-[27.5%] h-[70%] bg-black/75 rounded-md shadow-md transition-all duration-300
+                ${settings.enableSoundEffects ? 'left-[80%]' : 'left-[20%]'}
+              `}
+                        />
+                    </div>
+                </label>
+                <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
+                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.show_skills')} size={30} /></span>
+                    <div
+                        onClick={toggleShowSkills}
+                        className={`
               relative w-20 h-[30px] rounded-lg flex justify-center items-center cursor-pointer transition-all duration-300 active:scale-90 select-none
               ${settings.showSkills
-                            ? 'bg-secondary-300'
-                            : 'bg-gray-300'
-                        }
+                                ? 'bg-secondary-300'
+                                : 'bg-gray-300'
+                            }
             `}
-                >
-                    <div
-                        className={`
-                absolute -translate-x-1/2 top-1/2 -translate-y-1/2 w-[27.5%] h-[70%] bg-black/70 rounded-md shadow-md transition-all duration-300
+                    >
+                        <div
+                            className={`
+                absolute -translate-x-1/2 top-1/2 -translate-y-1/2 w-[27.5%] h-[70%] bg-black/75 rounded-md shadow-md transition-all duration-300
                 ${settings.showSkills ? 'left-[80%]' : 'left-[20%]'}
               `}
-                    />
-                </div>
-            </label>
+                        />
+                    </div>
+                </label>
+            </div>
         </div>
     );
 };

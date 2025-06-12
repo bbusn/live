@@ -26,7 +26,7 @@ const ToastsProvider = ({ children }: { children: React.ReactNode }) => {
         <ToastsContext.Provider value={{ toasts, toast }}>
             {children}
             <Toasts toasts={toasts} onRemove={removeToast} />
-            <div ref={importantMessageRef} className="transition-all duration-1000 important-message pointer-events-none opacity-0 absolute top-1/2 -translate-1/2 left-1/2 w-full h-full bg-black/80 z-40"></div>
+            <div ref={importantMessageRef} className="transition-all duration-1000 important-message pointer-events-none opacity-0 absolute top-1/2 -translate-1/2 left-1/2 w-full h-full bg-black/75 z-40"></div>
         </ToastsContext.Provider>
     );
 }

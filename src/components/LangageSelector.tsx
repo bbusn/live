@@ -7,12 +7,14 @@ import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
 import useToasts from "../hooks/useToasts";
 import useAuth from "../hooks/useAuth";
+import useSettings from "../hooks/useSettings";
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation();
     const [selected, setSelected] = useState(i18n.language.split('-')[0] || navigator.language.split('-')[0]);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const { toast } = useToasts();
+    const { settings } = useSettings();
     const { assets } = useAuth();
     const listRef = useRef<HTMLUListElement>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -78,7 +80,7 @@ export default function LanguageSelector() {
     return (
         <div className={`relative w-full max-w-[250px] flex justify-center items-center`}>
             <button ref={buttonRef} className={`flex cursor-pointer h-10 justify-center w-full px-2 py-0.5 gap-3 bg-gray-200 font-semibold text-black sm:rounded-sm hover:bg-gray-400 hover:text-black mb-1 items-center transitions active:scale-95 focus:outline-black`} onClick={() => {
-                playSound(assets?.sounds.click)
+                playSound(assets?.sounds.click, settings);
                 toggleList();
             }}>
                 <Icon icon={languages.find((lang) => lang.value === selected)?.icon || 'twemoji:flag-france'} className={`object-cover h-6 w-8`} />
@@ -93,7 +95,7 @@ export default function LanguageSelector() {
                             key={lang.value}
                             data-lang={lang.value}
                             onClick={() => {
-                                playSound(assets?.sounds.click)
+                                playSound(assets?.sounds.click, settings);
                                 toggleList();
                                 setSelected(lang.value);
                             }}

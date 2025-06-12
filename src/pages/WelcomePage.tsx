@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../constants/routes";
 import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
+import useSettings from "../hooks/useSettings";
 
 const WelcomePage = () => {
     const { t } = useTranslation();
@@ -17,10 +18,11 @@ const WelcomePage = () => {
     const [defaultUsername, setDefaultUsername] = useState<string>('');
     const ref = useRef<HTMLInputElement | null>(null);
     const { status, setStatus, assets } = useAuth();
+    const { settings } = useSettings();
     const navigate = useNavigate();
 
     const start = async () => {
-        playSound(assets?.sounds.click)
+        playSound(assets?.sounds.click, settings);
         if (!ref.current) return;
 
         let username = ref.current.value.trim();
@@ -114,7 +116,7 @@ const WelcomePage = () => {
                         {t('welcome.username.label')}
                     </p>
                     <input
-                        onClick={() => playSound(assets?.sounds.click)}
+                        onClick={() => playSound(assets?.sounds.click, settings)}
                         ref={ref}
                         type="text"
                         className="w-full max-w-[300px] sm:max-w-[375px] px-3 py-4 bg-primary-300 text-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary-500 transition-all duration-300"

@@ -98,7 +98,7 @@ const Statistics = () => {
 
             user.updateViewers(newViewers);
             setViewers(newViewers);
-        }, Math.floor(Math.random() * 1800) + 200);
+        }, Math.floor(Math.random() * 2200) + 400);
 
 
         return () => {
@@ -112,7 +112,7 @@ const Statistics = () => {
 
 
     return (
-        <div className="flex flex-row shadow-lg rounded-sm justify-evenly gap-3 flex-wrap sm:flex-nowrap items-center transitions statistics sm:h-20 px-1 py-3 w-full max-w-[85%] xs:max-w-[350px] sm:max-w-[450px] sm:top-5 sm:left-[55%] sm:-translate-x-1/2 sm:absolute bg-primary-500">
+        <div className="flex border border-transparent hover:border-secondary-400 flex-row shadow-lg rounded-sm justify-evenly gap-3 flex-wrap sm:flex-nowrap items-center transitions statistics sm:h-20 px-1 py-3 w-full max-w-[85%] xs:max-w-[350px] sm:max-w-[450px] sm:top-5 sm:left-[55%] sm:-translate-x-1/2 sm:absolute bg-primary-500">
             <div className="group transitions hover:brightness-125 active:scale-95 flex flex-col justify-center items-center px-2.5 sm:px-4 w-24 sm:w-[120px] h-12 rounded-sm bg-primary-300">
                 <span className="leading-4 text-lg text-left w-full">
                     {formatTimeDiff(now, datetime)}

@@ -4,11 +4,10 @@ const NotFoundPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="max-w-[95%] sm:w-2xl sm:max-w-full  flex flex-col items-center justify-center h-full w-full gap-2">
-            <h1>{t('not_found.title')}</h1>
-            <p className="text-center">{t('not_found.description')}</p>
+        <div className={`sm:mt-16 mt-8 sm:mb-0 mb-20 transition-all duration-300 min-h-[300px] px-4 h-max flex flex-col gap-8 justify-start items-center w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl`}>
+            <h2 className="text-4xl">{t('not_found.title')}</h2>
         </div>
-    )
+    );
 };
 
 export default NotFoundPage;

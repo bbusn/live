@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import playSound from "../utils/playSound";
 import useAuth from "../hooks/useAuth";
+import useSettings from "../hooks/useSettings";
 
 const Tasks = () => {
     const { t } = useTranslation();
@@ -10,16 +11,17 @@ const Tasks = () => {
     const [isPressingHeader, setIsPressingHeader] = useState(false);
     const tasksContainerRef = useRef<HTMLDivElement>(null);
     const { assets } = useAuth();
+    const { settings } = useSettings();
 
     const handleToggle = () => {
-        playSound(assets?.sounds?.click);
+        playSound(assets?.sounds?.click, settings);
         setCollapsed(prev => !prev);
     };
 
     return (
         <div
             ref={tasksContainerRef}
-            className={`!pointer-events-auto tasks cursor-pointer rounded-lg overflow-hidden z-10 ${collapsed ? 'h-max' : 'h-[300px]'} w-full max-w-[95%] 2xs:max-w-[90%] xs:max-w-[85%] 2sm:w-[450px] transition-all duration-200 transform ${isPressingHeader ? 'scale-[0.98]' : ''
+            className={`!pointer-events-auto border border-transparent hover:border-secondary-400 tasks cursor-pointer rounded-lg overflow-hidden z-10 ${collapsed ? 'h-max' : 'h-[300px]'} w-full max-w-[95%] 2xs:max-w-[90%] xs:max-w-[85%] 2sm:w-[450px] transition-all duration-200 transform ${isPressingHeader ? 'scale-[0.98]' : ''
                 } flex flex-col justify-between items-center bg-primary-500 shadow-lg`}
         >
             <div onClick={() => {

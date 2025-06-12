@@ -8,7 +8,6 @@ import STATUS from "../constants/status";
 import { useTranslation } from "react-i18next";
 import { decrypt } from "../utils/encrypt";
 import { ASSET_TYPES } from "../constants/assets";
-import playSound from "../utils/playSound";
 import AssetsType from "../types/Assets";
 import AuthContext from "../contexts/AuthContext";
 
@@ -17,7 +16,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [assets, setAssets] = useState<AssetsType | null>(null);
-    const [firstClick, setFirstClick] = useState(false);
     const [progress, setProgress] = useState(0);
     const { toast } = useToasts();
     const { t } = useTranslation();
@@ -44,13 +42,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    const playMusic = () => {
-        if (firstClick) return;
-
-        playSound(assets?.sounds.music, true);
-        setFirstClick(true);
-    }
-
     useEffect(() => {
         if (!loading) return;
 
@@ -72,22 +63,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         return () => {
             clearInterval(timer);
         };
-    }, [loading, firstClick]);
+    }, [loading]);
 
-    useEffect(() => {
-        if (firstClick || !assets) return;
 
-        const handleFirstClick = () => {
-            playMusic();
-            window.removeEventListener("click", handleFirstClick);
-        };
-
-        window.addEventListener("click", handleFirstClick);
-
-        return () => {
-            window.removeEventListener("click", handleFirstClick);
-        };
-    }, [firstClick, assets]);
 
     useEffect(() => {
         const loadAll = async () => {
@@ -99,6 +77,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
                 [key: string]: string;
             } = {
                 toast: "/images/toast.png",
+                base: "/images/posters/base.png",
                 [`1_${ASSET_TYPES.POSTER}`]: "/images/posters/1.png",
                 [`1_${ASSET_TYPES.LOGO}`]: "/images/logos/1.png",
                 [`1_${ASSET_TYPES.SCREENSHOT}_1`]: "/images/screenshots/1/1.png",
