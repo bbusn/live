@@ -3,33 +3,41 @@ import { AUTH_TOKEN_ITEM_NAME } from '../utils/auth';
 
 export interface UserType {
     username: string;
-    datetime: string;
+    started_at: Date;
+    last_connected_at: Date;
     viewers: number;
     donations: number;
     achievements: string[];
+    tasks: string[];
 }
 
 export class User {
     private static _instance: User;
 
     private _username: string = '';
-    private _datetime: Date = new Date();
+    private _started_at: Date = new Date();
+    private _last_connected_at: Date = new Date();
     private _viewers: number = 0;
     private _donations: number = 0;
     private _achievements: string[] = [];
+    private _tasks: string[] = [];
 
     private constructor(
         username = '',
-        datetime: Date = new Date(),
+        started_at: Date = new Date(),
+        last_connected_at: Date = new Date(),
         viewers = 0,
         donations = 0,
-        achievements: string[] = []
+        achievements: string[] = [],
+        tasks: string[] = [],
     ) {
         this._username = username;
-        this._datetime = datetime;
+        this._started_at = started_at;
+        this._last_connected_at = last_connected_at;
         this._viewers = viewers;
         this._donations = donations;
         this._achievements = achievements;
+        this._tasks = tasks;
     }
 
     public static getInstance(): User {
@@ -43,8 +51,11 @@ export class User {
         return this._username;
     }
 
-    public get datetime(): string {
-        return this._datetime.toISOString();
+    public get started_at(): Date {
+        return this._started_at;
+    }
+    public get last_connected_at(): Date {
+        return this._last_connected_at;
     }
 
     public get viewers(): number {
@@ -59,11 +70,14 @@ export class User {
         return this._achievements;
     }
 
+    public get tasks(): string[] {
+        return this._tasks;
+    }
+
     public async addAchievement(achievement: string) {
         if (!this._achievements.includes(achievement)) {
             this._achievements.push(achievement);
-            const encrypted = await encrypt(User.getInstance());
-            localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
+            await this.save();
         }
     }
 
@@ -71,23 +85,47 @@ export class User {
         return this._achievements.includes(achievement);
     }
 
+    public addTask(task: string) {
+        if (!this._tasks.includes(task)) {
+            this._tasks.push(task);
+            this.save();
+        }
+    }
+
+    public hasTask(task: string): boolean {
+        return this._tasks.includes(task);
+    }
+
     private _initialized = false;
 
     public initialize(user: UserType) {
         if (this._initialized) return;
         this._username = user.username;
-        this._datetime = user.datetime ? new Date(user.datetime) : new Date();
+        this._started_at = user.started_at ? user.started_at : new Date();
+        this._last_connected_at = user.last_connected_at ? user.last_connected_at : new Date();
         this._viewers = user.viewers ?? 0;
         this._donations = user.donations ?? 0;
         this._achievements = user.achievements ?? [];
+        this._tasks = user.tasks ?? [];
         this._initialized = true;
+        this.save();
     }
 
     public updateViewers(count: number) {
         this._viewers = count;
     }
 
+    public async updateLastConnectedAt(date: Date) {
+        this._last_connected_at = date;
+        await this.save();
+    }
+
     public addDonation(amount: number) {
         this._donations += amount;
+    }
+
+    public async save() {
+        const encrypted = await encrypt(User.getInstance());
+        localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
     }
 }

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { ASSET_TYPES } from "../constants/assets";
 import { Tool } from "./Tool";
@@ -29,7 +29,9 @@ const Project = (project: ProjectType) => {
     const modalContainerRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
     const { t } = useTranslation();
+    const images = [assets?.images[`${project.id}_${ASSET_TYPES.SCREENSHOT}_1`].src, assets?.images[`${project.id}_${ASSET_TYPES.SCREENSHOT}_2`].src, assets?.images[`${project.id}_${ASSET_TYPES.SCREENSHOT}_3`].src];
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
 
     let nameFirstPart: string | string[] = project.name.split(" ");
     const nameLastPart = nameFirstPart.pop();
@@ -80,15 +82,41 @@ const Project = (project: ProjectType) => {
         }
     };
 
-    const handleImageClick = (src: string) => {
+    const handleImageClick = (index: number) => {
+        const src = images[index - 1];
         playSound(assets?.sounds.click);
-        setFullscreenImage(src);
+        setCurrentImageIndex(index - 1);
+        setFullscreenImage(src ?? '');
     };
 
     const closeFullscreenImage = () => {
         playSound(assets?.sounds.click);
         setFullscreenImage(null);
+        setCurrentImageIndex(null);
     };
+
+    useEffect(() => {
+        const handleArrowKeys = (e: KeyboardEvent) => {
+            if (fullscreenImage === null || currentImageIndex === null) return;
+
+            if (e.key === "ArrowRight") {
+                const nextIndex = (currentImageIndex + 1) % images.length;
+                setCurrentImageIndex(nextIndex);
+                setFullscreenImage(images[nextIndex] ?? '');
+            }
+
+            if (e.key === "ArrowLeft") {
+                const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
+                setCurrentImageIndex(prevIndex);
+                setFullscreenImage(images[prevIndex] ?? '');
+            }
+        };
+
+        window.addEventListener("keydown", handleArrowKeys);
+        return () => {
+            window.removeEventListener("keydown", handleArrowKeys);
+        };
+    }, [fullscreenImage, currentImageIndex, images]);
 
     return (
         <>
@@ -146,11 +174,7 @@ const Project = (project: ProjectType) => {
                             <div className="relative flex flex-row flex-wrap items-center justify-center gap-4">
                                 <img
                                     onClick={() =>
-                                        handleImageClick(
-                                            assets?.images[
-                                                `${project.id}_${ASSET_TYPES.SCREENSHOT}_1`
-                                            ]?.src ?? ""
-                                        )
+                                        handleImageClick(1)
                                     }
                                     src={
                                         assets?.images[
@@ -161,11 +185,7 @@ const Project = (project: ProjectType) => {
                                 />
                                 <img
                                     onClick={() =>
-                                        handleImageClick(
-                                            assets?.images[
-                                                `${project.id}_${ASSET_TYPES.SCREENSHOT}_2`
-                                            ]?.src ?? ""
-                                        )
+                                        handleImageClick(2)
                                     }
                                     src={
                                         assets?.images[
@@ -176,11 +196,7 @@ const Project = (project: ProjectType) => {
                                 />
                                 <img
                                     onClick={() =>
-                                        handleImageClick(
-                                            assets?.images[
-                                                `${project.id}_${ASSET_TYPES.SCREENSHOT}_3`
-                                            ]?.src ?? ""
-                                        )
+                                        handleImageClick(3)
                                     }
                                     src={
                                         assets?.images[

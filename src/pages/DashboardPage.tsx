@@ -23,7 +23,7 @@ const DashboardPage = () => {
     }, []);
 
     return (
-        <div className={`mt-16 transition-all duration-300 flex flex-row flex-wrap items-center justify-evenly h-full min-h-[300px] px-4 w-full max-w-[95%] sm:w-2xl sm:max-w-full gap-2 2xs:gap-4 xs:gap-8 2xl:!gap-12`}>
+        <div className={`sm:mt-16 mt-8 mb-20 sm:mb-0 transition-all duration-300 flex flex-row flex-wrap items-start justify-evenly h-max min-h-[300px] px-4 w-full max-w-[95%] sm:w-2xl sm:max-w-full gap-2 2xs:gap-4 xs:gap-8 2xl:!gap-12`}>
             {projects.map((project: ProjectType, index: number) => (
                 <Project key={`project-${index}`} {...project} />
             ))}

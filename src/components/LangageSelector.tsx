@@ -27,14 +27,14 @@ export default function LanguageSelector() {
         (async () => {
             if (i18n.language == 'en') {
                 if (!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_SWITCH_TO_ENGLISH)) {
-                    const donationsAmount = Math.floor(Math.random() * 18) + 1;
+                    const donationsAmount = Math.floor(Math.random() * 3) + 1 * 8;
                     toast({
                         status: STATUS.ACHIEVEMENT,
                         message: ACHIEVEMENTS.SETTINGS_SWITCH_TO_ENGLISH,
                         donationsAmount: donationsAmount,
                     });
                     User.getInstance().addDonation(donationsAmount);
-                    User.getInstance().addAchievement(ACHIEVEMENTS.SETTINGS_SWITCH_TO_ENGLISH);
+                    await User.getInstance().addAchievement(ACHIEVEMENTS.SETTINGS_SWITCH_TO_ENGLISH);
 
                 }
             }
@@ -77,7 +77,7 @@ export default function LanguageSelector() {
 
     return (
         <div className={`relative w-full max-w-[250px] flex justify-center items-center`}>
-            <button ref={buttonRef} className={`flex cursor-pointer h-10 justify-center w-full px-2 py-0.5 gap-3 bg-gray-200 font-semibold text-black sm:rounded-sm hover:bg-gray-300 hover:text-black mb-1 items-center transitions active:scale-95 focus:outline-black`} onClick={() => {
+            <button ref={buttonRef} className={`flex cursor-pointer h-10 justify-center w-full px-2 py-0.5 gap-3 bg-gray-200 font-semibold text-black sm:rounded-sm hover:bg-gray-400 hover:text-black mb-1 items-center transitions active:scale-95 focus:outline-black`} onClick={() => {
                 playSound(assets?.sounds.click)
                 toggleList();
             }}>
@@ -86,7 +86,7 @@ export default function LanguageSelector() {
                     languages.find((lang) => lang.value === selected)?.label || 'Français'
                 )}
             </button>
-            <ul ref={listRef} className={`absolute top-[110%] w-full sm:rounded-sm justify-center flex-col items-center gap-1 left-1/2 -translate-x-1/2`}>
+            <ul ref={listRef} className={`absolute top-[110%] w-full sm:rounded-sm justify-center hidden flex-col items-center gap-1 left-1/2 -translate-x-1/2`}>
                 {languages.map((lang) => (
                     lang.value !== selected && (
                         <li
@@ -97,7 +97,7 @@ export default function LanguageSelector() {
                                 toggleList();
                                 setSelected(lang.value);
                             }}
-                            className={`transitions cursor-pointer flex justify-center px-2 py-0.5 gap-3 text-white font-semibold sm:rounded-sm hover:text-black w-full items-center hover:bg-gray-300 active:scale-90 transitions`}
+                            className={`transitions cursor-pointer flex justify-center px-2 py-0.5 gap-3 text-white font-semibold sm:rounded-sm hover:text-black w-full items-center hover:bg-gray-400 active:scale-90 transitions`}
                         >
                             <Icon icon={lang.icon} className="object-cover h-10 py-2 w-6" />
                             {

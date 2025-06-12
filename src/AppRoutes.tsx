@@ -6,6 +6,7 @@ import WelcomePage from './pages/WelcomePage';
 import DashboardPage from './pages/DashboardPage';
 import Layout from './components/Layout';
 import SettingsPage from './pages/SettingsPage';
+import ResourcesPage from './pages/ResourcesPage';
 
 export const AppRoutes = () => {
     return (
@@ -27,6 +28,11 @@ export const AppRoutes = () => {
                         <Route
                             path={ROUTES.SETTINGS}
                             Component={SettingsPage}
+                        />
+                        {/* =========== RESOURCES =========== */}
+                        <Route
+                            path={ROUTES.RESOURCES}
+                            Component={ResourcesPage}
                         />
                         {/* =========== NOT FOUND =========== */}
                         <Route

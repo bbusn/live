@@ -34,13 +34,12 @@ const Confetti = () => {
             y: -10,
             vx: (Math.random() - 0.5) * 2,
             vy: Math.random() * 3 + 2,
-            color: ['#FFD700', '#FFA500', '#FF8C00', '#FFAA00', '#FFB347', '#FECA57'][Math.floor(Math.random() * 6)],
+            color: '#d4c0fd',
             rotation: Math.random() * 360,
             rotationSpeed: (Math.random() - 0.5) * 10
         }));
         setParticles(newParticles);
 
-        // Animate particles
         const interval = setInterval(() => {
             setParticles(prev =>
                 prev.map(particle => ({
@@ -48,12 +47,11 @@ const Confetti = () => {
                     x: particle.x + particle.vx,
                     y: particle.y + particle.vy,
                     rotation: particle.rotation + particle.rotationSpeed,
-                    vy: particle.vy + 0.1 // gravity
-                })).filter(particle => particle.y < 200) // remove particles that fall too far
+                    vy: particle.vy + 0.1
+                })).filter(particle => particle.y < 200)
             );
         }, 16);
 
-        // Clean up after 3 seconds
         const timeout = setTimeout(() => {
             setParticles([]);
             clearInterval(interval);
@@ -135,11 +133,27 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
         startTimer();
     };
 
+    useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
+
+        if (isLast) {
+            timer = setTimeout(() => {
+                document.querySelector('.important-message')?.classList.add('opacity-0');
+            }, 2500);
+        }
+
+        return () => {
+            if (timer) {
+                clearTimeout(timer);
+            }
+        }
+    }, []);
+
     return (
         <div
             onMouseEnter={pauseTimer}
             onMouseLeave={resumeTimer}
-            className={`shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? ' bg-primary-500 rounded-xs  justify-center items-center flex-col px-3 py-3.5' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
+            className={`cursor-pointer hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? ' bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
     ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
         >
             {showConfetti && <Confetti />}
@@ -150,22 +164,22 @@ export function Toast({ isLast, message, onDone, status, donationsAmount }: Toas
                 </div>
             )}
             {status == STATUS.ACHIEVEMENT && (
-                <>
-                    <span className="text-2xl my-2 bg-primary-400/80 font-primary py-0 px-3 text-yellow-400">
-                        + {donationsAmount}€
-                    </span>
-                    <span className="text-sm font-primary text-yellow-400 opacity-75 whitespace-pre-wrap break-words">
-                        [ {t(`achievements.${message}.title`)} ]
-                    </span>
-                </>
+                <span className="w-max text-2xl bg-primary-400/80 font-primary py-1.5 px-3 rounded-[2px] text-nowrap text-white">
+                    +{donationsAmount}€
+                </span>
+
             )}
 
             {status == STATUS.ACHIEVEMENT ? (
-                <p className="text-center">
-                    <span className="ml-2 text-sm text-gray-200 text-center font-primary whitespace-pre-wrap break-words">
+                <div className="text-center flex flex-col items-center gap-1">
+                    <span className="text-sm font-primary text-black font-bold opacity-75 whitespace-pre-wrap break-words">
+                        {t(`achievements.${message}.title`)}
+                    </span>
+                    <span className="ml-2 text-sm text-black
+                     text-center font-primary whitespace-pre-wrap break-words">
                         {t(`achievements.${message}.description`)}
                     </span>
-                </p>
+                </div>
             ) : (
                 <p className="text-sm font-primary text-gray-200 whitespace-pre-wrap break-words">
                     {message.split("**").map((part, index) => {

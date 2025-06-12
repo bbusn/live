@@ -72,12 +72,53 @@
     },
     "settings": {
         "title": "Réglages",
-        "show_skills": "Afficher les compétences relatives à mon diplôme"
+        "show_skills": "Afficher les compétences relatives à mon diplôme",
+        "restart": {
+            "button": "Redémarrer",
+            "message": {
+                "1": "Pas mal pour une première... mais on peut faire mieux non ?",
+                "2": "Recommencer ? Tu testes les limites du jeu ou celles du dév ?",
+                "3": "J'ai vu des lives plus longs mais rarement aussi stylés.",
+                "4": "Reboot du live dans quelques secondes...",
+                "5": "Tu as de la chance, je suis de bonne humeur aujourd'hui !"
+            }
+        },
+        "quit": {
+            "button": "Quitter",
+            "message": {
+                "1": "Je suis triste de te voir partir. Reclique pour confirmer que tu veux vraiment quitter le live.",
+                "2": "Ah ? Tu as dû rater le bouton ! Réessaie en faisant attention.",
+                "3": "C'est bizarre, le bouton doit être capricieux aujourd'hui !",
+                "4": "Le bouton était juste là, tu peux le faire !",
+                "5": "Es-tu sûr d'avoir compris qu'il fallait cliquer sur le bouton ?",
+                "6": "Ce n'est pourtant pas compliqué… il suffit de cliquer sur le bouton !",
+                "7": "Bon, toutes les bonnes choses ont une fin. J'ai réactivé le comportement normal du bouton rien que pour pour toi !",
+                "8": "Tu ne fais vraiment pas d'effort, je t'ai vu cliquer à côté !",
+                "9": "Quelle patience ! C'est ton 9ème clic...",
+                "10": "Tu as un strabisme, c'est évident !",
+                "11": "11 clics déjà ? Là, c'est de l'obstination !",
+                "12": "Qu'est-ce qui te pousse à rester ici ? Le bouton est juste là !",
+                "13": "Tu peux quitter le live à tout moment. On est dans un pays libre après tout !",
+                "14": "Finalement, pourquoi partir ? On est bien ici, non ?",
+                "15": "Tu as cliqué 15 fois, on dirait que tu t'amuses plus que prévu !",
+                "16": "Ça commence à devenir ridicule... Plus tu cliques, plus tu t'humilies !",
+                "17": "17 fois que tu échoues, tu bats des records de ténacité !",
+                "18": "Je n'ai pas prévu de remettre le boutton en place. Tu peux cliquer autant que tu veux !",
+                "19": "Ok, tu as gagné, je l'enlève ! Débrouille-toi pour partir maintenant !"
+            }
+        }
     },
     "statistics": {
         "time": "Durée du live",
         "viewers": "Spectateurs",
-        "donations": "Donations"
+        "donations": "Donations",
+        "last_connected_at": {
+            "message": {
+                "multiple": "Te revoilà, tu es parti plus de 5 minutes ! Tu as perdu beaucoup de spectateurs !",
+                "unique": "Te revoilà, tu es parti plus de 5 minutes ! Tu as perdu ton seul spectateur !",
+                "long": "Un de tes spectateurs s'est plaint d'une inactivité de plus d'une heure ! Malheureusement nous devons couper ton live."
+            }
+        }
     },
     "achievements": {
         "settings_show_skills_first_click": {
@@ -87,6 +128,10 @@
         "settings_switch_to_english": {
             "title": "Mister Worldwide",
             "description": "Yes of course, I can speak English! But why would you want to do that? French is so much better!"
+        },
+        "settings_try_to_quit": {
+            "title": "L'obstiné",
+            "description": "Tu as essayé de quitter le live, mais tu n'as pas réussi. Tu peux être fier de toi !"
         }
     },
     "projects": [

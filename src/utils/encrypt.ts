@@ -36,10 +36,12 @@ export async function decrypt(token: string): Promise<object | null> {
 
         return {
             username: jsonParsed._username ?? '',
-            datetime: jsonParsed._datetime ? new Date(jsonParsed._datetime) : new Date(),
+            started_at: jsonParsed._started_at ? new Date(jsonParsed._started_at) : new Date(),
+            last_connected_at: jsonParsed._last_connected_at ? new Date(jsonParsed._last_connected_at) : new Date(),
             viewers: jsonParsed._viewers ?? 0,
             donations: jsonParsed._donations ?? 0,
             achievements: jsonParsed._achievements ?? [],
+            tasks: jsonParsed._tasks ?? [],
         };
     } catch (e) {
         return null;

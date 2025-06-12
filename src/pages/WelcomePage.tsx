@@ -4,11 +4,10 @@ import { useToasts } from "../hooks/useToasts";
 import { useEffect, useRef, useState } from "react";
 import { User } from "../objects/User";
 import { useAuth } from "../hooks/useAuth";
-import { AUTH_STATUS, AUTH_TOKEN_ITEM_NAME } from "../utils/auth";
+import { AUTH_STATUS } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../constants/routes";
 import { STATUS } from "../constants/status";
-import { encrypt } from "../utils/encrypt";
 import { playSound } from "../utils/sound";
 
 const WelcomePage = () => {
@@ -59,10 +58,8 @@ const WelcomePage = () => {
             }
         }
 
-        User.getInstance().initialize({ username, datetime: new Date().toISOString(), achievements: [], viewers: 0, donations: 0 });
+        User.getInstance().initialize({ username, started_at: new Date(), achievements: [], viewers: 0, donations: 0, last_connected_at: new Date(), tasks: [] });
 
-        const encrypted = await encrypt(User.getInstance());
-        localStorage.setItem(AUTH_TOKEN_ITEM_NAME, encrypted);
 
         setStatus(AUTH_STATUS.AUTH);
 
