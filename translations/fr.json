@@ -17,7 +17,7 @@
         "description": "Cette page n'existe pas ou n'est plus disponible.",
         "error": "Je n'ai pas trouvé la page que tu cherchais, mais tu peux toujours essayer de revenir en arrière avec ce bouton magique !",
         "return": "Abracadabra",
-        "returning": "Bon, je savais qu'il marchait pas celui-là, mais on ne sait jamais..."
+        "returning": "Bon, je savais qu'il ne marchait pas celui-là, mais au moins tu as essayé..."
     },
     "preload": {
         "error": {
@@ -140,6 +140,34 @@
         "not_found": {
             "title": "Moi, je suis différent",
             "description": "Tu as trouvé une page qui n'existe pas, un grand bravo ! Sache que tu es le premier à le faire !"
+        },
+        "time_played_2_minutes": {
+            "title": "2 minutes de plaisir",
+            "description": "Tu as déjà perdu 2 minutes de ta vie, et ça, ça se félicite !"
+        },
+        "time_played_5_minutes": {
+            "title": "5 minutes de bonheur",
+            "description": "5 minutes à regarder mon travail, ça me fait chaud au cœur."
+        },
+        "time_played_10_minutes": {
+            "title": "10 minutes de folie",
+            "description": "Comment fais-tu pour tenir aussi longtemps ? Donne-moi ton secret !"
+        },
+        "time_played_20_minutes": {
+            "title": "20 minutes de passion",
+            "description": "Je suis sûr que tu restes de ton plein gré et pas parce que tu es coincé !"
+        },
+        "time_played_30_minutes": {
+            "title": "30 minutes de magie",
+            "description": "Je vais t'inviter à éteindre ton écran et à sortir un peu prendre le soleil."
+        },
+        "time_played_45_minutes": {
+            "title": "45 minutes d'addiction",
+            "description": "Ça y est, passé ce stade tu es sûrement accro à mon travail, tu as tout le temps besoin de ta dose désormais !"
+        },
+        "time_played_1_hour": {
+            "title": "1 heure d'overdose",
+            "description": "Je vais faire comme si je ne regardais pas le temps passé, je ne veux pas avoir de problèmes moi..."
         }
     },
     "projects": [
