@@ -13,7 +13,11 @@
     },
     "loading": "Pour une meilleure expérience, veillez à activer le son.",
     "not_found": {
-        "title": "Page non trouvée"
+        "title": "Page introuvable",
+        "description": "Cette page n'existe pas ou n'est plus disponible.",
+        "error": "Je n'ai pas trouvé la page que tu cherchais, mais tu peux toujours essayer de revenir en arrière avec ce bouton magique !",
+        "return": "Abracadabra",
+        "returning": "Bon, je savais qu'il marchait pas celui-là, mais on ne sait jamais..."
     },
     "preload": {
         "error": {
@@ -132,6 +136,10 @@
         "settings_try_to_quit": {
             "title": "L'obstiné",
             "description": "Tu as essayé de quitter le live, mais tu n'as pas réussi. Tu peux être fier de toi !"
+        },
+        "not_found": {
+            "title": "Moi, je suis différent",
+            "description": "Tu as trouvé une page qui n'existe pas, un grand bravo ! Sache que tu es le premier à le faire !"
         }
     },
     "projects": [

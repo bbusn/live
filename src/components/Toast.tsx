@@ -88,7 +88,7 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
             {showConfetti && <Confetti />}
 
             {(isLast) && (
-                <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[60%]'} right-[-5%] z-30`}>
+                <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[75%]'} right-[-5%] z-30`}>
                     <img src={assets?.images?.toast.src} alt="Toast Icon" className="w-14" />
                 </div>
             )}

@@ -2,6 +2,7 @@ export const ACHIEVEMENTS = {
     SETTINGS_SHOW_SKILLS_FIRST_CLICK: 'settings_show_skills_first_click',
     SETTINGS_SWITCH_TO_ENGLISH: 'settings_switch_to_english',
     SETTINGS_TRY_TO_QUIT: 'settings_try_to_quit',
+    NOT_FOUND: 'not_found',
     TIME_PLAYED_2_MINUTES: 'time_played_2_minutes',
     TIME_PLAYED_5_MINUTES: 'time_played_5_minutes',
     TIME_PLAYED_10_MINUTES: 'time_played_10_minutes',

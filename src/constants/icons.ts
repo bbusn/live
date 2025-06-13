@@ -11,6 +11,7 @@ const ICONS = {
     EMAIL: 'simple-icons:gmail',
     LINKEDIN: 'simple-icons:linkedin',
     CURRICULUM_VITAE: 'academicons:cv',
+    NOT_FOUND: 'line-md:question',
 } as const;
 
 export default ICONS;
