@@ -34,7 +34,7 @@ const NotFoundPage = () => {
             message: t('not_found.error'),
         });
 
-        // if (user.hasAchievement(ACHIEVEMENTS.NOT_FOUND)) return;
+        if (user.hasAchievement(ACHIEVEMENTS.NOT_FOUND)) return;
 
         setTimeout(() => {
             const donationsAmount = Math.floor(Math.random() * 100) + 1;
