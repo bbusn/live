@@ -7,6 +7,11 @@
         "chat": "Chat",
         "tasks": "À faire pendant le live"
     },
+    "dashboard": {
+        "error": {
+            "assets": "Une erreur est survenue lors du chargement des projets. Veuillez raffraîchir la page."
+        }
+    },
     "banner": {
         "1": "Benoit",
         "2": "Busnardo"
@@ -137,6 +142,26 @@
             "title": "L'obstiné",
             "description": "Tu as essayé de quitter le live, mais tu n'as pas réussi. Tu peux être fier de toi !"
         },
+        "donations_50_euros": {
+            "title": "Le début de la richesse",
+            "description": "Tu as déjà accumulé 50 euros de donations, c'est un bon début !"
+        },
+        "donations_100_euros": {
+            "title": "Le millionnaire en devenir",
+            "description": "Tu as atteint 100 euros de donations, tu pourras profiter en achetant un paquet de cigarettes bon marché !"
+        },
+        "donations_200_euros": {
+            "title": "Le millionnaire",
+            "description": "Tu as atteint 200 euros de donations, tu es désormais riche ! À toi le paquet de cigarettes de luxe !"
+        },
+        "donations_500_euros": {
+            "title": "Le millionnaire en série",
+            "description": "Tu as atteint 500 euros de donations, quoi de mieux qu'un paquet de luxe et qu'une voiture d'occasion au même prix !"
+        },
+        "projects_all_opened": {
+            "title": "L'intéressé",
+            "description": "Tu as ouvert tous les projets, cligne des yeux si tu es un vrai fan !"
+        },
         "not_found": {
             "title": "Moi, je suis différent",
             "description": "Tu as trouvé une page qui n'existe pas, un grand bravo ! Sache que tu es le premier à le faire !"
@@ -169,6 +194,12 @@
             "title": "1 heure d'overdose",
             "description": "Je vais faire comme si je ne regardais pas le temps passé, je ne veux pas avoir de problèmes moi..."
         }
+    },
+    "tasks": {
+        "open_chat": "Ouvrir le chat",
+        "open_2_projects": "Découvrir 2 projets",
+        "learn_about_me": "En apprendre plus sur Benoît",
+        "earn_100_euros": "Accumuler 100 euros de donations"
     },
     "projects": [
         {

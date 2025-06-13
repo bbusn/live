@@ -1,8 +1,16 @@
 {
     "navigation": {
-        "dashboard": "Dashboard",
-        "resources": "Resources",
-        "settings": "Settings"
+        "dashboard": "My projects",
+        "resources": "About me",
+        "settings": "Settings",
+        "live": "Live",
+        "chat": "Chat",
+        "tasks": "To do during the live"
+    },
+    "dashboard": {
+        "error": {
+            "assets": "An error occurred while loading the projects. Please refresh the page."
+        }
     },
     "banner": {
         "1": "Benoit",
@@ -10,23 +18,27 @@
     },
     "loading": "For a better experience, please enable sound.",
     "not_found": {
-        "title": "Page not found"
+        "title": "Page not found",
+        "description": "This page does not exist or is no longer available.",
+        "error": "I couldn't find the page you were looking for, but you can always try to go back with this magic button!",
+        "return": "Abracadabra",
+        "returning": "Well, I knew that wouldn't work, but at least you tried..."
     },
     "preload": {
         "error": {
             "message": "An error occurred while loading resources.",
-            "description": "Unable to download the necessary resources. If the problem persists, don't hesitate to contact me.",
+            "description": "Unable to download the necessary resources. Make sure you have internet access with a stable connection.",
             "retry": "Retry"
         }
     },
     "welcome": {
         "intro": {
             "1": "Forget the portfolio,",
-            "2": "Discover me through a live experience!",
-            "3": "But you're the one driving it!"
+            "2": "Discover me through a live session!",
+            "3": "But you are the one who runs it!"
         },
         "username": {
-            "label": "Choose a nickname!",
+            "label": "Choose a username!",
             "placeholder": {
                 "1": "Mister Mystery",
                 "2": "Mysterio",
@@ -34,11 +46,11 @@
                 "4": "Mister Y",
                 "5": "Pseudonimo",
                 "6": "Fantomas",
-                "7": "Mr. NotMe",
+                "7": "Mister NotMe",
                 "8": "Miss X",
                 "9": "Zorro",
-                "10": "Daft Punk No.3",
-                "11": "Mr. Nobody",
+                "10": "Daft Punk No3",
+                "11": "Mister Nobody",
                 "12": "Banksy",
                 "13": "Anonymous",
                 "14": "Invisible Man",
@@ -47,8 +59,8 @@
                 "17": "John Doe Deluxe",
                 "18": "Mister Incognito",
                 "19": "McMystery",
-                "20": "Half 007",
-                "21": "Super Secret Agent",
+                "20": "007 and a half",
+                "21": "Very Secret Agent",
                 "22": "Anonyman",
                 "23": "Unknown Soldier",
                 "24": "Top Secretus",
@@ -57,42 +69,143 @@
             }
         },
         "error": {
-            "length": "The nickname must be between 3 and 20 characters.",
-            "invalid": "The nickname can only contain the following special characters: . ° é è É È -"
+            "length": "The username must be between 3 and 20 characters.",
+            "invalid": "The username can only contain the following special characters . ° é è É È - "
         },
         "success": {
             "1": "Nice to meet you",
-            "2": ", your live session has started. Don’t forget to check your to-do list!"
+            "2": ", your live has started. Don't forget to check your to-do list!"
         },
         "start": "Start the live"
     },
     "project": {
-        "see": "View project"
+        "see": "See the project"
     },
     "settings": {
         "title": "Settings",
-        "show_skills": "Show skills related to my degree"
+        "show_skills": "Show skills related to my degree",
+        "enable_music": "Music",
+        "enable_sound_effects": "Sound effects",
+        "enable_fullscreen": "Fullscreen",
+        "restart": {
+            "button": "Restart",
+            "message": {
+                "1": "Not bad for a first try... but we can do better, right?",
+                "2": "Restart? Are you testing the limits of the game or the developer?",
+                "3": "I've seen longer lives but rarely as stylish.",
+                "4": "Rebooting the live in a few seconds...",
+                "5": "You're lucky, I'm in a good mood today!"
+            }
+        },
+        "quit": {
+            "button": "Quit",
+            "message": {
+                "1": "I'm sad to see you go. Click again to confirm you really want to leave the live.",
+                "2": "You must have missed the button! Try again carefully.",
+                "3": "Are you sure you understood where to click?",
+                "4": "You don't seem to want to leave, you're missing the target!",
+                "5": "What patience! This is your 5th click...",
+                "6": "I didn't think it would be this hard for you!",
+                "7": "Already your 7th attempt? That's persistence!",
+                "8": "What keeps you here? The button is right there!",
+                "9": "You can leave the live at any time. It's a free country after all!",
+                "10": "In the end, why leave? We're good here, aren't we?",
+                "11": "You've clicked 11 times, looks like you're having more fun than expected!",
+                "12": "This is getting ridiculous... The more you click, the more you embarrass yourself!",
+                "13": "13 failed attempts, you're breaking records for tenacity!",
+                "14": "Ok, you win, I'm removing it! Now figure out how to leave!"
+            }
+        }
     },
     "statistics": {
         "time": "Live duration",
         "viewers": "Viewers",
-        "donations": "Donations"
+        "donations": "Donations",
+        "last_connected_at": {
+            "message": {
+                "multiple": "You're back, you were gone for more than 5 minutes! You lost a lot of viewers!",
+                "unique": "You're back, you were gone for more than 5 minutes! You lost your only viewer!",
+                "long": "One of your viewers complained about inactivity for over an hour! Unfortunately, we have to cut your live."
+            }
+        }
     },
     "achievements": {
         "settings_show_skills_first_click": {
-            "title": "Enable the lame option",
-            "description": "Great, among all the cool options, you picked that one! Go back to a project to see the difference."
+            "title": "Enable the not-so-great option",
+            "description": "Great, among all the cool options, you chose this one! Go back to a project to see the change."
         },
         "settings_switch_to_english": {
             "title": "Mister Worldwide",
             "description": "Yes of course, I can speak English! But why would you want to do that? French is so much better!"
+        },
+        "settings_try_to_quit": {
+            "title": "The Stubborn",
+            "description": "You tried to quit the live, but you didn't succeed. You can be proud of yourself!"
+        },
+        "donations_50_euros": {
+            "title": "The beginning of wealth",
+            "description": "You've already accumulated 50 euros in donations, that's a good start!"
+        },
+        "donations_100_euros": {
+            "title": "The future millionaire",
+            "description": "You've reached 100 euros in donations, you can enjoy buying a cheap pack of cigarettes!"
+        },
+        "donations_200_euros": {
+            "title": "The millionaire",
+            "description": "You've reached 200 euros in donations, you're now rich! Time for a luxury pack of cigarettes!"
+        },
+        "donations_500_euros": {
+            "title": "The serial millionaire",
+            "description": "You've reached 500 euros in donations, what could be better than a luxury pack and a used car at the same price!"
+        },
+        "projects_all_opened": {
+            "title": "The Interested",
+            "description": "You've opened all the projects, blink if you're a real fan!"
+        },
+        "not_found": {
+            "title": "I'm different",
+            "description": "You found a page that doesn't exist, congratulations! Know that you're the first to do so!"
+        },
+        "time_played_2_minutes": {
+            "title": "2 minutes of pleasure",
+            "description": "You've already lost 2 minutes of your life, and that's worth celebrating!"
+        },
+        "time_played_5_minutes": {
+            "title": "5 minutes of happiness",
+            "description": "5 minutes looking at my work, that warms my heart."
+        },
+        "time_played_10_minutes": {
+            "title": "10 minutes of madness",
+            "description": "How do you last so long? Tell me your secret!"
+        },
+        "time_played_20_minutes": {
+            "title": "20 minutes of passion",
+            "description": "I'm sure you're staying of your own free will and not because you're stuck!"
+        },
+        "time_played_30_minutes": {
+            "title": "30 minutes of magic",
+            "description": "I'm going to invite you to turn off your screen and go out to get some sun."
+        },
+        "time_played_45_minutes": {
+            "title": "45 minutes of addiction",
+            "description": "At this point, you're probably addicted to my work, you always need your dose now!"
+        },
+        "time_played_1_hour": {
+            "title": "1 hour of overdose",
+            "description": "I'll pretend I'm not watching the time spent, I don't want to get in trouble..."
         }
+    },
+    "tasks": {
+        "open_chat": "Open the chat",
+        "open_2_projects": "Discover 2 projects",
+        "learn_about_me": "Learn more about Benoît",
+        "earn_100_euros": "Accumulate 100 euros in donations"
     },
     "projects": [
         {
             "id": "1",
             "name": "Hub Level Plus",
-            "type": "Web App & Back Office",
+            "type": "Web App & Backoffice",
             "tools": ["React", "Typescript", "Node-js", "Neo4j"],
             "skills": {
                 "1": {
@@ -101,15 +214,15 @@
                 },
                 "2": {
                     "title": "CE.4.0.3",
-                    "description": "Produce functional, clean, and reusable code."
+                    "description": "Produce functional, simple, and reusable code."
                 },
                 "3": {
                     "title": "CE.4.0.4",
-                    "description": "Use tools that support iterative and collaborative development."
+                    "description": "Use tools that promote iterative and collaborative development."
                 },
                 "4": {
                     "title": "CE.4.0.5",
-                    "description": "Ensure system and data security."
+                    "description": "Ensure the security of systems and data."
                 },
                 "5": {
                     "title": "CE.5.0.1",
@@ -120,7 +233,7 @@
                     "description": "Promote collaboration among project stakeholders."
                 },
                 "7": {
-                    "title": "AC.34.01",
+                    "title": "AC.34.01 ",
                     "description": "Develop using a client-side development framework."
                 },
                 "8": {
@@ -133,7 +246,7 @@
                 },
                 "11": {
                     "title": "AC.35.02",
-                    "description": "Ensure quality in web or multimedia projects."
+                    "description": "Master quality in web or multimedia projects."
                 },
                 "10": {
                     "title": "AC.35.03",
@@ -141,17 +254,17 @@
                 },
                 "12": {
                     "title": "AC.35.04",
-                    "description": "Present a project convincingly."
+                    "description": "Defend a project convincingly."
                 }
             },
-            "description": "Web platform for the company **Level Plus** (connecting companies and seniors seeking employment in Geneva), designed during my work-study program at Makeprops ❤. \n\nThe app allows talents to complete a profile, participate in events, and receive job search follow-ups. It also includes a back office for administrators, managers, and speakers with a **&permission management** system, templates, and **&automatic email sending**.",
+            "description": "Web platform for the company **Level Plus** (connecting companies and seniors seeking jobs in Geneva) designed during my apprenticeship at Makeprops ❤.\n\nThe application allows talents to complete a profile, participate in events, and get support in their job search. There is also a backoffice for administration, managers, and contributors with a **&permission management** system, templates, and **&automatic email sending.**",
             "url": "https://new.hublevelplus.ch"
         },
         {
             "id": "2",
             "name": "MMI Chambéry",
-            "type": "Showcase Website",
-            "tools": ["WordPress", "PHP"],
+            "type": "Showcase site",
+            "tools": ["Wordpress", "Php"],
             "skills": {
                 "1": {
                     "title": "CE.4.0.1",
@@ -163,7 +276,7 @@
                 },
                 "3": {
                     "title": "CE.4.0.5",
-                    "description": "Ensure system and data security."
+                    "description": "Ensure the security of systems and data."
                 },
                 "5": {
                     "title": "CE.5.0.1",
@@ -174,7 +287,7 @@
                     "description": "Respect rights and privacy."
                 }
             },
-            "description": "Showcase website for my school, the **MMI department of IUT Chambéry**. The site presents the training programs, some student projects, and was built in 2 weeks. It is built with WordPress using a **&custom theme** and the **&ACF** plugin for content management. \n\nDesigned like a computer interface, the site includes draggable windows and icons. Each window is an ACF block, making the entire site fully administrable.",
+            "description": "Showcase site for my school, the MMI department of **IUT de Chambéry**. The site presents the courses, some student projects, and was completed in 2 weeks. It is built on Wordpress with a **&custom theme** and the **&ACF** plugin for content management.\n\nDesigned as an interface simulating a computer, the site includes movable windows and icons. Each window is an ACF block, making the whole thing fully manageable.",
             "url": "https://mmi.univ-smb.fr"
         },
         {
@@ -189,11 +302,11 @@
                 },
                 "3": {
                     "title": "CE.4.0.3",
-                    "description": "Produce functional, clean, and reusable code."
+                    "description": "Produce functional, simple, and reusable code."
                 },
                 "4": {
                     "title": "CE.4.0.4",
-                    "description": "Use tools that support iterative and collaborative development."
+                    "description": "Use tools that promote iterative and collaborative development."
                 },
                 "5": {
                     "title": "CE.5.0.2",
@@ -201,7 +314,7 @@
                 },
                 "6": {
                     "title": "CE.5.0.4",
-                    "description": "Encourage digital sobriety."
+                    "description": "Promote digital sobriety."
                 },
                 "7": {
                     "title": "AC.34.04",
@@ -216,12 +329,12 @@
                     "description": "Design an innovative business project by defining the name, identity, legal form, and brand tone."
                 }
             },
-            "description": "Command-line tool developed for **Makeprops** during my work-study. It allows the generation of project templates to ease the creation of new projects (**makeprops templates create**). \n\nThis internal project is published as a **&private npm package**. It is developed using **&Object-Oriented Programming** and designed to be modular and extensible. It also comes with documentation."
+            "description": "Command-line tool developed for the company **Makeprops** during my apprenticeship. It allows generating project templates to facilitate the creation of new projects (**makeprops templates create**).\n\nThis internal project is published as a **&private npm package**. It is developed in **&Object-Oriented Programming** and is designed to be modular and extensible. It also comes with documentation."
         },
         {
             "id": "4",
             "name": "Logis de la Foulerie",
-            "type": "Showcase Website",
+            "type": "Showcase site",
             "tools": ["Javascript", "Css3"],
             "skills": {
                 "1": {
@@ -230,11 +343,11 @@
                 },
                 "2": {
                     "title": "CE.4.0.3",
-                    "description": "Produce functional, clean, and reusable code."
+                    "description": "Produce functional, simple, and reusable code."
                 },
                 "6": {
                     "title": "CE.5.0.4",
-                    "description": "Encourage digital sobriety."
+                    "description": "Promote digital sobriety."
                 },
                 "3": {
                     "title": "AC.34.05",
@@ -242,10 +355,10 @@
                 },
                 "8": {
                     "title": "AC.35.02",
-                    "description": "Ensure quality in web or multimedia projects."
+                    "description": "Master quality in web or multimedia projects."
                 }
             },
-            "description": "Showcase website created for Logis de la Foulerie, a guest house located in Bize-Minervois, 18 km from Narbonne. It's a static website and my first real web development project.",
+            "description": "Showcase site created for Logis de la Foulerie, a guesthouse located in Bize-Minervois, 18 km from Narbonne. It is a static website and my first real web development project.",
             "url": "https://logisdelafoulerie.fr"
         },
         {
@@ -259,15 +372,15 @@
                 },
                 "2": {
                     "title": "CE.4.0.3",
-                    "description": "Produce functional, clean, and reusable code."
+                    "description": "Produce functional, simple, and reusable code."
                 },
                 "3": {
                     "title": "CE.4.0.4",
-                    "description": "Use tools that support iterative and collaborative development."
+                    "description": "Use tools that promote iterative and collaborative development."
                 },
                 "4": {
                     "title": "CE.4.0.5",
-                    "description": "Ensure system and data security."
+                    "description": "Ensure the security of systems and data."
                 },
                 "5": {
                     "title": "CE.5.0.1",
@@ -275,14 +388,14 @@
                 },
                 "6": {
                     "title": "CE.5.0.5",
-                    "description": "Leverage French and international conceptual frameworks."
+                    "description": "Use French and international frameworks."
                 },
                 "7": {
                     "title": "AC.34.05",
                     "description": "Master hosting and deploying applications."
                 }
             },
-            "description": "**&Private streaming server** for my grandfather, allowing him to access his personal movie collection accumulated over the years. \n\nThe infrastructure is secured with **&strict network rules** (whitelist, additional authentication layer, WireGuard tunnel) and custom configuration. The app was customized for ease of use, and files are automatically compressed with **&scripts** for performance optimization."
+            "description": "**&Private streaming server** for my grandfather, allowing him to access his personal collection of movies purchased over the years.\n\nThe infrastructure is secured via **&strict network rules** (whitelist, additional authentication, wireguard tunnel) and custom configuration. The app was customized for ease of use, and files are automatically compressed via **&scripts** to optimize performance."
         },
         {
             "id": "6",
@@ -296,15 +409,15 @@
                 },
                 "2": {
                     "title": "CE.4.0.3",
-                    "description": "Produce functional, clean, and reusable code."
+                    "description": "Produce functional, simple, and reusable code."
                 },
                 "3": {
                     "title": "CE.4.0.4",
-                    "description": "Use tools that support iterative and collaborative development."
+                    "description": "Use tools that promote iterative and collaborative development."
                 },
                 "4": {
                     "title": "CE.4.0.5",
-                    "description": "Ensure system and data security."
+                    "description": "Ensure the security of systems and data."
                 },
                 "5": {
                     "title": "CE.5.0.1",
@@ -315,7 +428,7 @@
                     "description": "Promote collaboration among project stakeholders."
                 },
                 "7": {
-                    "title": "AC.34.01",
+                    "title": "AC.34.01 ",
                     "description": "Develop using a client-side development framework."
                 },
                 "8": {
@@ -324,7 +437,7 @@
                 },
                 "9": {
                     "title": "AC.34.03",
-                    "description": "Develop sophisticated interactive systems."
+                    "description": "Develop sophisticated interactive devices."
                 },
                 "10": {
                     "title": "AC.34.05",
@@ -332,10 +445,45 @@
                 },
                 "12": {
                     "title": "AC.35.04",
-                    "description": "Present a project convincingly."
+                    "description": "Defend a project convincingly."
                 }
             },
-            "description": "Connected mosquito trap, developed as part of a student project. It captures and counts mosquitoes via a web app. \n\nThe project includes a physical device with a **&microcontroller** and multiple sensors (optical fork, temperature, CO2...) as well as a web app for viewing data and capture statistics. It is designed to be accessible and easy to use. Communication is done via **&MQTT over the LoraWAN network**."
+            "description": "Piège à moustiques connecté, développé dans le cadre d'un projet étudiant. Il permet de capturer les moustiques et de les compter via une application web. \n\nLe projet comprend un dispositif physique avec un **&microcontrôleur** et de multiples capteurs (fourche optique, température, CO2...) ainsi qu'une application web pour visualiser les données et les statistiques de capture. Le tout est conçu pour être accessible et facile à utiliser. Il communique via **&MQTT sur le réseau LoraWAN**."
+        }
+    ],
+    "resource": {
+        "see": "Accéder"
+    },
+    "resources": [
+        {
+            "id": "1",
+            "name": "Github",
+            "description": "Mon compte **%GitHub** où je partage quelques projets. Un vrai petit curieux pourrait même y découvir le code de ce portfolio !",
+            "url": "https://github.com/bbusn"
+        },
+        {
+            "id": "2",
+            "name": "LinkedIn",
+            "description": "Mon profil **%Linkedin**. Tu peux y trouver mon parcours et mes expériences professionnelles. Attention, chemise obligatoire !",
+            "url": "https://www.linkedin.com/in/benoit-busnardo/"
+        },
+        {
+            "id": "3",
+            "name": "Discord",
+            "description": "Mon compte **%Discord**. Plutôt pratique si tu souhaites me contacter rapidement !",
+            "url": "https://discordapp.com/users/316978000895672332"
+        },
+        {
+            "id": "4",
+            "name": "Email",
+            "description": "My email address. A safe bet to contact me:  **%benoit.busnardo@gmail.com **",
+            "url": "mailto:benoit.busnardo@gmail.com"
+        },
+        {
+            "id": "5",
+            "name": "Curriculum Vitae",
+            "description": "My **%CV**. Contains my experiences, skills, and education. Print it and hang it on the wall!",
+            "url": "/CV_Benoit_BUSNARDO_FR_2025.pdf"
         }
     ]
 }

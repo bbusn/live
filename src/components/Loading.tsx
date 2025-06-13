@@ -30,14 +30,14 @@ const Loading: React.FC<LoadingProps> = ({
                             icon={ICONS.VOLUME_UP}
                             className="text-2xl font-bold text-gray-200 cursor-pointer active:scale-90 hover:text-white transitions" />
                         <p className="select-none text-gray-200 font-primary text-lg max-w-[90%] 2xs:max-w-[300px] sm:max-w-[375px] text-center font-extralight italic">
-                            {t("loading")}
+                            {t('loading')}
                         </p>
                     </div>
                 </div>
             ) : (
                 <div className="custom-width flex flex-col items-center gap-12 sm:gap-8">
                     <p className="text-gray-300 text-center font-primary text-base">
-                        {t("preload.error.description")}
+                        {t('preload.error.description')}
                     </p>
                     <button className="button-primary w-full transitions" onClick={() => {
                         window.location.reload();

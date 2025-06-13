@@ -107,9 +107,9 @@ const WelcomePage = () => {
             <Banner />
             {!introduced ? (
                 <h2 className="font-light font-primary text-xl flex flex-col items-center justify-center">
-                    <span className="animation-fade-in animation-delay-0-5 text-gray-300">{t("welcome.intro.1")}</span>
-                    <span className="animation-fade-in animation-delay-1-75 text-gray-300">{t("welcome.intro.2")}</span>
-                    <span className="animation-fade-in animation-delay-3">{t("welcome.intro.3")}</span>
+                    <span className="animation-fade-in animation-delay-0-5 text-gray-300">{t('welcome.intro.1')}</span>
+                    <span className="animation-fade-in animation-delay-1-75 text-gray-300">{t('welcome.intro.2')}</span>
+                    <span className="animation-fade-in animation-delay-3">{t('welcome.intro.3')}</span>
                 </h2>
             ) : (
                 <div className="transition-all duration-200 animation-fade-in custom-width flex flex-col justify-center items-center gap-4">
