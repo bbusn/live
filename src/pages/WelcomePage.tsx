@@ -10,6 +10,7 @@ import ROUTES from "../constants/routes";
 import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
 import useSettings from "../hooks/useSettings";
+import { DEFAULT_TASKS } from "../constants/tasks";
 
 const WelcomePage = () => {
     const { t } = useTranslation();
@@ -36,7 +37,7 @@ const WelcomePage = () => {
 
         if (!isValidUsername) {
             toast({
-                status: STATUS.ERROR,
+                status: STATUS.MESSAGE,
                 message: t('welcome.error.invalid'),
             });
             return;
@@ -44,7 +45,7 @@ const WelcomePage = () => {
 
         if (username.length < 3 || username.length > 20) {
             toast({
-                status: STATUS.ERROR,
+                status: STATUS.MESSAGE,
                 message: t('welcome.error.length'),
             });
             return;
@@ -60,14 +61,14 @@ const WelcomePage = () => {
             }
         }
 
-        User.getInstance().initialize({ username, started_at: new Date(), achievements: [], viewers: 0, donations: 0, last_connected_at: new Date(), tasks: [] });
+        User.getInstance().initialize({ username, started_at: new Date(), achievements: [], viewers: 0, donations: 0, last_connected_at: new Date(), tasks: DEFAULT_TASKS });
 
 
         setStatus(AUTH_STATUS.AUTH);
 
         const timeout = setTimeout(() => {
             toast({
-                status: STATUS.SUCCESS,
+                status: STATUS.MESSAGE,
                 message: `${t('welcome.success.1')} **%${username}**${t('welcome.success.2')}`,
             });
             clearTimeout(timeout);

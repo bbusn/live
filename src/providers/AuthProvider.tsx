@@ -150,7 +150,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             } catch (error) {
                 console.error("Error loading assets:", error);
                 toast({
-                    status: STATUS.ERROR,
+                    status: STATUS.MESSAGE,
                     message: t('preload.error.message'),
                 });
                 setError(true);

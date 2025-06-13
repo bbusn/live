@@ -9,7 +9,11 @@ import useSettings from "../hooks/useSettings";
 import playSound from "../utils/playSound";
 import ProjectType from "../types/Project";
 
-const Project = (project: ProjectType) => {
+type ProjectProps = ProjectType & {
+    onClickProject?: () => void;
+};
+
+const Project = ({ onClickProject, ...project }: ProjectProps) => {
     const { settings } = useSettings();
     const { assets } = useAuth();
     const modalContainerRef = useRef<HTMLDivElement>(null);
@@ -109,6 +113,7 @@ const Project = (project: ProjectType) => {
             <div
                 onClick={() => {
                     toggleModal();
+                    if (onClickProject) onClickProject();
                 }}
                 className="transitions outline outline-transparent hover:outline-secondary-400 hover:saturate-100 lg:saturate-0 cursor-pointer active:scale-90 flex flex-col items-center justify-center bg-primary-300 p-1.5 h-max w-max"
             >

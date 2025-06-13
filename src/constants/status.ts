@@ -1,8 +1,7 @@
 const STATUS = {
-    SUCCESS: 'success',
     ACHIEVEMENT: 'achievement',
-    ERROR: 'error',
-    INFO: 'info',
+    TASK: 'task',
+    MESSAGE: 'message',
 } as const;
 
 export default STATUS;

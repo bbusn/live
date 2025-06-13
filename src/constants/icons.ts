@@ -12,6 +12,7 @@ const ICONS = {
     LINKEDIN: 'simple-icons:linkedin',
     CURRICULUM_VITAE: 'academicons:cv',
     NOT_FOUND: 'line-md:question',
+    CHECKED: 'mdi:check-bold',
 } as const;
 
 export default ICONS;

@@ -1,10 +1,11 @@
 type ToastType = {
     id: number;
     isLast?: boolean;
-    status: StatusType;
+    status: string;
     message: string;
     achievement?: string;
     donationsAmount?: number;
+    viewersAmount?: number;
     onDone?: () => void;
 };
 

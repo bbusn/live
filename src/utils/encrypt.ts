@@ -1,3 +1,4 @@
+import { DEFAULT_TASKS } from '../constants/tasks';
 import { AUTH_TOKEN_KEY } from './auth';
 
 function strToUint8(str: string): Uint8Array {
@@ -41,7 +42,7 @@ export async function decrypt(token: string): Promise<object | null> {
             viewers: jsonParsed._viewers ?? 0,
             donations: jsonParsed._donations ?? 0,
             achievements: jsonParsed._achievements ?? [],
-            tasks: jsonParsed._tasks ?? [],
+            tasks: jsonParsed._tasks ?? DEFAULT_TASKS,
         };
     } catch (e) {
         return null;

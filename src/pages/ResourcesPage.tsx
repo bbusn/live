@@ -16,7 +16,7 @@ const ResourcesPage = () => {
     useEffect(() => {
         if (!resources || resources.length === 0) {
             toast({
-                status: STATUS.ERROR,
+                status: STATUS.MESSAGE,
                 message: t('dashboard.error.assets'),
             })
             navigate(ROUTES.NOT_FOUND);

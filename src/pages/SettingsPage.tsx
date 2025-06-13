@@ -91,7 +91,7 @@ const SettingsPage = () => {
 
         if (clicks <= 13) {
             toast({
-                status: STATUS.INFO,
+                status: STATUS.MESSAGE,
                 message: t('settings.quit.message.' + clicks),
             });
 
@@ -118,7 +118,7 @@ const SettingsPage = () => {
         }
 
         toast({
-            status: STATUS.SUCCESS,
+            status: STATUS.MESSAGE,
             message: t('settings.quit.message.' + clicks),
         });
 
@@ -149,7 +149,7 @@ const SettingsPage = () => {
                     playSound(assets?.sounds.click, settings);
                     localStorage.clear();
                     toast({
-                        status: STATUS.SUCCESS,
+                        status: STATUS.MESSAGE,
                         message: t(`settings.restart.message.${(Math.floor(Math.random() * 5) + 1).toString()}`),
                     });
                     setTimeout(() => {

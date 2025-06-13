@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import STATUS from "../constants/status";
 
-const Confetti = () => {
+type ConfettiProps = { type: string };
+
+const Confetti = ({ type }: ConfettiProps) => {
     const [particles, setParticles] = useState<Array<{
         id: number;
         x: number;
@@ -19,7 +22,7 @@ const Confetti = () => {
             y: -10,
             vx: (Math.random() - 0.5) * 2,
             vy: Math.random() * 3 + 2,
-            color: '#d4c0fd',
+            color: type === STATUS.ACHIEVEMENT ? '#d4c0fd' : '#e2e3ff',
             rotation: Math.random() * 360,
             rotationSpeed: (Math.random() - 0.5) * 10
         }));

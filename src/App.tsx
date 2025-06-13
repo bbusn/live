@@ -3,6 +3,7 @@ import { AppRoutes } from "./AppRoutes";
 import AuthProvider from './providers/AuthProvider';
 import ToastProvider from './providers/ToastsProvider';
 import SettingsProvider from './providers/SettingsProvider';
+import TasksProvider from './providers/TasksProvider';
 
 function App() {
 
@@ -14,7 +15,9 @@ function App() {
                 <AuthProvider>
                     <ToastProvider>
                         <SettingsProvider>
-                            <AppRoutes />
+                            <TasksProvider>
+                                <AppRoutes />
+                            </TasksProvider>
                         </SettingsProvider>
                     </ToastProvider>
                 </AuthProvider>

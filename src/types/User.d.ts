@@ -5,7 +5,7 @@ type UserType = {
     viewers: number;
     donations: number;
     achievements: string[];
-    tasks: string[];
-}
+    tasks: TaskType[];
+};
 
 export default UserType;

@@ -8,14 +8,14 @@ import { ACHIEVEMENTS } from "../constants/achievements";
 import ToastType from "../types/Toast";
 import Confetti from "./Confetti";
 import useSettings from "../hooks/useSettings";
+// a1a4ff
 
-
-const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) => {
+const Toast = ({ isLast, message, onDone, status, donationsAmount, viewersAmount }: ToastType) => {
     const [visible, setVisible] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const { t } = useTranslation();
-    const remaining = useRef(status == STATUS.ACHIEVEMENT ? 7000 : 5000);
+    const remaining = useRef((status == STATUS.ACHIEVEMENT || status === STATUS.TASK) ? 7000 : 5000);
     const startTime = useRef(0);
     const paused = useRef(false);
     const { assets } = useAuth();
@@ -24,7 +24,7 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
     useEffect(() => {
         setVisible(true);
 
-        if (status == STATUS.ACHIEVEMENT) {
+        if (status == STATUS.ACHIEVEMENT || status === STATUS.TASK) {
             playSound(assets?.sounds.achievement, settings);
             setShowConfetti(true);
         } else {
@@ -82,10 +82,10 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
         <div
             onMouseEnter={pauseTimer}
             onMouseLeave={resumeTimer}
-            className={`cursor-pointer ${!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 'pointer-events-none' : 'pointer-events-auto'} hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? ' bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
+            className={`cursor-pointer ${!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 'pointer-events-none' : 'pointer-events-auto'} hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? 'bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : status == STATUS.TASK ? 'bg-[#e2e3ff] rounded-xs gap-1.5 justify-center items-center flex-col px-3 py-3' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
     ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
         >
-            {showConfetti && <Confetti />}
+            {showConfetti && <Confetti type={status as string} />}
 
             {(isLast) && (
                 <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[75%]'} right-[-5%] z-30`}>
@@ -98,15 +98,22 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount }: ToastType) 
                 </span>
 
             )}
+            {status == STATUS.TASK && (
+                <span className="w-max text-2xl bg-primary-400/80 font-primary py-1.5 px-3 rounded-[2px] text-nowrap text-white">
+                    +{viewersAmount} <span className="text-lg">{t('statistics.viewers').toLocaleLowerCase()}</span>
+                </span>
+            )}
 
-            {status == STATUS.ACHIEVEMENT ? (
+            {(status == STATUS.ACHIEVEMENT || status == STATUS.TASK) ? (
                 <div className="text-center flex flex-col items-center gap-1">
-                    <span className="text-sm font-primary text-black font-bold opacity-75 whitespace-pre-wrap break-words">
-                        {t(`achievements.${message}.title`)}
-                    </span>
+                    {status === STATUS.ACHIEVEMENT && (
+                        <span className="text-sm font-primary text-black font-bold opacity-75 whitespace-pre-wrap break-words">
+                            {t(`achievements.${message}.title`)}
+                        </span>
+                    )}
                     <span className="ml-2 text-sm text-black
                      text-center font-primary whitespace-pre-wrap break-words">
-                        {t(`achievements.${message}.description`)}
+                        {status === STATUS.ACHIEVEMENT ? t(`achievements.${message}.description`) : t(`tasks.${message}`)}
                     </span>
                 </div>
             ) : (

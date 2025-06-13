@@ -6,13 +6,21 @@ import { Icon } from "@iconify/react";
 import useSettings from "../hooks/useSettings";
 import playSound from "../utils/playSound";
 import ResourceType from "../types/Resource";
+import User from "../objects/User";
+import { TASKS } from "../constants/tasks";
+import useTasks from "../hooks/useTasks";
+import useToasts from "../hooks/useToasts";
+import STATUS from "../constants/status";
 
 const Resource = (resource: ResourceType) => {
     const { settings } = useSettings();
     const { assets } = useAuth();
+    const { toast } = useToasts();
+    const user = User.getInstance();
     const modalContainerRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
     const { t } = useTranslation();
+    const { setTasks, setTasksCollapsed } = useTasks();
 
     const openModal = () => {
         playSound(assets?.sounds.click, settings);
@@ -134,6 +142,25 @@ const Resource = (resource: ResourceType) => {
                             className="top-[102.5%] flex justify-center items-center gap-4 transitions absolute button-primary w-full"
                             onClick={() => {
                                 playSound(assets?.sounds.click, settings);
+                                if (!User.getInstance().isTaskChecked(TASKS.LEARN_ABOUT_ME)) {
+                                    const viewers = user.viewers;
+                                    const random = Math.floor(Math.random() * 2) + 1 * 40;
+                                    const newViewers = viewers + random < 0 ? 0 : viewers + random;
+                                    user.updateViewers(newViewers);
+                                    setTasks(
+                                        user.tasks.map(task =>
+                                            task.name === TASKS.LEARN_ABOUT_ME
+                                                ? { ...task, checked: true }
+                                                : task
+                                        )
+                                    );
+                                    toast({
+                                        status: STATUS.TASK,
+                                        message: TASKS.LEARN_ABOUT_ME,
+                                        viewersAmount: Math.floor(Math.random() * 2) + 1 * 40,
+                                    });
+                                    setTasksCollapsed(false);
+                                }
                                 window.open(resource.url, "_blank");
                             }}
                         >

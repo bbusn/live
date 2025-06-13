@@ -23,14 +23,14 @@ const NotFoundPage = () => {
         playSound(assets?.sounds.click, settings);
         setTriedToReturn(true);
         toast({
-            status: STATUS.INFO,
+            status: STATUS.MESSAGE,
             message: t('not_found.returning'),
         });
     };
 
     useEffect(() => {
         toast({
-            status: STATUS.INFO,
+            status: STATUS.MESSAGE,
             message: t('not_found.error'),
         });
 

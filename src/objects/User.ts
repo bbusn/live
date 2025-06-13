@@ -1,6 +1,7 @@
 import { encrypt } from '../utils/encrypt';
 import { AUTH_TOKEN_ITEM_NAME } from '../utils/auth';
 import UserType from '../types/User';
+import TaskType from '../types/Task';
 
 class User {
     private static _instance: User;
@@ -11,7 +12,7 @@ class User {
     private _viewers: number = 0;
     private _donations: number = 0;
     private _achievements: string[] = [];
-    private _tasks: string[] = [];
+    private _tasks: TaskType[] = [];
 
     private constructor(
         username = '',
@@ -20,7 +21,7 @@ class User {
         viewers = 0,
         donations = 0,
         achievements: string[] = [],
-        tasks: string[] = [],
+        tasks: TaskType[] = [],
     ) {
         this._username = username;
         this._started_at = started_at;
@@ -61,7 +62,7 @@ class User {
         return this._achievements;
     }
 
-    public get tasks(): string[] {
+    public get tasks(): TaskType[] {
         return this._tasks;
     }
 
@@ -76,15 +77,14 @@ class User {
         return this._achievements.includes(achievement);
     }
 
-    public addTask(task: string) {
-        if (!this._tasks.includes(task)) {
-            this._tasks.push(task);
-            this.save();
-        }
+    public setTasks(tasks: TaskType[]) {
+        this._tasks = tasks;
+        this.save();
     }
 
-    public hasTask(task: string): boolean {
-        return this._tasks.includes(task);
+    public isTaskChecked(task: string): boolean {
+        const foundTask = this._tasks.find((t) => t.name === task);
+        return foundTask ? foundTask.checked : false;
     }
 
     private _initialized = false;
