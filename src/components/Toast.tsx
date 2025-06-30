@@ -68,7 +68,7 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount, viewersAmount
         if (isLast) {
             timer = setTimeout(() => {
                 document.querySelector('.important-message')?.classList.add('opacity-0');
-            }, 2500);
+            }, 3500);
         }
 
         return () => {

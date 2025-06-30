@@ -196,7 +196,7 @@ const Project = ({ onClickProject, ...project }: ProjectProps) => {
                                     }
                                     className="transition-all duration-500 hover:brightness-50 active:scale-90 cursor-zoom-in w-36 xl:w-56"
                                 />
-                                <Icon icon={ICONS.CLICK_HERE} className="-rotate-12 w-6 h-5 text-white absolute top-[60%] right-[20%] 2sm:top-[105%] 2sm:right-[-3%]"></Icon>
+                                <Icon icon={ICONS.CLICK_HERE} className="-rotate-12 w-6 h-5 text-white absolute shadow-lg top-[60%] right-[20%] 2sm:top-[105%] 2sm:right-[-3%]"></Icon>
                             </div>
                             <p className="mt-6 max-w-[95%] sm:max-w-[80%] text-sm text-center font-primary whitespace-pre-wrap break-words">
                                 {project.description.split("**").map((part, index) => {

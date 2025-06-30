@@ -8,7 +8,6 @@ import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
 import LanguageSelector from "../components/LangageSelector";
 import { useRef, useState } from "react";
-import MaxSize from "../components/MaxSize";
 import { isMusicPlaying, playMusic, stopMusic } from "../utils/musicManager";
 
 const SettingsPage = () => {
@@ -40,28 +39,32 @@ const SettingsPage = () => {
         if (isIos) return;
 
         playSound(assets?.sounds.click, settings);
-        if (isFullscreen) {
-            if (document.exitFullscreen) {
-                await document.exitFullscreen();
-            } else if ((document as any).webkitExitFullscreen) {
-                await (document as any).webkitExitFullscreen();
-            } else if ((document as any).mozCancelFullScreen) {
-                await (document as any).mozCancelFullScreen();
-            } else if ((document as any).msExitFullscreen) {
-                await (document as any).msExitFullscreen();
+        try {
+            if (isFullscreen) {
+                if (document.exitFullscreen) {
+                    await document.exitFullscreen();
+                } else if ((document as any).webkitExitFullscreen) {
+                    await (document as any).webkitExitFullscreen();
+                } else if ((document as any).mozCancelFullScreen) {
+                    await (document as any).mozCancelFullScreen();
+                } else if ((document as any).msExitFullscreen) {
+                    await (document as any).msExitFullscreen();
+                }
+            } else {
+                if (document.documentElement.requestFullscreen) {
+                    await document.documentElement.requestFullscreen();
+                } else if ((document as any).documentElement.webkitRequestFullscreen) {
+                    await (document as any).documentElement.webkitRequestFullscreen();
+                } else if ((document as any).documentElement.mozRequestFullScreen) {
+                    await (document as any).documentElement.mozRequestFullScreen();
+                } else if ((document as any).documentElement.msRequestFullscreen) {
+                    await (document as any).documentElement.msRequestFullscreen();
+                }
             }
-        } else {
-            if (document.documentElement.requestFullscreen) {
-                await document.documentElement.requestFullscreen();
-            } else if ((document as any).documentElement.webkitRequestFullscreen) {
-                await (document as any).documentElement.webkitRequestFullscreen();
-            } else if ((document as any).documentElement.mozRequestFullScreen) {
-                await (document as any).documentElement.mozRequestFullScreen();
-            } else if ((document as any).documentElement.msRequestFullscreen) {
-                await (document as any).documentElement.msRequestFullscreen();
-            }
+        } catch (error) {
+            console.error('Error toggling fullscreen:', error);
         }
-        setIsFullscreen(!isFullscreen);
+        setIsFullscreen(document.fullscreenElement !== null);
     }
 
 
@@ -87,7 +90,6 @@ const SettingsPage = () => {
     const handleQuit = () => {
         setClicks(clicks + 1);
         playSound(assets?.sounds.click, settings);
-
 
         if (clicks <= 13) {
             toast({
@@ -141,7 +143,7 @@ const SettingsPage = () => {
         <div className={`sm:mt-20 mt-8 lg:mb-0 mb-64 transition-all duration-300 min-h-[300px] px-4 h-max flex flex-col gap-8 justify-start items-center w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl`}>
             <div className="flex flex-row justify-center items-center gap-8 flex-wrap w-full">
                 {clicks <= 14 && (
-                    <button ref={quitRef} onClick={() => handleQuit()} className="active:scale-95 cursor-pointer max-w-[250px] rounded-md w-full transition-all duration-75 hover:duration-200 hover:transition-all active:duration-75 active:transition-all py-2.5 px-4 bg-[#d84a4c] text-black font-semibold hover:brightness-75">
+                    <button ref={quitRef} onClick={() => handleQuit()} className={`active:scale-95 cursor-pointer max-w-[250px] rounded-md w-full transition-all duration-75 hover:duration-200 hover:transition-all active:duration-75 active:transition-all py-2.5 px-4 bg-[#d84a4c] text-black font-semibold hover:brightness-75 ${clicks > 1 && '!cursor-not-allowed'}`}>
                         {t('settings.quit.button')}
                     </button>
                 )}
@@ -163,7 +165,7 @@ const SettingsPage = () => {
             <div className="mt-8 flex flex-row flex-wrap items-start justify-center gap-8">
                 {!isIos && (
                     <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
-                        <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_fullscreen')} size={30} /></span>
+                        <span className="max-w-64 h-6 text-center">{t('settings.enable_fullscreen')}</span>
                         <div
                             onClick={() => toggleFullscreen()}
                             className={`
@@ -184,7 +186,7 @@ const SettingsPage = () => {
                     </label>
                 )}
                 <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
-                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_music')} size={30} /></span>
+                    <span className="max-w-64 h-6 text-center">{t('settings.enable_music')}</span>
                     <div
                         onClick={() => toggleSettings('enableMusic')}
                         className={`
@@ -204,7 +206,7 @@ const SettingsPage = () => {
                     </div>
                 </label>
                 <label className="hover:opacity-100 transitions opacity-60 flex flex-col justify-start items-center gap-2 select-none cursor-pointer">
-                    <span className="max-w-64 h-6 text-center"><MaxSize value={t('settings.enable_sound_effects')} size={30} /></span>
+                    <span className="max-w-64 h-6 text-center">{t('settings.enable_sound_effects')}</span>
                     <div
                         onClick={() => toggleSettings('enableSoundEffects')}
                         className={`
