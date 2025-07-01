@@ -23,7 +23,7 @@ const Layout = () => {
 
 
     return (
-        <div className='w-full h-full min-h-[85vh] mb-10 sm:mb-0 flex flex-col sm:flex-row sm:justify-around sm:items-start items-center justify-start 2xl:max-w-[1800px]'>
+        <div className='w-full h-full min-h-[85vh] py-10 sm:py-0 flex flex-col sm:flex-row sm:justify-around sm:items-start items-center justify-start 2xl:max-w-[1800px]'>
             <NavigationBar />
             <div className='pointer-events-none overflow-y-scroll overflow-x-hidden z-20 gap-4 fixed bottom-12 w-full flex-nowrap px-8 sm:px-0 flex flex-col lg:flex-row items-end justify-end lg:justify-around 2xl:max-w-[1800px] -translate-x-1/2 left-1/2'>
                 <Tasks />

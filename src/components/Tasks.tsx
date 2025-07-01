@@ -53,13 +53,13 @@ const Tasks = () => {
                 <div className="-mt-4 h-full w-max flex flex-col justify-center items-start gap-4">
                     {tasks.map((task) => {
                         return (
-                            <li key={task.name} className={`${task.checked && 'opacity-50'} flex flex-row gap-4 items-center`}>
-                                <div className={`${task.checked ? 'bg-white' : 'bg-white'} flex justify-center items-center pointer-events-none w-6 h-6 rounded-sm`}>
+                            <li key={task.name} className={`${task.checked && 'opacity-75'} flex flex-row gap-4 items-center`}>
+                                <div className={`${task.checked ? 'bg-[#e2e3ff]' : 'bg-white'} flex justify-center items-center pointer-events-none w-6 h-6 rounded-sm`}>
                                     {task.checked && (
                                         <Icon icon={ICONS.CHECKED} className="text-primary-900 w-5 h-5 font-bold" />
                                     )}
                                 </div>
-                                <p className={`text-sm ${task.checked ? 'line-through' : 'no-underline'}`}>{t(`tasks.${task.name}`)}</p>
+                                <p className={`text-sm ${task.checked ? 'line-through text-[#e2e3ff]' : 'no-underline'}`}>{t(`tasks.${task.name}`)}</p>
                             </li>
                         );
                     })}

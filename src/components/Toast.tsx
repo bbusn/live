@@ -82,14 +82,14 @@ const Toast = ({ isLast, message, onDone, status, donationsAmount, viewersAmount
         <div
             onMouseEnter={pauseTimer}
             onMouseLeave={resumeTimer}
-            className={`cursor-pointer ${!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 'pointer-events-none' : 'pointer-events-auto'} hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? 'bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : status == STATUS.TASK ? 'bg-[#e2e3ff] rounded-xs gap-1.5 justify-center items-center flex-col px-3 py-3' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
+            className={`cursor-pointer ${!User.getInstance().hasAchievement(ACHIEVEMENTS.SETTINGS_TRY_TO_QUIT) ? 'pointer-events-none' : 'pointer-events-auto'} hover:brightness-125 transitions shadow-lg relative max-w-[275px] w-max 3xs:max-w-[300px] 2xs:max-w-[325px] sm:max-w-[450px] h-max flex  ${status == STATUS.ACHIEVEMENT ? 'bg-secondary-500 rounded-xs  justify-center items-center flex-row px-3 py-3.5' : status == STATUS.TASK ? 'bg-[#e2e3ff] rounded-xs gap-1.5 justify-center items-center flex-col px-6 py-3' : 'bg-primary-500 rounded-sm p-3 justify-start items-center'} text-white transition-all duration-300 ease-in-out transform
     ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
         >
             {showConfetti && <Confetti type={status as string} />}
 
             {(isLast) && (
-                <div className={`transition-all duration-200 absolute ${status == STATUS.ACHIEVEMENT ? 'top-[85%]' : 'top-[75%]'} right-[-5%] z-30`}>
-                    <img src={assets?.images?.toast.src} alt="Toast Icon" className="w-14" />
+                <div className={`transition-all -translate-1/2 duration-200 absolute ${status == STATUS.ACHIEVEMENT ? '-bottom-[70px] -right-[45px]' : '-bottom-[65px] -right-[55px]'} z-30`}>
+                    <img src={assets?.images?.toast.src} alt="Toast Icon" className="w-12" />
                 </div>
             )}
             {status == STATUS.ACHIEVEMENT && (

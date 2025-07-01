@@ -139,7 +139,7 @@ const Statistics = () => {
         };
 
         const updateRandomViewers = () => {
-            const delta = Math.floor(Math.random() * 7) - 3;
+            const delta = Math.floor(Math.random() * 8) - 3;
             const newViewers = Math.max(0, user.viewers + delta);
             user.updateViewers(newViewers);
             setViewers(newViewers);
@@ -159,7 +159,7 @@ const Statistics = () => {
 
             handleTimeAchievements();
             handleDonationsAchievements();
-        }, 5000);
+        }, 2000);
 
         return () => {
             clearInterval(clockInterval);
