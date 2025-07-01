@@ -7,7 +7,7 @@ import useToasts from "../hooks/useToasts";
 import STATUS from "../constants/status";
 import playSound from "../utils/playSound";
 import LanguageSelector from "../components/LangageSelector";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isMusicPlaying, playMusic, stopMusic } from "../utils/musicManager";
 
 const SettingsPage = () => {
@@ -138,6 +138,18 @@ const SettingsPage = () => {
             }
         }, 1500);
     }
+
+    useEffect(() => {
+        const handleFullscreenChange = () => {
+            setIsFullscreen(document.fullscreenElement != null);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+        return () => {
+            document.removeEventListener('fullscreenchange', handleFullscreenChange);
+        };
+    }, []);
 
     return (
         <div className={`sm:mt-20 mt-8 lg:mb-0 mb-64 transition-all duration-300 min-h-[300px] px-4 h-max flex flex-col gap-8 justify-start items-center w-full max-w-[95%] xs:w-md sm:w-md xl:w-xl`}>

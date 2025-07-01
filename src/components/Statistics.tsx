@@ -144,6 +144,14 @@ const Statistics = () => {
             user.updateViewers(newViewers);
             setViewers(newViewers);
         };
+        const minInterval = 300;
+        const maxInterval = 2600;
+        const viewersFactor = Math.max(1, user.viewers);
+        const intervalDuration = Math.max(
+            minInterval,
+            maxInterval - Math.min(viewersFactor * 10, maxInterval - minInterval)
+        );
+        const viewersInterval = setInterval(updateRandomViewers, intervalDuration);
 
         const clockInterval = setInterval(updateState, 1000);
         const achievementInterval = setInterval(async () => {
@@ -152,7 +160,6 @@ const Statistics = () => {
             handleTimeAchievements();
             handleDonationsAchievements();
         }, 5000);
-        const viewersInterval = setInterval(updateRandomViewers, Math.floor(Math.random() * 2200) + 400);
 
         return () => {
             clearInterval(clockInterval);
