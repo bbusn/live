@@ -10,14 +10,12 @@ const ToastsProvider = ({ children }: { children: React.ReactNode }) => {
     const toast = (props: Omit<ToastType, "id">) => {
         const id = Date.now();
         setToasts((prev) => [...prev, { id, ...props }]);
-
-        importantMessageRef.current?.classList.remove("opacity-0");
     };
 
     const removeToast = (id: number) => {
         setToasts((prev) => prev.filter((t) => t.id !== id));
 
-        if (toasts.length === 1 || toasts.length === 0) {
+        if (toasts.length === 0) {
             importantMessageRef.current?.classList.add("opacity-0");
         }
     };
